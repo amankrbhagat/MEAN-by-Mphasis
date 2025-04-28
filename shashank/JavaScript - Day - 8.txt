@@ -1,0 +1,2141 @@
+5. Number Methods
+JavaScript provides various methods to manipulate numbers.
+
+toFixed()
+
+Converts a number to a string, rounding it to a specified number of decimal places.
+
+javascript
+Copy code
+
+let num = 5.6789;
+console.log(num.toFixed(2)); // "5.68" (2 decimal places)
+toString()
+
+Converts a number to a string.
+
+javascript
+Copy code
+
+let num = 42;
+console.log(num.toString()); // "42"
+toPrecision()
+
+Formats a number to a specified length.
+
+javascript
+Copy code
+
+let num = 123.456;
+console.log(num.toPrecision(4)); // "123.5" (4 significant digits)
+
+6. Parsing Numbers from Strings
+
+JavaScript provides functions to parse numbers from strings.
+
+parseInt()
+Parses a string and returns an integer.
+
+javascript
+Copy code
+let str = "123";
+console.log(parseInt(str));  // 123 (as a number)
+parseFloat()
+Parses a string and returns a floating-point number.
+
+javascript
+Copy code
+let str = "3.14";
+console.log(parseFloat(str)); // 3.14 (as a number)
+
+7. Number Constants
+
+JavaScript has several useful number-related constants:
+
+Number.MAX_VALUE: The largest possible number in JavaScript.
+Number.MIN_VALUE: The smallest possible number.
+Number.POSITIVE_INFINITY: Represents positive infinity.
+Number.NEGATIVE_INFINITY: Represents negative infinity.
+Number.NaN: Represents "Not-a-Number."
+
+javascript
+Copy code
+
+console.log(Number.MAX_VALUE);        // 1.7976931348623157e+308
+console.log(Number.MIN_VALUE);        // 5e-324
+console.log(Number.POSITIVE_INFINITY); // Infinity
+console.log(Number.NEGATIVE_INFINITY); // -Infinity
+console.log(Number.NaN);               // NaN
+
+8. Checking if a Value is a Number
+
+isNaN()
+
+Checks if a value is NaN.
+
+javascript
+Copy code
+
+console.log(isNaN("hello"));   // true (because "hello" is not a number)
+console.log(isNaN(42));        // false (because 42 is a number)
+
+
+Number.isFinite()
+
+Checks if a value is a finite number (i.e., not Infinity or NaN).
+
+javascript
+Copy code
+
+console.log(Number.isFinite(42));        // true
+console.log(Number.isFinite(Infinity));  // false
+console.log(Number.isFinite(NaN));       // false
+
+Example of Numbers in Action
+
+Here's a simple example that demonstrates various operations with numbers:
+
+javascript
+Copy code
+
+let a = 10;
+let b = 3;
+
+// Basic arithmetic operations
+console.log(a + b);  // 13 (Addition)
+console.log(a - b);  // 7  (Subtraction)
+console.log(a * b);  // 30 (Multiplication)
+console.log(a / b);  // 3.3333... (Division)
+
+// Parsing numbers from strings
+
+let str = "42.56";
+let intVal = parseInt(str);   // 42
+let floatVal = parseFloat(str); // 42.56
+
+console.log(intVal);  // 42
+console.log(floatVal); // 42.56
+
+// Number methods
+let num = 5.6789;
+console.log(num.toFixed(2));  // "5.68" (rounded to 2 decimal places)
+console.log(num.toPrecision(3)); // "5.68" (3 significant digits)
+
+
+Initializing and Manipulating Strings in JavaScript:
+
+
+In JavaScript, strings are sequences of characters used for storing and manipulating text. They are a fundamental data type and can be initialized, concatenated, and manipulated in various ways. Let's go through the basics of how strings work in JavaScript, with examples.
+
+1. Initializing Strings
+You can initialize strings in JavaScript in three ways:
+
+Using double quotes:
+
+javascript
+Copy code
+let str1 = "Hello, World!";
+
+Using single quotes:
+
+javascript
+Copy code
+
+let str2 = 'Hello, World!';
+
+Using template literals (introduced in ES6):
+
+Template literals allow for string interpolation, multiline strings, and more.
+
+javascript
+Copy code
+
+let name = "John";
+let str3 = `Hello, ${name}!`; // Outputs: "Hello, John!"
+
+2. Basic String Operations
+
+Here are some common operations used to manipulate strings in JavaScript.
+
+a) Concatenation
+You can concatenate strings using the + operator or using template literals.
+
+Using + operator:
+
+javascript
+Copy code
+
+let greeting = "Hello, " + "World!";
+console.log(greeting);  // Output: "Hello, World!"
+
+Using template literals:
+
+javascript
+Copy code
+
+let name = "Alice";
+let message = `Welcome, ${name}!`;
+console.log(message);  // Output: "Welcome, Alice!"
+
+b) String Length
+
+You can find the length of a string using the .length property.
+
+javascript
+Copy code
+
+let text = "JavaScript";
+console.log(text.length);  // Output: 10
+
+c) Accessing Characters
+
+You can access individual characters in a string using bracket notation.
+
+javascript
+Copy code
+
+let text = "JavaScript";
+console.log(text[0]);  // Output: "J"
+console.log(text[4]);  // Output: "S"
+
+d) Changing Case
+
+You can convert strings to uppercase or lowercase using .toUpperCase() and .toLowerCase().
+
+javascript
+Copy code
+
+let text = "JavaScript";
+console.log(text.toUpperCase());  // Output: "JAVASCRIPT"
+console.log(text.toLowerCase());  // Output: "javascript"
+
+e) Substring and Substr
+
+You can extract parts of a string using the .substring() or .slice() methods.
+
+substring(start, end): Extracts a portion of the string between the specified indices. // end is the length of the given substring.
+
+javascript
+Copy code
+
+let text = "JavaScript";
+let part = text.substring(0, 4);  // Extracts from index 0 to 3
+console.log(part);  // Output: "Java"
+
+slice(start, end): Similar to substring, but allows for negative indices (from the end of the string).
+
+javascript
+Copy code
+
+let part = text.slice(0, 4);  // Output: "Java"
+let endPart = text.slice(-3); // Output: "ipt"
+
+f) Replace Substrings
+
+To replace part of a string, you can use .replace(). Note that it only replaces the first occurrence unless you use a regular expression with the global flag (/g).
+
+javascript
+Copy code
+
+let text = "I love JavaScript!";
+let newText = text.replace("love", "enjoy");
+
+console.log(newText);  // Output: "I enjoy JavaScript!"
+
+g) Split Strings
+
+You can split a string into an array of substrings using the .split() method.
+
+javascript
+Copy code
+
+let text = "apple, banana, cherry";
+let fruits = text.split(", ");
+console.log(fruits);  // Output: ["apple", "banana", "cherry"]
+
+3. String Methods for Searching and Matching
+
+a) indexOf()
+
+Finds the position of the first occurrence of a specified value in a string.
+
+javascript
+Copy code
+
+let text = "JavaScript is awesome!";
+let index = text.indexOf("awesome");
+console.log(index);  // Output: 14
+
+b) includes()
+
+Checks if a string contains a specified substring.
+
+javascript
+Copy code
+
+let text = "JavaScript is awesome!";
+console.log(text.includes("awesome"));  // Output: true
+
+c) startsWith() and endsWith()
+
+These methods check whether a string starts or ends with a specific substring.
+
+javascript
+Copy code
+
+let text = "JavaScript";
+console.log(text.startsWith("Java"));  // Output: true
+console.log(text.endsWith("Script"));  // Output: true
+
+d) repeat()
+
+Repeats a string a specified number of times.
+
+javascript
+Copy code
+
+let text = "Ha!";
+let repeatedText = text.repeat(3);
+console.log(repeatedText);  // Output: "Ha!Ha!Ha!"
+
+4. Template Literals for Multiline Strings
+
+Using template literals, you can create multiline strings without the need for special characters like \n.
+
+javascript
+Copy code
+let poem = `Roses are red,
+Violets are blue,
+JavaScript is fun,
+And so are you!`;
+console.log(poem);
+
+5. Trimming Whitespace
+
+You can remove whitespace from the beginning and end of a string using .trim().
+
+javascript
+Copy code
+
+let text = "    Hello, World!    ";
+let trimmedText = text.trim();
+console.log(trimmedText);  // Output: "Hello, World!"
+
+6. Converting to and from Strings
+
+Convert a number to a string:
+
+javascript
+Copy code
+
+let num = 123;
+let strNum = num.toString();
+console.log(strNum);  // Output: "123"
+
+Convert other data types to string:
+
+javascript
+Copy code
+
+let booleanValue = true;
+let stringBoolean = String(booleanValue);
+console.log(stringBoolean);  // Output: "true"
+
+Example: String Manipulation in Action
+
+javascript
+Copy code
+
+let firstName = "John";
+let lastName = "Doe";
+
+// Concatenate strings
+let fullName = firstName + " " + lastName;
+console.log(fullName);  // Output: "John Doe"
+
+// Convert to uppercase
+let upperCaseName = fullName.toUpperCase();
+console.log(upperCaseName);  // Output: "JOHN DOE"
+
+// Extract first name
+let extractedFirstName = fullName.slice(0, fullName.indexOf(" "));
+console.log(extractedFirstName);  // Output: "John"
+
+// Replace the name
+let newName = fullName.replace("Doe", "Smith");
+console.log(newName);  // Output: "John Smith"
+
+Analyzing and Modifying Strings in JavaScript:
+
+
+JavaScript provides a rich set of methods and techniques to manipulate and analyze strings. Strings in JavaScript are immutable, meaning once a string is created, it cannot be changed. However, you can create new strings based on the original string.
+
+Let’s break this down into two key parts:
+
+Analyzing strings: This involves extracting information from the string, such as its length, substrings, and positions of specific characters or patterns.
+Modifying strings: This includes operations such as concatenation, slicing, replacing, converting cases, and more.
+
+1. Analyzing Strings in JavaScript
+
+Common String Analysis Methods:
+
+length: Returns the number of characters in the string.
+
+charAt(index): Returns the character at the specified index.
+
+indexOf(substring): Returns the index of the first occurrence of the specified substring.
+
+lastIndexOf(substring): Returns the index of the last occurrence of the specified substring.
+
+includes(substring): Checks if the string contains the specified substring.
+
+startsWith(substring): Checks if the string starts with the specified substring.
+
+endsWith(substring): Checks if the string ends with the specified substring.
+
+Example: Analyzing a String
+
+javascript
+Copy code
+let message = "Hello, JavaScript World!";
+
+// 1. Get length
+console.log("Length:", message.length); // Output: 25
+
+// 2. Get character at a specific index
+console.log("Character at index 7:", message.charAt(7)); // Output: J
+
+// 3. Find index of a substring
+console.log("Index of 'JavaScript':", message.indexOf("JavaScript")); // Output: 7
+
+// 4. Check if string contains a substring
+console.log("Contains 'World':", message.includes("World")); // Output: true
+
+// 5. Check if the string starts with a substring
+console.log("Starts with 'Hello':", message.startsWith("Hello")); // Output: true
+
+// 6. Check if the string ends with a substring
+console.log("Ends with 'World!':", message.endsWith("World!")); // Output: true
+
+2. Modifying Strings in JavaScript
+Common String Modification Methods:
+
+concat(): Joins two or more strings.
+
+slice(start, end): Extracts a part of the string and returns it as a new string.
+
+substring(start, end): Similar to slice(), but does not accept negative indexes.
+
+toLowerCase(): Converts the string to lowercase.
+
+toUpperCase(): Converts the string to uppercase.
+
+replace(oldSubstring, newSubstring): Replaces the first occurrence of a substring with a new substring.
+
+trim(): Removes whitespace from both ends of a string.
+
+split(delimiter): Splits the string into an array based on the specified delimiter.
+
+Example: Modifying a String
+
+javascript
+Copy code
+let text = "  JavaScript is Awesome!  ";
+
+// 1. Convert to lowercase
+console.log("Lowercase:", text.toLowerCase()); // Output: "  javascript is awesome!  "
+
+// 2. Convert to uppercase
+console.log("Uppercase:", text.toUpperCase()); // Output: "  JAVASCRIPT IS AWESOME!  "
+
+// 3. Trim white spaces
+console.log("Trimmed:", text.trim()); // Output: "JavaScript is Awesome!"
+
+// 4. Replace a substring
+let newText = text.replace("Awesome", "Fun");
+console.log("Replaced text:", newText); // Output: "  JavaScript is Fun!  "
+
+// 5. Slice part of the string
+let slicedText = text.slice(2, 12);
+console.log("Sliced text:", slicedText); // Output: "JavaScript"
+
+// 6. Split string into an array
+let words = text.trim().split(" ");
+console.log("Words array:", words); // Output: ["JavaScript", "is", "Awesome!"]
+Explanation of Examples:
+Analyzing:
+In the first example, you can see how to get information like the length of the string, find the index of a substring, and check if a string starts or ends with a particular substring.
+Modifying:
+In the second example, you can modify strings by changing cases, replacing parts of the string, slicing parts of it, and splitting it into an array.
+
+
+• Dates in JavaScript:
+
+
+In JavaScript, the Date object is used to work with dates and times. It provides methods to get and set year, month, day, hour, minute, second, and millisecond, among other utilities.
+
+Creating a Date Object
+There are several ways to create a Date object in JavaScript:
+
+Without arguments (Current date and time):
+
+javascript
+Copy code
+
+let currentDate = new Date();
+console.log(currentDate); // Outputs the current date and time
+
+With date and time string (Using a date string):
+
+javascript
+Copy code
+
+let specificDate = new Date('2024-09-15T12:30:00');
+
+console.log(specificDate); // Outputs: Sun Sep 15 2024 12:30:00 GMT+0000 (UTC)
+
+With date parts (Year, Month, Day, Hours, Minutes, Seconds, Milliseconds):
+
+javascript
+Copy code
+
+let dateWithParts = new Date(2024, 8, 15, 12, 30, 0);
+console.log(dateWithParts); // Outputs: Sun Sep 15 2024 12:30:00 GMT+0000 (UTC)
+
+Note: Months in JavaScript are zero-indexed (January is 0, December is 11).
+
+With milliseconds since Epoch (Unix time): The Date object can also be created using the number of 
+milliseconds since January 1, 1970 (Unix Epoch).
+
+javascript
+Copy code
+
+let dateFromMilliseconds = new Date(0);
+
+console.log(dateFromMilliseconds); // Outputs: Thu Jan 01 1970 00:00:00 GMT+0000 (UTC)
+
+Getting Date Information
+
+The Date object provides several methods to get specific parts of the date:
+
+Getting Year, Month, Day, and Time:
+
+javascript
+Copy code
+let date = new Date();
+
+console.log(date.getFullYear());  // Outputs the year
+console.log(date.getMonth());     // Outputs the month (0-11, where 0 is January)
+console.log(date.getDate());      // Outputs the day of the month (1-31)
+console.log(date.getDay());       // Outputs the day of the week (0-6, where 0 is Sunday)
+console.log(date.getHours());     // Outputs the hours (0-23)
+console.log(date.getMinutes());   // Outputs the minutes (0-59)
+console.log(date.getSeconds());   // Outputs the seconds (0-59)
+console.log(date.getMilliseconds()); // Outputs milliseconds (0-999)
+Example: Displaying Current Date:
+
+javascript
+Copy code
+
+let now = new Date();
+console.log(`Today is ${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`);
+
+Setting Date Information
+
+You can also set different parts of a date:
+
+javascript
+Copy code
+
+let date = new Date();
+date.setFullYear(2025);
+date.setMonth(11); // December (since months are zero-indexed)
+date.setDate(25);  // Sets the day of the month
+date.setHours(14);
+date.setMinutes(30);
+console.log(date);  // Outputs the modified date and time
+
+Date Formatting
+
+JavaScript doesn't have built-in date formatting, but you can easily format dates by combining get methods.
+
+javascript
+Copy code
+
+let date = new Date();
+
+let formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
+
+console.log(formattedDate);  // Outputs: "2024-9-15 12:30" (example output)
+
+Parsing Dates
+
+You can use the Date.parse() method to parse a date string into a number (milliseconds since January 1, 1970).
+
+javascript
+Copy code
+
+let milliseconds = Date.parse('2024-09-15T12:30:00');
+console.log(milliseconds);  // Outputs: 1726350600000
+
+Date Comparison
+
+You can compare dates using the relational operators (<, >, <=, >=).
+
+javascript
+Copy code
+
+let date1 = new Date('2024-09-15');
+let date2 = new Date('2023-09-15');
+
+if (date1 > date2) {
+    console.log('date1 is later than date2');
+} else {
+    console.log('date2 is earlier than or the same as date1');
+}
+
+Date Math (Adding/Subtracting Days, Hours, etc.)
+
+You can add or subtract time from a date using set and get methods.
+
+Adding days to a date:
+
+javascript
+Copy code
+
+let date = new Date();
+date.setDate(date.getDate() + 7);  // Adds 7 days
+console.log(date);  // Outputs the new date
+
+Subtracting hours from a date:
+
+javascript
+Copy code
+
+let date = new Date();
+date.setHours(date.getHours() - 5);  // Subtracts 5 hours
+console.log(date);  // Outputs the new date and time
+
+Example of Complete Date Usage
+
+javascript
+Copy code
+// Get the current date and format it as YYYY-MM-DD
+
+let today = new Date();
+let formattedToday = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+console.log("Today's date is:", formattedToday);
+
+// Create a new specific date
+let futureDate = new Date('2024-12-31T23:59:59');
+console.log("Future Date:", futureDate);
+
+// Check if a date is in the past or future
+if (today < futureDate) {
+  console.log('The future date is still to come.');
+} else {
+  console.log('The future date has already passed.');
+}
+
+// Add 10 days to the current date
+today.setDate(today.getDate() + 10);
+console.log("Date 10 days from now:", today);
+
+Summary
+
+The Date object in JavaScript provides a way to work with dates and times.
+You can create Date objects with different inputs (current date, specific date string, or using parts like year, month, etc.).
+There are various methods to get and set date parts.
+You can compare dates and perform date math, such as adding or subtracting time.
+
+
+Using the Math Library for Common Math Operations:
+
+
+The Math library in JavaScript provides a collection of properties and methods that are useful for performing mathematical tasks. It's a built-in object, so you don't need to install or import it; you can use it directly in your code.
+
+Here's how to use the Math library in JavaScript for common mathematical operations:
+
+1. Rounding Numbers
+
+The Math object provides methods like Math.round(), Math.floor(), and Math.ceil() to round numbers in different ways.
+
+Math.round(number): Rounds a number to the nearest integer.
+Math.floor(number): Rounds a number down to the nearest integer.
+Math.ceil(number): Rounds a number up to the nearest integer.
+Example:
+
+javascript
+Copy code
+
+let number = 4.7;
+console.log(Math.round(number));  // Output: 5
+console.log(Math.floor(number));  // Output: 4
+console.log(Math.ceil(number));   // Output: 5
+
+2. Finding the Maximum and Minimum
+
+Math.max(): Returns the largest of zero or more numbers.
+Math.min(): Returns the smallest of zero or more numbers.
+
+Example:
+
+javascript
+Copy code
+
+console.log(Math.max(10, 20, 30));  // Output: 30
+console.log(Math.min(10, 20, 30));  // Output: 10
+
+3. Square Root
+
+Math.sqrt(number): Returns the square root of a number.
+
+Example:
+
+javascript
+Copy code
+console.log(Math.sqrt(16));  // Output: 4
+
+4. Power of a Number
+Math.pow(base, exponent): Returns the base to the power of the exponent.
+
+Example:
+
+javascript
+Copy code
+
+console.log(Math.pow(2, 3));  // Output: 8
+
+5. Random Number Generation
+
+Math.random(): Generates a pseudo-random number between 0 (inclusive) and 1 (exclusive). You can scale this to generate numbers in different ranges.
+Example:
+
+javascript
+Copy code
+
+let randomNumber = Math.random();
+console.log(randomNumber);  // Output: A random number between 0 and 1
+
+// To generate a random number between 0 and 100
+let randomScaled = Math.random() * 100;
+console.log(randomScaled);  // Output: A random number between 0 and 100
+
+6. Absolute Value
+
+Math.abs(number): Returns the absolute (positive) value of a number.
+
+Example:
+
+javascript
+Copy code
+console.log(Math.abs(-7));  // Output: 7
+
+7. Trigonometric Functions
+
+The Math object also provides trigonometric functions such as Math.sin(), Math.cos(), and Math.tan().
+
+Example:
+
+javascript
+Copy code
+
+let angleInRadians = Math.PI / 2;  // 90 degrees
+console.log(Math.sin(angleInRadians));  // Output: 1
+
+8. Logarithmic Functions
+
+Math.log(number): Returns the natural logarithm (base e) of a number.
+Math.log10(number): Returns the base 10 logarithm of a number.
+Example:
+
+javascript
+Copy code
+
+console.log(Math.log(1));   // Output: 0 (natural logarithm of 1)
+console.log(Math.log10(100));  // Output: 2 (logarithm base 10 of 100)
+
+9. Rounding to Fixed Decimal Places
+
+You can combine Math.round() with multiplication and division to round a number to a specific number of decimal places.
+
+Example:
+
+javascript
+Copy code
+
+let num = 5.6789;
+let roundedNum = Math.round(num * 100) / 100;  // Round to 2 decimal places
+console.log(roundedNum);  // Output: 5.68
+
+10. Exponent and Logarithms
+
+Math.exp(exponent): Returns the value of e raised to the power of the given exponent.
+Math.log(number): Returns the natural logarithm (base e) of a number.
+
+Example:
+
+javascript
+Copy code
+console.log(Math.exp(1));   // Output: 2.718281828459045 (approximation of e^1)
+Summary of Common Math Methods in JavaScript:
+Method	Description
+Math.round(x)	Rounds x to the nearest integer
+Math.floor(x)	Rounds x down to the nearest integer
+Math.ceil(x)	Rounds x up to the nearest integer
+Math.max()	Returns the largest number in a set
+Math.min()	Returns the smallest number in a set
+Math.sqrt(x)	Returns the square root of x
+Math.pow(x, y)	Returns x raised to the power of y
+Math.random()	Generates a random number between 0 and 1
+Math.abs(x)	Returns the absolute value of x
+Math.sin(x)	Returns the sine of x (in radians)
+Math.cos(x)	Returns the cosine of x (in radians)
+Math.tan(x)	Returns the tangent of x (in radians)
+Math.log(x)	Returns the natural logarithm of x
+Math.exp(x)	Returns the value of e to the power of x
+
+
+
+Arithmetic Operators:
+
+
+In JavaScript, arithmetic operators are used to perform basic mathematical operations. These include addition, subtraction, multiplication, division, modulus (remainder), increment, and decrement.
+
+1. Addition (+)
+
+The addition operator adds two numbers.
+
+Example:
+
+javascript
+Copy code
+
+let a = 5;
+let b = 10;
+let sum = a + b;
+console.log(sum); // Output: 15
+
+2. Subtraction (-)
+
+The subtraction operator subtracts one number from another.
+
+Example:
+
+javascript
+Copy code
+
+let a = 10;
+let b = 3;
+let difference = a - b;
+console.log(difference); // Output: 7
+
+3. Multiplication (*)
+
+The multiplication operator multiplies two numbers.
+
+Example:
+
+javascript
+Copy code
+
+let a = 4;
+let b = 6;
+let product = a * b;
+console.log(product); // Output: 24
+
+4. Division (/)
+The division operator divides one number by another.
+
+Example:
+
+javascript
+Copy code
+
+let a = 20;
+let b = 5;
+let quotient = a / b;
+console.log(quotient); // Output: 4
+
+5. Modulus (%)
+
+The modulus operator returns the remainder of a division.
+
+Example:
+
+javascript
+Copy code
+
+let a = 15;
+let b = 4;
+let remainder = a % b;
+console.log(remainder); // Output: 3
+
+6. Increment (++)
+
+The increment operator increases a variable’s value by 1.
+
+Pre-increment (++variable): Increments the value and then returns it.
+Post-increment (variable++): Returns the value first, then increments it.
+
+Example:
+
+javascript
+Copy code
+
+let a = 5;
+console.log(++a); // Output: 6 (pre-increment)
+console.log(a++); // Output: 6 (post-increment, value is incremented after printing)
+console.log(a);   // Output: 7
+
+7. Decrement (--)
+The decrement operator decreases a variable’s value by 1.
+
+Pre-decrement (--variable): Decrements the value first, then returns it.
+Post-decrement (variable--): Returns the value first, then decrements it.
+
+Example:
+
+javascript
+Copy code
+
+let a = 5;
+console.log(--a); // Output: 4 (pre-decrement)
+console.log(a--); // Output: 4 (post-decrement, value is decremented after printing)
+console.log(a);   // Output: 3
+Combining Arithmetic Operators with Variables
+You can combine arithmetic operators with variables for more complex calculations.
+
+Example:
+
+javascript
+Copy code
+
+let x = 10;
+let y = 5;
+let result = (x + y) * 2 - (x / y);
+console.log(result); // Output: 28
+
+
+Logical and Conditional Operators:
+
+
+In JavaScript, logical and conditional operators are used to control the flow of a program and make decisions based on conditions. Here's an explanation of these operators with examples.
+
+1. Logical Operators
+
+Logical operators are used to combine or invert Boolean (true/false) values. JavaScript provides three main logical operators:
+
+a. Logical AND (&&)
+
+It returns true only if both conditions are true.
+If either condition is false, it returns false.
+
+Syntax:
+
+javascript
+Copy code
+
+condition1 && condition2
+
+Example:
+
+javascript
+Copy code
+
+let a = 5;
+let b = 10;
+
+if (a > 0 && b > 0) {
+    console.log("Both numbers are positive.");
+}
+
+// Output: Both numbers are positive.
+In this example, since both a > 0 and b > 0 are true, the && operator returns true, and the message is logged.
+
+b. Logical OR (||)
+
+It returns true if at least one of the conditions is true.
+If both conditions are false, it returns false.
+
+Syntax:
+
+javascript
+Copy code
+
+condition1 || condition2
+Example:
+
+javascript
+Copy code
+
+let isRainy = false;
+let hasUmbrella = true;
+
+if (isRainy || hasUmbrella) {
+    console.log("You can go outside.");
+}
+// Output: You can go outside.
+Here, even though isRainy is false, hasUmbrella is true, so the || operator returns true, and the message is displayed.
+
+c. Logical NOT (!)
+
+It inverts the boolean value of a condition.
+If a condition is true, it becomes false and vice versa.
+Syntax:
+
+javascript
+Copy code
+
+!condition
+
+Example:
+
+javascript
+Copy code
+
+let isLoggedIn = false;
+
+if (!isLoggedIn) {
+    console.log("Please log in.");
+}
+// Output: Please log in.
+The ! operator inverts the value of isLoggedIn. Since isLoggedIn is false, !isLoggedIn becomes true, so the message is displayed.
+
+2. Conditional (Ternary) Operator
+
+The conditional operator (? :) is the only ternary operator in JavaScript. It is a shorthand way to write an if-else statement.
+
+Syntax:
+
+javascript
+Copy code
+
+condition ? expressionIfTrue : expressionIfFalse
+
+Example:
+
+javascript
+Copy code
+
+let age = 18;
+let canVote = (age >= 18) ? "Yes, you can vote." : "No, you cannot vote.";
+
+console.log(canVote);
+// Output: Yes, you can vote.
+
+In this example, the condition age >= 18 is checked. If it's true, canVote is assigned "Yes, you can vote.". Otherwise, it would be assigned "No, you cannot vote.".
+
+3. Combining Logical Operators with Conditional Operator
+You can combine logical operators with the ternary operator to check multiple conditions.
+
+Example:
+
+javascript
+Copy code
+
+let hasLicense = true;
+let isSober = true;
+
+let canDrive = (hasLicense && isSober) ? "You can drive." : "You cannot drive.";
+
+console.log(canDrive);
+
+// Output: You can drive.
+
+In this case, both hasLicense and isSober must be true for the person to be able to drive. If either is false, the result would be "You cannot drive.".
+
+Summary
+Logical AND (&&): Returns true only if all conditions are true.
+Logical OR (||): Returns true if at least one condition is true.
+Logical NOT (!): Inverts the value of a boolean expression.
+Conditional (Ternary) Operator (? :): A concise way to perform a conditional operation.
+
+
+• Type Casting:
+
+Type casting (also known as type conversion) in JavaScript refers to converting data from one type to another, such as converting a string to a number or vice versa. JavaScript is a dynamically typed language, meaning variables can hold values of any type without having to specify their type. However, there are situations where you might need to convert between types explicitly.
+
+There are two types of type casting in JavaScript:
+
+Implicit Type Casting (Type Coercion): This happens automatically when JavaScript tries to perform operations between different data types.
+Explicit Type Casting: This is done manually using functions or constructors to convert data types.
+1. Implicit Type Casting (Type Coercion)
+JavaScript automatically converts types when performing certain operations. For example:
+
+When using the + operator with a string and a number, JavaScript coerces the number to a string and concatenates them.
+Example:
+
+javascript
+Copy code
+let num = 10;
+let str = "5";
+let result = num + str;  // Implicitly converts num to string and concatenates
+console.log(result);     // Output: "105" (string)
+In this case, num (a number) is coerced to a string and concatenated with str because the + operator is used with strings.
+
+Other Implicit Coercions:
+
+javascript
+Copy code
+console.log("5" - 2);    // Output: 3 (string "5" is coerced to number 5)
+console.log("5" * 2);    // Output: 10 (string "5" is coerced to number 5)
+console.log("5" / 2);    // Output: 2.5 (string "5" is coerced to number 5)
+2. Explicit Type Casting
+This occurs when you manually convert data from one type to another using functions or constructors.
+
+String to Number
+To convert a string to a number, you can use the Number() constructor, parseInt(), or parseFloat().
+
+Example:
+
+javascript
+Copy code
+let str = "123";
+let num = Number(str);  // Explicit conversion from string to number
+console.log(num);       // Output: 123 (number)
+console.log(typeof num); // Output: "number"
+You can also use parseInt() for integers or parseFloat() for floating-point numbers:
+
+javascript
+Copy code
+let strInt = "100";
+let strFloat = "99.99";
+
+let intNum = parseInt(strInt);
+let floatNum = parseFloat(strFloat);
+
+console.log(intNum);     // Output: 100 (number)
+console.log(floatNum);   // Output: 99.
+
+
+Looping Control Structures:
+
+
+In JavaScript, looping control structures allow you to execute a block of code repeatedly based on a condition. This is useful for iterating through arrays, performing repetitive tasks, or managing dynamic data sets. JavaScript provides several types of loops, including:
+
+for loop
+while loop
+do...while loop
+for...in loop
+for...of loop
+
+1. for Loop
+The for loop is the most commonly used loop. It runs a block of code a specific number of times. The loop has three parts:
+
+Initialization (let i = 0): This sets the starting value.
+Condition (i < 5): The loop continues as long as the condition is true.
+Update (i++): The counter is updated after each iteration.
+
+Syntax:
+
+javascript
+Copy code
+
+for (initialization; condition; increment) {
+    // Code to be executed
+}
+Example:
+
+javascript
+Copy code
+
+for (let i = 0; i < 5; i++) {
+    console.log("Iteration number " + i);
+}
+
+Explanation:
+
+The loop starts with i = 0, and the code inside the loop is executed.
+After each iteration, i increments by 1 until i reaches 5.
+The loop stops when i is no longer less than 5.
+
+2. while Loop
+
+The while loop runs as long as the given condition is true. It is useful when the number of iterations is not known beforehand.
+
+Syntax:
+
+javascript
+Copy code
+
+while (condition) {
+    // Code to be executed
+}
+Example:
+
+javascript
+Copy code
+
+let i = 0;
+while (i < 3) {
+    console.log("Iteration number " + i);
+    i++;
+}
+
+Explanation:
+
+The loop continues to run while i < 3.
+After each iteration, i increments by 1 until the condition becomes false.
+
+3. do...while Loop
+
+The do...while loop is similar to the while loop, but the code inside the loop is guaranteed to run at least once, even if the condition is false initially.
+
+Syntax:
+
+javascript
+Copy code
+do {
+    // Code to be executed
+} while (condition);
+
+Example:
+
+javascript
+Copy code
+
+let i = 5;
+do {
+    console.log("Iteration number " + i);
+    i++;
+} while (i < 3);
+
+Explanation:
+
+The loop runs once even though the condition i < 3 is false because the condition is checked after the block is executed.
+
+4. for...in Loop
+
+The for...in loop is used to iterate over the properties of an object or the indices of an array.
+
+Syntax:
+
+javascript
+Copy code
+for (let property in object) {
+    // Code to be executed
+}
+Example:
+
+javascript
+Copy code
+
+const car = { brand: 'Toyota', model: 'Corolla', year: 2020 };
+
+for (let key in car) {
+    console.log(key + ": " + car[key]);
+}
+
+Explanation:
+
+The loop iterates over the keys of the car object, printing each key and its corresponding value.
+
+5. for...of Loop
+
+The for...of loop is used to iterate over iterable objects, such as arrays, strings, or other iterable collections.
+
+Syntax:
+
+javascript
+Copy code
+for (let element of iterable) {
+    // Code to be executed
+}
+Example:
+
+javascript
+Copy code
+
+const fruits = ['apple', 'banana', 'mango'];
+for (let fruit of fruits) {
+    console.log(fruit);
+}
+
+Explanation:
+
+The loop iterates over each element in the fruits array, printing each fruit.
+Summary
+
+for loop: Runs a block of code a specified number of times.
+while loop: Runs as long as a condition is true.
+do...while loop: Runs at least once, even if the condition is false.
+for...in loop: Iterates over object properties or array indices.
+for...of loop: Iterates over iterable objects like arrays or strings.
+
+
+The Fundamentals of Error Handling:
+
+
+Error handling in JavaScript is crucial for managing unexpected issues during program execution. JavaScript provides mechanisms for handling these errors gracefully without crashing the entire program. The most common approach is using try...catch blocks, but JavaScript also supports throwing custom errors and utilizing asynchronous error handling (via async/await and promises).
+
+Key Concepts in JavaScript Error Handling
+Exceptions:
+
+An exception occurs when something goes wrong in the code. For example, accessing a property of undefined will cause an exception.
+
+
+Try...Catch...Finally:
+
+try: Contains the block of code where an error might occur.
+catch: A block of code that handles the error.
+finally: An optional block that executes after try and catch, regardless of whether an error occurred.
+
+Throwing Errors:
+
+You can use the throw statement to generate your own errors. The throw keyword allows you to define custom exceptions, which can be strings, objects, or instances of the Error class.
+Error Object:
+
+The Error object is a built-in JavaScript object that represents an error. It has useful properties like:
+name: The type of error (e.g., "ReferenceError").
+message: A human-readable description of the error.
+
+Asynchronous Error Handling:
+
+Errors in asynchronous operations (like API calls) need to be handled differently. This is typically done using Promises or async/await.
+
+Example 1: Basic try...catch Block
+
+javascript
+Copy code
+try {
+    let result = 10 / 0;  // Dividing by zero, though in JavaScript this doesn't throw an error
+    console.log(result);
+    
+    let a = undefinedVar;  // This will throw a ReferenceError
+} catch (error) {
+    console.log('An error occurred:', error.message); // Handling the error
+}
+Explanation:
+
+The first operation (division by zero) does not cause an error in JavaScript, so no exception is thrown.
+However, trying to access an undefined variable (undefinedVar) throws a ReferenceError, which is caught by the catch block, and the error message is printed.
+
+Example 2: Custom Error with throw
+
+javascript
+Copy code
+
+function checkAge(age) {
+    if (age < 18) {
+        throw new Error("You must be 18 or older.");
+    } else {
+        console.log("You are old enough.");
+    }
+}
+
+try {
+    checkAge(15); // This will throw a custom error
+} catch (error) {
+    console.log('Error:', error.message);  // Custom error message
+}
+Explanation:
+
+In this example, if the age is less than 18, the function checkAge throws an error using throw.
+The try block calls the checkAge function, and when an error occurs, it is caught in the catch block, printing a custom error message.
+
+Example 3: finally Block
+
+javascript
+Copy code
+
+try {
+    let x = 10;
+    let y = 0;
+    let result = x / y;  // Dividing by zero
+    console.log(result);
+} catch (error) {
+    console.log('Error:', error.message);
+} finally {
+    console.log("This will run regardless of an error.");  // The finally block
+}
+Explanation:
+
+The finally block runs no matter what happens in the try or catch blocks, ensuring that cleanup code (if any) always gets executed.
+
+Example 4: Asynchronous Error Handling with Promises
+
+javascript
+Copy code
+
+function fetchData() {
+    return new Promise((resolve, reject) => {
+        let success = false;  // Simulating a failed API call
+        if (success) {
+            resolve("Data fetched successfully!");
+        } else {
+            reject("Failed to fetch data.");
+        }
+    });
+}
+
+fetchData()
+    .then(response => console.log(response))
+    .catch(error => console.log('Error:', error));  // Handling the error in a Promise
+
+Explanation:
+
+The function fetchData simulates an API call using a Promise.
+If the API call is unsuccessful, the reject function is called, and the error is caught in the .catch() method.
+
+Example 5: Asynchronous Error Handling with async/await
+
+javascript
+Copy code
+
+async function getData() {
+    try {
+        let result = await fetchData();  // Assuming fetchData is an asynchronous function
+        console.log(result);
+    } catch (error) {
+        console.log('Error:', error);  // Catching errors in async functions
+    }
+}
+
+getData();
+
+Explanation:
+
+The async/await syntax simplifies asynchronous error handling.
+
+If the fetchData() function throws an error (via a rejected promise), the catch block will handle it.
+Best Practices for Error Handling
+Use Specific Catch Blocks:
+
+Use specific catch blocks when possible to differentiate between different types of errors (e.g., network errors, type errors, etc.).
+
+Avoid Silent Failures:
+
+Always handle errors in some way, even if it’s just logging them, to avoid silent failures in your application.
+
+Use Custom Errors for Clarity:
+
+When appropriate, throw custom errors with descriptive messages to make debugging easier.
+Handle Errors in Asynchronous Code:
+
+Always handle errors in asynchronous operations, either with .catch() for promises or with try...catch in async/await.
+
+Creating Arrays:
+
+
+Using Array Literals
+The simplest and most common way to create an array is by using array literals, which are written as a list of elements enclosed in square brackets [].
+
+javascript
+Copy code
+// Example of creating an array
+let fruits = ["Apple", "Banana", "Mango"];
+
+console.log(fruits);  // Output: ["Apple", "Banana", "Mango"]
+
+Using the new Array() Constructor
+
+You can also create an array using the new Array() constructor. This method is less commonly used.
+
+javascript
+Copy code
+
+// Example using new Array()
+let numbers = new Array(1, 2, 3, 4, 5);
+
+console.log(numbers);  // Output: [1, 2, 3, 4, 5]
+
+Empty Arrays
+
+You can create an empty array and add elements to it later.
+
+javascript
+Copy code
+
+let emptyArray = [];
+
+// Adding elements later
+
+emptyArray[0] = "First";
+emptyArray[1] = "Second";
+
+console.log(emptyArray);  // Output: ["First", "Second"]
+
+Accessing Array Elements
+
+Array elements are accessed using their index. The index of the first element is 0, the second is 1, and so on.
+
+javascript
+Copy code
+
+let cars = ["Tesla", "BMW", "Audi"];
+
+console.log(cars[0]);  // Output: "Tesla"
+console.log(cars[2]);  // Output: "Audi"
+
+Modifying Arrays
+
+You can modify elements in an array by referencing their index and assigning a new value.
+
+javascript
+Copy code
+
+let colors = ["Red", "Blue", "Green"];
+
+colors[1] = "Yellow";  // Change "Blue" to "Yellow"
+
+console.log(colors);  // Output: ["Red", "Yellow", "Green"]
+
+Array Methods
+
+push() – Adds a new element to the end of an array.
+
+javascript
+Copy code
+
+let cities = ["New York", "Paris"];
+cities.push("Tokyo");
+
+console.log(cities);  // Output: ["New York", "Paris", "Tokyo"]
+
+pop() – Removes the last element of an array.
+
+javascript
+Copy code
+
+let cities = ["New York", "Paris", "Tokyo"];
+cities.pop();
+
+console.log(cities);  // Output: ["New York", "Paris"]
+
+shift() – Removes the first element from an array.
+
+javascript
+Copy code
+
+let animals = ["Lion", "Tiger", "Elephant"];
+animals.shift();
+
+console.log(animals);  // Output: ["Tiger", "Elephant"]
+
+unshift() – Adds a new element to the beginning of an array.
+
+javascript
+Copy code
+
+let languages = ["JavaScript", "Python"];
+languages.unshift("Java");
+
+console.log(languages);  // Output: ["Java", "JavaScript", "Python"]
+length – Returns the number of elements in an array.
+
+javascript
+Copy code
+
+let fruits = ["Apple", "Banana", "Mango"];
+console.log(fruits.length);  // Output: 3
+
+concat() – Merges two or more arrays.
+
+javascript
+Copy code
+
+let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+let mergedArray = arr1.concat(arr2);
+
+console.log(mergedArray);  // Output: [1, 2, 3, 4, 5, 6]
+Looping Through an Array
+
+You can loop through an array using loops like for, forEach(), or for...of.
+
+Using for Loop:
+
+javascript
+Copy code
+
+let fruits = ["Apple", "Banana", "Mango"];
+
+for (let i = 0; i < fruits.length; i++) {
+    console.log(fruits[i]);
+}
+
+Using forEach():
+
+javascript
+Copy code
+
+let numbers = [10, 20, 30];
+
+numbers.forEach(function(number) {
+    console.log(number);
+});
+
+Using for...of:
+
+javascript
+Copy code
+
+let cars = ["Tesla", "BMW", "Audi"];
+
+for (let car of cars) {
+    console.log(car);
+}
+
+
+Splicing and Slicing Arrays:
+
+
+1. Slicing Arrays
+Definition: slice() is a method used to extract a section of an array without modifying the original array.
+
+Syntax:
+
+javascript
+Copy code
+array.slice(start, end)
+start: The index at which the extraction begins (inclusive).
+end: The index at which the extraction ends (exclusive). If omitted, it extracts until the end of the array.
+Key Points:
+
+slice() does not change the original array.
+It returns a shallow copy of a portion of the original array.
+Example:
+
+javascript
+Copy code
+let fruits = ['apple', 'banana', 'cherry', 'date', 'elderberry'];
+
+let slicedFruits = fruits.slice(1, 4);
+console.log(slicedFruits);  // Output: ['banana', 'cherry', 'date']
+console.log(fruits);        // Original array remains unchanged
+Here, slice(1, 4) extracts elements from index 1 ('banana') to index 4 (but does not include the element at index 4).
+2. Splicing Arrays
+Definition: splice() is a method used to add or remove elements from an array, modifying the original array.
+
+Syntax:
+
+javascript
+Copy code
+array.splice(start, deleteCount, item1, item2, ...)
+start: The index at which to start changing the array.
+deleteCount: The number of elements to remove from the array.
+item1, item2, ...: (Optional) Elements to add to the array at the position specified by start.
+Key Points:
+
+splice() modifies the original array.
+It can remove and/or insert elements into the array.
+Example: Removing Elements:
+
+javascript
+Copy code
+let colors = ['red', 'green', 'blue', 'yellow', 'purple'];
+
+let removedColors = colors.splice(2, 2);
+console.log(removedColors);  // Output: ['blue', 'yellow']
+console.log(colors);         // Output: ['red', 'green', 'purple']
+splice(2, 2) starts at index 2 and removes 2 elements ('blue' and 'yellow').
+Example: Adding Elements:
+
+javascript
+Copy code
+let animals = ['dog', 'cat', 'rabbit'];
+
+animals.splice(1, 0, 'elephant', 'lion');
+console.log(animals);  // Output: ['dog', 'elephant', 'lion', 'cat', 'rabbit']
+splice(1, 0, 'elephant', 'lion') starts at index 1, removes 0 elements, and inserts 'elephant' and 'lion'.
+Example: Removing and Adding Elements:
+
+javascript
+Copy code
+let students = ['John', 'Mike', 'Sara', 'Tom'];
+
+students.splice(1, 2, 'Chris', 'Ana');
+console.log(students);  // Output: ['John', 'Chris', 'Ana', 'Tom']
+splice(1, 2, 'Chris', 'Ana') starts at index 1, removes 2 elements ('Mike' and 'Sara'), and adds 'Chris' and 'Ana'.
+
+Concatenating and Sorting Arrays:
+
+In JavaScript, arrays are used to store multiple values in a single variable. Two common operations you might want to perform with arrays are concatenating (combining two or more arrays into one) and sorting (arranging the elements in a particular order). Let's break down each concept:
+
+1. Concatenating Arrays
+The concat() method is used to merge two or more arrays. This method does not change the existing arrays but returns a new array.
+
+Syntax:
+javascript
+Copy code
+array1.concat(array2, array3, ...)
+array1: The first array to concatenate.
+array2, array3, ... : Additional arrays or values to concatenate with array1.
+Example:
+javascript
+Copy code
+let array1 = [1, 2, 3];
+let array2 = [4, 5, 6];
+
+let resultArray = array1.concat(array2);
+
+console.log(resultArray); // Output: [1, 2, 3, 4, 5, 6]
+In this example, we concatenate array1 and array2 to form a new array resultArray.
+
+Concatenating More than Two Arrays:
+javascript
+Copy code
+let array1 = [1, 2];
+let array2 = [3, 4];
+let array3 = [5, 6];
+
+let resultArray = array1.concat(array2, array3);
+
+console.log(resultArray); // Output: [1, 2, 3, 4, 5, 6]
+Here, we concatenate three arrays into one.
+
+2. Sorting Arrays
+
+The sort() method is used to sort the elements of an array in place and returns the sorted array. By default, the sort() method sorts the elements as strings in ascending order.
+
+Syntax:
+javascript
+Copy code
+array.sort([compareFunction])
+compareFunction (optional): Specifies a function that defines the sort order.
+Example: Sorting Numbers Alphabetically
+javascript
+Copy code
+let array = [40, 100, 1, 5, 25, 10];
+
+array.sort();
+
+console.log(array); // Output: [1, 10, 100, 25, 40, 5]
+
+
+Notice that this is not a numerical sort. By default, the sort() function converts elements to strings and compares their sequences lexicographically (alphabetically).
+
+Sorting Numbers Numerically:
+To sort numbers correctly in ascending or descending order, you need to provide a compare function.
+
+Example: Sorting in Ascending Order
+javascript
+Copy code
+let array = [40, 100, 1, 5, 25, 10];
+
+array.sort(function(a, b) {
+  return a - b;
+});
+
+console.log(array); // Output: [1, 5, 10, 25, 40, 100]
+In this example:
+
+a - b: If the result is negative, a is placed before b. If positive, b comes before a.
+
+
+Example: Sorting in Descending Order
+javascript
+Copy code
+let array = [40, 100, 1, 5, 25, 10];
+
+array.sort(function(a, b) {
+  return b - a;
+});
+
+console.log(array); // Output: [100, 40, 25, 10, 5, 1]
+Here, b - a ensures that the array is sorted in descending order.
+
+3. Concatenating and Sorting Arrays Together
+You can concatenate multiple arrays and then sort them together.
+
+Example:
+javascript
+Copy code
+let array1 = [30, 5, 20];
+let array2 = [15, 10, 25];
+
+let concatenatedArray = array1.concat(array2);
+
+// Sorting in ascending order
+concatenatedArray.sort(function(a, b) {
+  return a - b;
+});
+
+console.log(concatenatedArray); // Output: [5, 10, 15, 20, 25, 30]
+In this example:
+
+We first concatenate array1 and array2.
+Then, we sort the combined array in ascending order.
+
+
+Creating New Objects from Existing Ones:
+
+
+In JavaScript, you can create new objects from existing ones using a variety of techniques, such as object literals, the Object.create() method, or by copying objects (shallow or deep cloning). These methods are useful when you want to create new objects that share or inherit properties and methods from an existing object.
+
+Let’s go through each of these approaches step by step.
+
+1. Object Literal (Basic Object Creation)
+
+A basic way to create a new object is by directly defining it using the object literal syntax ({}). This doesn’t inherit from an existing object, but it’s useful for creating new, independent objects.
+
+Example:
+javascript
+Copy code
+
+let car = {
+  brand: "Toyota",
+  model: "Camry",
+  year: 2020
+};
+
+let newCar = {
+  brand: car.brand, // Copying properties from the existing car object
+  model: car.model,
+  year: 2021  // Modifying the year property
+};
+
+console.log(newCar); 
+
+// Output: { brand: "Toyota", model: "Camry", year: 2021 }
+
+2. Using Object.create()
+
+The Object.create() method allows you to create a new object that inherits from an existing one. This is useful when you want to create a prototype-based object, where the new object has access to the properties and methods of the prototype.
+
+Example:
+javascript
+Copy code
+
+let person = {
+  greet: function() {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+};
+
+let john = Object.create(person);  // Creating a new object that inherits from person
+john.name = "John";                // Adding a property to the new object
+john.greet();                      // Output: Hello, my name is John
+
+In this example, john inherits the greet method from person and adds its own name property.
+
+3. Shallow Copy Using Object.assign()
+
+You can create a new object by copying properties from an existing object using Object.assign(). This creates a shallow copy, meaning nested objects or arrays will still reference the original objects.
+
+Example:
+javascript
+Copy code
+
+let original = {
+  name: "Alice",
+  age: 25,
+  address: { city: "New York" }
+};
+
+let copy = Object.assign({}, original);  // Shallow copy
+copy.age = 30;                           // Modifying the new object's age property
+copy.address.city = "Los Angeles";       // Modifies the original object's city because it's a shallow 
+copy
+
+console.log(original);
+// Output: { name: 'Alice', age: 25, address: { city: 'Los Angeles' } }
+
+console.log(copy);
+// Output: { name: 'Alice', age: 30, address: { city: 'Los Angeles' } }
+
+Notice that while the age property of copy is updated independently, the address object is shared between original and copy, leading to changes in both.
+
+4. Deep Copy Using JSON.parse() and JSON.stringify()
+
+To avoid the shallow copy issue, you can create a deep copy using JSON.stringify() and JSON.parse(). This ensures that even nested objects are copied, not just referenced.
+
+Example:
+javascript
+Copy code
+let originalObject = {
+  name: "Alice",
+  age: 25,
+  address: { city: "New York" }
+};
+
+let deepCopy = JSON.parse(JSON.stringify(originalObject));  // Deep copy
+deepCopy.address.city = "Los Angeles";                      // Modifying the deep copy's city property
+
+console.log(originalObject);
+// Output: { name: 'Alice', age: 25, address: { city: 'New York' } }
+
+console.log(deepCopy);
+// Output: { name: 'Alice', age: 25, address: { city: 'Los Angeles' } }
+In this example, the address object inside the deepCopy is independent of the originalObject, so modifying one does not affect the other.
+
+5. Copying with the Spread Operator
+
+Another way to create a shallow copy of an object is by using the spread operator (...). This is a modern and concise approach, but like Object.assign(), it only performs a shallow copy.
+
+Example:
+javascript
+Copy code
+let originalCar = {
+  brand: "Honda",
+  model: "Accord",
+  specs: { color: "blue", engine: "V6" }
+};
+
+let newCar = { ...originalCar };  // Shallow copy
+newCar.specs.color = "red";       // This will change the color in both objects
+
+console.log(originalCar);
+// Output: { brand: 'Honda', model: 'Accord', specs: { color: 'red', engine: 'V6' } }
+
+console.log(newCar);
+// Output: { brand: 'Honda', model: 'Accord', specs: { color: 'red', engine: 'V6' } }
+
+Summary of Techniques:
+
+Object literal: Basic object creation without inheritance.
+Object.create(): Create a new object that inherits from an existing one.
+Object.assign(): Shallow copy properties from one object to another.
+JSON.parse() and JSON.stringify(): Create a deep copy of an object.
+Spread operator (...) : Shallow copy similar to Object.assign() but with modern syntax.
+
+
+Object Methods:
+
+
+In JavaScript, Object Methods refer to functions that are properties of an object. These methods allow objects to perform actions, making them more dynamic and useful. JavaScript objects can contain not only data (properties) but also functionality (methods) tied to that data.
+
+1. Defining Object Methods
+To define a method, we can add a function as a property of an object.
+
+Example:
+javascript
+Copy code
+
+let person = {
+  name: "John",
+  age: 30,
+  
+  // Method to return greeting message
+  greet: function() {
+    return `Hello, my name is ${this.name}.`;
+  },
+
+  // Method to calculate the year of birth
+  getYearOfBirth: function() {
+    let currentYear = new Date().getFullYear();
+    return currentYear - this.age;
+  }
+};
+
+console.log(person.greet()); // "Hello, my name is John."
+console.log(person.getYearOfBirth()); // Returns year of birth
+
+Explanation:
+
+this keyword: Inside the methods, we use the this keyword to access the properties of the object. In the greet method, this.name refers to the name property of the person object.
+Method 1 (greet): Returns a greeting message using the object’s name property.
+Method 2 (getYearOfBirth): Uses the age property to calculate the year of birth based on the current year.
+
+2. Shorter Syntax for Methods
+
+From ECMAScript 6 (ES6) onwards, there’s a shorthand syntax for defining methods inside an object.
+
+Example:
+javascript
+Copy code
+let person = {
+  name: "John",
+  age: 30,
+  
+  // Shorthand method syntax
+  greet() {
+    return `Hello, my name is ${this.name}.`;
+  },
+
+  getYearOfBirth() {
+    let currentYear = new Date().getFullYear();
+    return currentYear - this.age;
+  }
+};
+
+console.log(person.greet()); // "Hello, my name is John."
+console.log(person.getYearOfBirth()); // Returns year of birth
+
+3. Using this in Methods
+
+The this keyword refers to the current object the method belongs to. In the context of object methods, this will point to the object that the method is called on.
+
+Example:
+javascript
+Copy code
+let car = {
+  make: "Toyota",
+  model: "Camry",
+  year: 2020,
+  
+  describe() {
+    return `This car is a ${this.year} ${this.make} ${this.model}.`;
+  }
+};
+
+console.log(car.describe()); // "This car is a 2020 Toyota Camry."
+In this example, this.year, this.make, and this.model refer to the car object's properties.
+
+4. Adding Methods to an Existing Object
+
+You can also add methods to an object after its creation.
+
+Example:
+javascript
+Copy code
+let book = {
+  title: "1984",
+  author: "George Orwell"
+};
+
+// Adding a method after the object is created
+book.getSummary = function() {
+  return `${this.title} by ${this.author}.`;
+};
+
+console.log(book.getSummary()); // "1984 by George Orwell."
+
+
+5. Arrow Functions and this
+Arrow functions behave differently when it comes to this. In arrow functions, this is not bound to the object, but rather to the context where the arrow function is defined. Therefore, using this inside an arrow function in an object method might not refer to the object itself.
+
+Example:
+javascript
+Copy code
+let user = {
+  name: "Alice",
+  greet: () => {
+    return `Hello, my name is ${this.name}.`; // 'this' does not refer to the user object
+  }
+};
+
+console.log(user.greet()); // "Hello, my name is undefined."
+
+In this example, this.name is undefined because the arrow function doesn't bind this to the user object. To avoid such issues, use regular function expressions for object methods.
+
+6. Common Use Cases of Object Methods
+
+Object-related actions like calculating values, formatting output, or interacting with object properties.
+
+Example of a simple bank account object:
+
+javascript
+Copy code
+
+let bankAccount = {
+  accountHolder: "Jane Doe",
+  balance: 5000,
+  
+  deposit(amount) {
+    this.balance += amount;
+    return `New balance is ${this.balance}.`;
+  },
+  
+  withdraw(amount) {
+    if (amount > this.balance) {
+      return `Insufficient funds.`;
+    }
+    this.balance -= amount;
+    return `New balance is ${this.balance}.`;
+  }
+};
+
+console.log(bankAccount.deposit(1000)); // New balance is 6000.
+console.log(bankAccount.withdraw(7000)); // Insufficient funds.
+console.log(bankAccount.withdraw(3000)); // New balance is 3000.
+
+In this example, the methods deposit and withdraw modify the balance property of the bankAccount object.
+
+
+Freezing Objects:
+
+Freezing an object in JavaScript is a way to make an object immutable. Once an object is frozen, its properties cannot be added, removed, or modified. This is achieved using the Object.freeze() method. However, freezing an object is shallow, meaning that while the object itself is frozen, any objects it references are not.
+
+Syntax
+javascript
+Copy code
+Object.freeze(obj);
+Key Points
+No changes to properties: You cannot add, remove, or update properties of a frozen object.
+Non-extensible: The object cannot be extended with new properties.
+Non-configurable: The properties cannot be reconfigured (e.g., you cannot change their enumerable, configurable, or writable attributes).
+Shallow freeze: Freezing only applies to the immediate properties of the object. If the properties themselves are objects, those objects are still mutable unless they are also frozen.
+
+
+Example 1: Freezing a Simple Object
+javascript
+Copy code
+
+const car = {
+  brand: "Toyota",
+  model: "Corolla"
+};
+
+Object.freeze(car);
+
+car.model = "Camry";  // Attempting to change property - this will fail in strict mode.
+car.year = 2022;      // Attempting to add a new property - this will also fail.
+
+console.log(car);     // Output: { brand: "Toyota", model: "Corolla" }
+In this example:
+
+The object car is frozen.
+
+Any attempt to modify the model property or add a new year property fails silently in non-strict mode or throws an error in strict mode.
+
+Example 2: Shallow Freeze
+
+javascript
+Copy code
+const book = {
+  title: "JavaScript Guide",
+  author: {
+    name: "John Doe",
+    age: 40
+  }
+};
+
+Object.freeze(book);
+
+book.author.age = 45; // This works because freeze is shallow.
+console.log(book.author.age);  // Output: 45
+
+In this example:
+
+The book object is frozen.
+However, the author object inside the book can still be modified because the freeze operation does not deeply freeze objects.
+
+Example 3: Deep Freeze (Custom Function)
+
+To fully freeze an object, including all nested objects, you would need to implement a deep freeze method.
+
+javascript
+Copy code
+function deepFreeze(obj) {
+  // First freeze the object itself
+  Object.freeze(obj);
+
+  // Now freeze all properties that are objects
+  Object.keys(obj).forEach(key => {
+    if (typeof obj[key] === 'object' && obj[key] !== null) {
+      deepFreeze(obj[key]);
+    }
+  });
+}
+
+const user = {
+  name: "Alice",
+  details: {
+    age: 25,
+    address: {
+      city: "New York",
+      country: "USA"
+    }
+  }
+};
+
+deepFreeze(user);
+user.details.age = 30;  // This will now fail as well
+console.log(user.details.age);  // Output: 25
+
+In this example, the deepFreeze function recursively freezes the entire object hierarchy, making the user object and its nested objects immutable.
+
+
+

@@ -1,0 +1,1500 @@
+Examples of Ordered List, Ordered List:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unordered List Example</title>
+</head>
+<body>
+    <h2>Shopping List</h2>
+    <ul>
+        <li>Apples</li>
+        <li>Bananas</li>
+        <li>Oranges</li>
+    </ul>
+</body>
+</html>
+
+
+Example:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordered List Example</title>
+</head>
+<body>
+    <h2>Steps to Bake a Cake</h2>
+    <ol>
+        <li>Preheat the oven to 350°F.</li>
+        <li>Mix all ingredients.</li>
+        <li>Bake for 30 minutes.</li>
+    </ol>
+</body>
+</html>
+
+Example:
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Description List Example</title>
+</head>
+<body>
+    <h2>Programming Languages</h2>
+    <dl>
+        <dt>HTML</dt>
+        <dd>A markup language used to structure web content.</dd>
+        <dt>CSS</dt>
+        <dd>Used to style HTML content.</dd>
+        <dt>JavaScript</dt>
+        <dd>A programming language to add interactivity to web pages.</dd>
+    </dl>
+</body>
+</html>
+
+
+Example:
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nested List Example</title>
+</head>
+<body>
+    <h2>Things to Do</h2>
+    <ul>
+        <li>Groceries
+            <ul>
+                <li>Apples</li>
+                <li>Bananas</li>
+            </ul>
+        </li>
+        <li>Homework
+            <ol>
+                <li>Math</li>
+                <li>Science</li>
+            </ol>
+        </li>
+    </ul>
+</body>
+</html>
+
+
+Customizing List Styles with CSS:
+
+You can customize list styles using CSS properties like list-style-type.
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom List Style</title>
+    <style>
+        ul {
+            list-style-type: square;
+        }
+        ol {
+            list-style-type: upper-roman;
+        }
+    </style>
+</head>
+<body>
+    <h2>Custom Unordered List</h2>
+    <ul>
+        <li>Red</li>
+        <li>Green</li>
+        <li>Blue</li>
+    </ul>
+
+    <h2>Custom Ordered List</h2>
+    <ol>
+        <li>First</li>
+        <li>Second</li>
+        <li>Third</li>
+    </ol>
+</body>
+</html>
+
+
+Examples on different types of List:
+
+
+1. Ordered List ( <ol> )
+An ordered list is a numbered list where the sequence of items matters.
+
+Example 1: Default Ordered List
+
+
+<ol>
+  <li>Introduction to HTML</li>
+  <li>Introduction to CSS</li>
+  <li>Introduction to JavaScript</li>
+</ol>
+
+Example 2: Ordered List with Roman Numerals
+
+
+<ol type="I">
+  <li>First Chapter</li>
+  <li>Second Chapter</li>
+  <li>Third Chapter</li>
+</ol>
+
+
+Example 3: Ordered List Starting at a Specific Number
+
+
+<ol start="5">
+  <li>Step 5</li>
+  <li>Step 6</li>
+  <li>Step 7</li>
+</ol>
+
+
+2. Unordered List ( <ul> )
+An unordered list displays bullet points where the sequence doesn't matter.
+
+Example 1: Default Unordered List
+
+
+<ul>
+  <li>Milk</li>
+  <li>Bread</li>
+  <li>Butter</li>
+</ul>
+
+Example 2: Unordered List with Square Bullet
+
+
+<ul style="list-style-type:square;">
+  <li>Apples</li>
+  <li>Bananas</li>
+  <li>Cherries</li>
+</ul>
+
+
+Example 3: Nested Unordered List
+
+
+<ul>
+  <li>Fruits
+    <ul>
+      <li>Apple</li>
+      <li>Banana</li>
+      <li>Cherry</li>
+    </ul>
+  </li>
+  <li>Vegetables</li>
+  <li>Dairy</li>
+</ul>
+
+3. Description List ( <dl> )
+A description list is used to define terms and their descriptions.
+
+Example 1: Simple Description List
+
+
+<dl>
+  <dt>HTML</dt>
+  <dd>A markup language for creating web pages.</dd>
+  
+  <dt>CSS</dt>
+  <dd>A style sheet language used for describing the presentation of a document.</dd>
+  
+  <dt>JavaScript</dt>
+  <dd>A programming language commonly used in web development.</dd>
+</dl>
+
+Example 2: Nested Description List
+
+
+<dl>
+  <dt>Frontend Technologies</dt>
+  <dd>
+    <dl>
+      <dt>HTML</dt>
+      <dd>Used to structure content on the web.</dd>
+      <dt>CSS</dt>
+      <dd>Used to style the appearance of content.</dd>
+      <dt>JavaScript</dt>
+      <dd>Used to add interactivity to web pages.</dd>
+    </dl>
+  </dd>
+  
+  <dt>Backend Technologies</dt>
+  <dd>Server-side technologies like Node.js, Python, etc.</dd>
+</dl>
+
+
+Examples of HTML Links:
+
+
+1. Basic Link
+This is a standard link that navigates to a new page when clicked.
+
+
+<a href="https://www.example.com">Visit Example</a>
+
+2. Open Link in a New Tab
+
+To open a link in a new tab, you can add the target="_blank" attribute.
+
+
+<a href="https://www.example.com" target="_blank">Open Example in New Tab</a>
+3. Linking to an Email Address
+This link opens the user's default email client to send an email.
+
+
+<a href="mailto:someone@example.com">Send Email</a>
+
+4. Linking to a Phone Number
+
+This link allows users to call a phone number by clicking the link (usually works on mobile devices).
+
+
+<a href="tel:+1234567890">Call Us</a>
+
+5. Anchor Link to a Section on the Same Page
+
+Anchor links allow navigation to different sections within the same page.
+
+
+<!-- Link to a section -->
+<a href="#section1">Go to Section 1</a>
+
+<!-- Section content -->
+<h2 id="section1">Section 1</h2>
+<p>This is Section 1 of the page.</p>
+
+6. Linking to a File (Downloadable)
+
+You can provide a link to download a file, such as a PDF or image.
+
+
+<a href="files/sample.pdf" download>Download PDF</a>
+
+7. Image as a Link
+
+You can use an image inside the anchor tag to make it clickable as a link.
+
+
+<a href="https://www.example.com">
+  <img src="image.jpg" alt="Click to visit Example">
+</a>
+
+8. Link with Tooltip
+
+You can add a tooltip that appears when users hover over the link.
+
+
+<a href="https://www.example.com" title="Go to Example.com">Visit Example</a>
+
+9. Linking to a Specific Part of Another Webpage
+
+You can link directly to a specific section of another webpage.
+
+
+<a href="https://www.example.com#about">Go to About Section on Example</a>
+
+10. Disabled Link (Using CSS)
+
+Although HTML doesn’t have a built-in way to disable a link, you can simulate it using CSS.
+
+
+<a href="#" class="disabled-link">Disabled Link</a>
+
+<!-- CSS -->
+<style>
+.disabled-link {
+  pointer-events: none;
+  color: grey;
+  text-decoration: none;
+}
+</style>
+
+11. Button as a Link
+
+You can style a link to look like a button.
+
+
+<a href="https://www.example.com" class="button-link">Click Me</a>
+
+<!-- CSS -->
+<style>
+.button-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.button-link:hover {
+  background-color: #0056b3;
+}
+</style>
+
+12. Link with Rel Attribute (SEO)
+
+The rel attribute is often used in links to specify the relationship between the linked resource and the current document (e.g., nofollow for SEO purposes).
+
+<a href="https://www.example.com" rel="nofollow">NoFollow Link</a>
+
+13. Linking to a File and Opening in a New Tab
+
+This combination allows users to open a PDF or any file in a new tab.
+
+
+<a href="files/sample.pdf" target="_blank">Open PDF in New Tab</a>
+
+14. Linking to a Non-HTTP Protocol (FTP)
+
+Links can use other protocols like FTP for file transfers.
+
+
+<a href="ftp://example.com/file.zip">Download File from FTP</a>
+
+15. JavaScript Link (Trigger a JavaScript Action)
+
+You can use a link to trigger JavaScript functions.
+
+
+<a href="javascript:void(0);" onclick="alert('Hello!')">Click Me for Alert</a>
+
+16. Linking to a Local File
+
+If you're running HTML locally, you can link to files on your computer.
+
+
+<a href="file:///C:/path/to/your/file.txt">Open Local File</a>
+
+
+Examples of HTML Tables:
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic HTML Table</title>
+</head>
+<body>
+
+    <h2>Student Grades</h2>
+    
+    <table border="1">
+        <tr>
+            <th>Student Name</th>
+            <th>Subject</th>
+            <th>Grade</th>
+        </tr>
+        <tr>
+            <td>John Doe</td>
+            <td>Mathematics</td>
+            <td>A</td>
+        </tr>
+        <tr>
+            <td>Jane Smith</td>
+            <td>Science</td>
+            <td>B</td>
+        </tr>
+        <tr>
+            <td>Sam Brown</td>
+            <td>History</td>
+            <td>A</td>
+        </tr>
+    </table>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Table with Merged Cells</title>
+</head>
+<body>
+
+    <h2>Weekly Schedule</h2>
+
+    <table border="1">
+        <caption><b>Class Schedule</b></caption>
+        <tr>
+            <th>Day</th>
+            <th>Subject</th>
+            <th>Time</th>
+        </tr>
+        <tr>
+            <td rowspan="2">Monday</td>
+            <td>Mathematics</td>
+            <td>9:00 AM - 10:30 AM</td>
+        </tr>
+        <tr>
+            <td>Science</td>
+            <td>11:00 AM - 12:30 PM</td>
+        </tr>
+        <tr>
+            <td>Tuesday</td>
+            <td colspan="2">No Classes</td>
+        </tr>
+    </table>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled HTML Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #dddddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Product List</h2>
+
+    <table>
+        <tr>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>Laptop</td>
+            <td>Electronics</td>
+            <td>$800</td>
+        </tr>
+        <tr>
+            <td>Table</td>
+            <td>Furniture</td>
+            <td>$150</td>
+        </tr>
+        <tr>
+            <td>Watch</td>
+            <td>Accessories</td>
+            <td>$200</td>
+        </tr>
+    </table>
+
+</body>
+</html>
+
+
+Basic HTML Table:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Table</title>
+</head>
+<body>
+    <h2>Basic HTML Table</h2>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>Jane</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>Mark</td>
+            <td>22</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+Table with Rowspan and Colspan:
+
+This example demonstrates using rowspan and colspan attributes to merge cells.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rowspan and Colspan</title>
+</head>
+<body>
+    <h2>Table with Rowspan and Colspan</h2>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th colspan="2">Contact Info</th>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>john@example.com</td>
+            <td>123-456-7890</td>
+        </tr>
+        <tr>
+            <td rowspan="2">Jane</td>
+            <td>jane@example.com</td>
+            <td>123-456-7891</td>
+        </tr>
+        <tr>
+            <td>jane.doe@example.com</td>
+            <td>123-456-7892</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+Styled Table with CSS:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h2>Styled HTML Table</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Salary</th>
+        </tr>
+        <tr>
+            <td>Michael</td>
+            <td>Manager</td>
+            <td>$100,000</td>
+        </tr>
+        <tr>
+            <td>Emily</td>
+            <td>Engineer</td>
+            <td>$80,000</td>
+        </tr>
+        <tr>
+            <td>Robert</td>
+            <td>Technician</td>
+            <td>$60,000</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+Table with Caption:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table with Caption</title>
+</head>
+<body>
+    <h2>Table with Caption</h2>
+    <table border="1">
+        <caption>Employee Details</caption>
+        <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Department</th>
+        </tr>
+        <tr>
+            <td>101</td>
+            <td>Alice</td>
+            <td>Finance</td>
+        </tr>
+        <tr>
+            <td>102</td>
+            <td>Bob</td>
+            <td>Marketing</td>
+        </tr>
+        <tr>
+            <td>103</td>
+            <td>Charlie</td>
+            <td>IT</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+Responsive Table (using overflow-x):
+
+This example creates a table that is scrollable horizontally on smaller screens.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Table</title>
+    <style>
+        .table-wrapper {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2>Responsive HTML Table</h2>
+    <div class="table-wrapper">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Age</th>
+                <th>Office</th>
+                <th>Salary</th>
+            </tr>
+            <tr>
+                <td>John</td>
+                <td>Developer</td>
+                <td>28</td>
+                <td>New York</td>
+                <td>$120,000</td>
+            </tr>
+            <tr>
+                <td>Jane</td>
+                <td>Designer</td>
+                <td>32</td>
+                <td>London</td>
+                <td>$85,000</td>
+            </tr>
+            <tr>
+                <td>Emily</td>
+                <td>Analyst</td>
+                <td>35</td>
+                <td>San Francisco</td>
+                <td>$95,000</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+
+
+Table with Headers and Footers:
+
+This table includes a header and footer for better structure.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table with Header and Footer</title>
+</head>
+<body>
+    <h2>Table with Header and Footer</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Apples</td>
+                <td>50</td>
+                <td>$2.00</td>
+            </tr>
+            <tr>
+                <td>Bananas</td>
+                <td>30</td>
+                <td>$1.50</td>
+            </tr>
+            <tr>
+                <td>Oranges</td>
+                <td>40</td>
+                <td>$3.00</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">Total</td>
+                <td>$6.50</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
+
+
+Examples on Images and Objects:
+
+
+Basic Image Example:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Image Example</title>
+</head>
+<body>
+    <h1>Basic Image Example</h1>
+    <img src="https://via.placeholder.com/150" alt="Placeholder Image">
+</body>
+</html>
+
+
+Explanation: This is a simple example where an image is embedded using the <img> tag. The src attribute specifies the image URL, and alt provides alternate text for accessibility.
+
+
+2. Responsive Image Example:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Image Example</title>
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Responsive Image Example</h1>
+    <img src="https://via.placeholder.com/600" alt="Responsive Image">
+</body>
+</html>
+
+
+Explanation: The image is made responsive by using CSS. The max-width: 100% ensures the image scales down to fit within its parent container, and height: auto maintains the aspect ratio.
+
+3. Image with a Link Example:
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image with Link Example</title>
+</head>
+<body>
+    <h1>Image with a Link Example</h1>
+    <a href="https://www.example.com">
+        <img src="https://via.placeholder.com/300" alt="Clickable Image">
+    </a>
+</body>
+</html>
+
+
+Explanation: The image is wrapped inside an anchor (<a>) tag, making it clickable. When the image is clicked, it redirects to the provided link.
+
+
+4. Image with Caption Example:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image with Caption Example</title>
+    <style>
+        figure {
+            text-align: center;
+        }
+        figcaption {
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image with Caption Example</h1>
+    <figure>
+        <img src="https://via.placeholder.com/400" alt="Image with Caption">
+        <figcaption>This is an example caption for the image.</figcaption>
+    </figure>
+</body>
+</html>
+
+
+Explanation: The <figure> and <figcaption> tags are used to provide a caption for the image. The image is centered with the caption displayed below it.
+
+
+5. HTML Object Example (Embedding an HTML Page)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Object Example</title>
+</head>
+<body>
+    <h1>HTML Object Example</h1>
+    <object type="text/html" data="https://www.example.com" width="600" height="400">
+        <p>Your browser does not support embedded objects.</p>
+    </object>
+</body>
+</html>
+
+
+Explanation: The <object> tag is used to embed an external HTML page. If the browser does not support the object, the fallback content (<p>) will be shown.
+
+6. Embedding a PDF with Object Tag:
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedding PDF Example</title>
+</head>
+<body>
+    <h1>Embedding PDF Example</h1>
+    <object type="application/pdf" data="sample.pdf" width="600" height="400">
+        <p>PDF cannot be displayed. <a href="sample.pdf">Download the PDF</a>.</p>
+    </object>
+</body>
+</html>
+
+
+Explanation: This example demonstrates how to embed a PDF file using the <object> tag. If the PDF cannot be displayed, a fallback link allows the user to download the file.
+
+7. Embedding an Image with Object Tag:
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedding Image with Object</title>
+</head>
+<body>
+    <h1>Embedding Image with Object</h1>
+    <object data="https://via.placeholder.com/500" type="image/png" width="500" height="300">
+        <p>Image could not be loaded.</p>
+    </object>
+</body>
+</html>
+
+
+Explanation: In this example, an image is embedded using the <object> tag. If the image cannot be displayed, the fallback text is shown.
+
+8. Using <object> to Embed SVG:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embed SVG with Object</title>
+</head>
+<body>
+    <h1>Embed SVG with Object</h1>
+    <object data="example.svg" type="image/svg+xml" width="400" height="300">
+        <p>SVG cannot be displayed.</p>
+    </object>
+</body>
+</html>
+
+
+Explanation: Here, an SVG image is embedded using the <object> tag. SVG (Scalable Vector Graphics) is a common format for vector images on the web.
+
+9. Image Map Example (Clickable Areas):
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Map Example</title>
+</head>
+<body>
+    <h1>Image Map Example</h1>
+    <img src="https://via.placeholder.com/600x400" alt="Image Map" usemap="#imagemap">
+
+    <map name="imagemap">
+        <area shape="rect" coords="34,44,270,350" alt="Rectangle" href="https://www.example.com/rect">
+        <area shape="circle" coords="320,200,50" alt="Circle" href="https://www.example.com/circle">
+    </map>
+</body>
+</html>
+
+
+HTML Forms Examples:
+
+
+Other Input Types :
+
+URL Input (type="url")
+
+Validates that the input is a correctly formatted URL.
+
+Example:
+
+<label for="website">Website:</label>
+<input type="url" id="website" name="website">
+
+Tel Input (type="tel")
+
+Accepts a phone number.
+
+Example:
+
+<label for="phone">Phone Number:</label>
+<input type="tel" id="phone" name="phone">
+
+File Input (type="file")
+
+Allows users to upload files.
+
+Example:
+
+<label for="file">Upload File:</label>
+<input type="file" id="file" name="file">
+
+Range Input (type="range")
+
+Provides a slider to select a numeric value within a range.
+
+Example:
+<label for="volume">Volume:</label>
+<input type="range" id="volume" name="volume" min="0" max="100">
+
+Form Validation Attributes
+
+required: Makes the field mandatory.
+
+<input type="text" name="name" required>
+
+minlength and maxlength: Set minimum and maximum lengths for text fields.
+
+<input type="text" name="username" minlength="4" maxlength="8">
+
+pattern: Uses a regular expression for validation.
+
+<input type="text" name="zipcode" pattern="[0-9]{5}">
+
+placeholder: Displays a hint in the input field.
+
+<input type="text" name="email" placeholder="Enter your email">
+
+Example: Complete Form
+
+<form action="/submit" method="POST">
+  <label for="name">Full Name:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="dob">Date of Birth:</label>
+  <input type="date" id="dob" name="dob">
+
+  <label for="gender">Gender:</label>
+  <input type="radio" id="male" name="gender" value="male">
+  <label for="male">Male</label>
+  <input type="radio" id="female" name="gender" value="female">
+  <label for="female">Female</label>
+
+  <label for="interests">Interests:</label>
+  <input type="checkbox" id="coding" name="interests" value="coding">
+  <label for="coding">Coding</label>
+  <input type="checkbox" id="music" name="interests" value="music">
+  <label for="music">Music</label>
+
+  <label for="country">Country:</label>
+  <select id="country" name="country">
+    <option value="usa">USA</option>
+    <option value="uk">UK</option>
+    <option value="canada">Canada</option>
+  </select>
+
+  <input type="submit" value="Submit">
+</form>
+
+
+
+
+1. Basic Structure of an HTML Form
+
+An HTML form starts with the <form> tag. Inside the form, you place different input elements like text fields, radio buttons, checkboxes, and submit buttons.
+
+Example:
+
+<form action="/submit" method="POST">
+    <!-- Form content goes here -->
+</form>
+
+action: The URL where the form data will be sent.
+method: HTTP method (GET or POST) to submit the form data.
+
+2. Input Types
+
+Forms use various types of input fields for collecting different data:
+
+Text Input: Used for single-line text.
+
+<label for="name">Name:</label>
+<input type="text" id="name" name="name">
+Password Input: For hiding user input.
+
+<label for="password">Password:</label>
+<input type="password" id="password" name="password">
+Email Input: For emails (validates email format).
+
+<label for="email">Email:</label>
+<input type="email" id="email" name="email">
+Radio Buttons: Allow one option from multiple.
+
+<label>Gender:</label>
+<input type="radio" id="male" name="gender" value="male">
+<label for="male">Male</label>
+<input type="radio" id="female" name="gender" value="female">
+<label for="female">Female</label>
+Checkboxes: Allow multiple selections.
+
+<label>Interests:</label>
+<input type="checkbox" id="sports" name="interest" value="sports">
+<label for="sports">Sports</label>
+<input type="checkbox" id="music" name="interest" value="music">
+<label for="music">Music</label>
+Submit Button: Sends form data.
+
+<input type="submit" value="Submit">
+
+3. Using Fieldsets and Legends
+
+To group related form fields, use <fieldset> and <legend>. This helps in making the form more readable.
+
+Example:
+<form action="/submit" method="POST">
+    <fieldset>
+        <legend>Personal Information</legend>
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname"><br><br>
+
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname"><br><br>
+    </fieldset>
+    
+    <fieldset>
+        <legend>Account Information</legend>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+    </fieldset>
+
+    <input type="submit" value="Submit">
+</form>
+
+4. Adding Form Validation
+
+HTML5 provides basic form validation with attributes like required, minlength, maxlength, and pattern matching using the pattern attribute.
+
+Example:
+<form action="/submit" method="POST">
+    <label for="name">Name (required):</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="password">Password (min 8 characters):</label>
+    <input type="password" id="password" name="password" minlength="8" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+5. Dropdown Menus
+
+Use <select> and <option> elements to create a dropdown menu.
+
+
+Example:
+
+<label for="country">Country:</label>
+<select id="country" name="country">
+    <option value="usa">United States</option>
+    <option value="uk">United Kingdom</option>
+    <option value="india">India</option>
+</select>
+
+6. Textarea for Multi-line Text Input
+
+Use the <textarea> element for large blocks of text.
+
+Example:
+
+<label for="message">Message:</label>
+<textarea id="message" name="message" rows="4" cols="50"></textarea>
+
+7. Organizing with CSS
+
+Use CSS to style and align form elements for a better user experience.
+
+Example:
+
+<style>
+    form {
+        width: 300px;
+        margin: auto;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    input, select, textarea {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+</style>
+
+<form action="/submit" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    
+    <input type="submit" value="Submit">
+</form>
+
+8. Accessibility Considerations
+
+Ensure that forms are accessible by adding proper labels, placeholders, and using aria-* attributes where necessary.
+
+Example:
+
+<form action="/submit" method="POST">
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" aria-label="Phone Number">
+</form>
+
+
+
+1. Basic Contact Form
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Contact Form</title>
+</head>
+<body>
+    <h2>Contact Form</h2>
+    <form action="/submit" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+2. Login Form with Password
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body>
+    <h2>Login Form</h2>
+    <form action="/login" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
+
+3. Registration Form with Validation
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+    <h2>Register</h2>
+    <form action="/register" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" minlength="8" required><br><br>
+
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>
+
+4. Survey Form with Radio Buttons and Checkboxes
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+</head>
+<body>
+    <h2>Survey Form</h2>
+    <form action="/survey" method="POST">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="18" max="99" required><br><br>
+
+        <p>Gender:</p>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label><br>
+
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label><br>
+
+        <input type="radio" id="other" name="gender" value="other">
+        <label for="other">Other</label><br><br>
+
+        <p>Select your hobbies:</p>
+        <input type="checkbox" id="reading" name="hobbies" value="reading">
+        <label for="reading">Reading</label><br>
+
+        <input type="checkbox" id="traveling" name="hobbies" value="traveling">
+        <label for="traveling">Traveling</label><br>
+
+        <input type="checkbox" id="sports" name="hobbies" value="sports">
+        <label for="sports">Sports</label><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+5. File Upload Form
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload Form</title>
+</head>
+<body>
+    <h2>Upload a File</h2>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="file">Choose a file:</label>
+        <input type="file" id="file" name="file" required><br><br>
+
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>
+
+6. Dropdown Form with Select Options
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Form</title>
+</head>
+<body>
+    <h2>Dropdown Form</h2>
+    <form action="/submit-selection" method="POST">
+        <label for="country">Select your country:</label>
+        <select id="country" name="country" required>
+            <option value="usa">United States</option>
+            <option value="uk">United Kingdom</option>
+            <option value="canada">Canada</option>
+            <option value="australia">Australia</option>
+        </select><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+7. Form with Date Picker and Time Input
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date and Time Form</title>
+</head>
+<body>
+    <h2>Event Scheduling Form</h2>
+    <form action="/schedule-event" method="POST">
+        <label for="event_date">Event Date:</label>
+        <input type="date" id="event_date" name="event_date" required><br><br>
+
+        <label for="event_time">Event Time:</label>
+        <input type="time" id="event_time" name="event_time" required><br><br>
+
+        <input type="submit" value="Schedule">
+    </form>
+</body>
+</html>
+
+8. Form with Range Slider
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider Form</title>
+</head>
+<body>
+    <h2>Feedback Form</h2>
+    <form action="/feedback" method="POST">
+        <label for="satisfaction">Rate your satisfaction (1 to 10):</label>
+        <input type="range" id="satisfaction" name="satisfaction" min="1" max="10" step="1"><br><br>
+
+        <input type="submit" value="Submit Feedback">
+    </form>
+</body>
+</html>
+
+9. Form with Search Field
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Form</title>
+</head>
+<body>
+    <h2>Search Form</h2>
+    <form action="/search" method="GET">
+        <label for="search">Search:</label>
+        <input type="search" id="search" name="search" placeholder="Enter your query"><br><br>
+
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>
+
+10. Newsletter Signup with Email
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter Signup</title>
+</head>
+<body>
+    <h2>Sign up for our Newsletter</h2>
+    <form action="/subscribe" method="POST">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required><br><br>
+
+        <input type="submit" value="Subscribe">
+    </form>
+</body>
+</html>
+
+

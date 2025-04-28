@@ -1,0 +1,525 @@
+Example of body Element:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Webpage</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #fafafa;
+        color: #333;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to My Website</h1>
+    <p>This is a paragraph of text explaining the purpose of the website.</p>
+    
+    <img src="image.jpg" alt="A beautiful scenery" width="300">
+    
+    <ul>
+      <li>Home</li>
+      <li>About</li>
+      <li>Contact</li>
+    </ul>
+    
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name">
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
+
+
+Examples of using id and class attributes:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* CSS styling using id */
+        #header {
+            color: blue;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="header">Welcome to My Website</h1>
+
+</body>
+</html>
+
+
+class attribute:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* CSS styling using class */
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<p class="highlight">This paragraph is highlighted.</p>
+<p>This paragraph is not highlighted.</p>
+<p class="highlight">This is another highlighted paragraph.</p>
+
+</body>
+</html>
+
+
+Both id and class attribute:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Styles for class */
+        .menu {
+            background-color: lightgray;
+        }
+
+        /* Styles for specific id */
+        #main {
+            font-size: 18px;
+            color: green;
+        }                                      https://dontpad.com/nodejs-2-day
+    </style>
+</head>
+<body>
+
+<div id="main" class="menu">
+    This is the main content area.
+</div>
+
+</body>
+</html>
+
+
+Using id Attribute:
+
+he id attribute is unique for each element in a document and is typically used to target a single element with CSS or JavaScript.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID Attribute Example</title>
+    <style>
+        #header {
+            color: blue;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="header">Welcome to My Website</h1>
+    <p>This is a sample webpage.</p>
+
+</body>
+</html>
+
+
+The id="header" is assigned to the <h1> element. The CSS rule with #header targets this element and applies specific styles to it.
+
+
+Using class Attribute:
+
+The class attribute can be reused across multiple elements and is used to apply common styling.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Attribute Example</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <p class="highlight">This is the first highlighted paragraph.</p>
+    <p>This paragraph is not highlighted.</p>
+    <p class="highlight">This is another highlighted paragraph.</p>
+
+</body>
+</html>
+
+
+The class="highlight" is applied to multiple <p> elements, and the CSS class .highlight styles all elements with that class.
+
+Combining id and class Attributes:
+
+
+An element can have both id and class attributes, which allows applying both unique and shared styles.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combining ID and Class</title>
+    <style>
+        #main-heading {
+            font-size: 30px;
+            color: red;
+        }
+        .sub-heading {
+            color: green;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="main-heading" class="sub-heading">Main Heading</h1>
+    <h2 class="sub-heading">Sub Heading 1</h2>
+    <h2 class="sub-heading">Sub Heading 2</h2>
+
+</body>
+</html>
+
+
+JavaScript Interaction with id:
+
+The id attribute is useful in JavaScript for selecting and interacting with individual elements.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript ID Interaction</title>
+    <style>
+        #message {
+            font-size: 20px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <p id="message">This message will change when you click the button.</p>
+    <button onclick="changeText()">Click Me</button>
+
+    <script>
+        function changeText() {
+            document.getElementById('message').innerText = 'Text changed!';
+        }
+    </script>
+
+</body>
+</html>
+
+
+JavaScript's getElementById method is used to interact with the element having id="message", updating its text when the button is clicked.
+
+
+Targeting Multiple Elements with the Same Class in JavaScript:
+
+
+
+Using the class attribute, JavaScript can manipulate several elements at once.
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Class Interaction</title>
+    <style>
+        .items {
+            font-size: 18px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <p class="items">Item 1</p>
+    <p class="items">Item 2</p>
+    <p class="items">Item 3</p>
+    <button onclick="highlightItems()">Highlight Items</button>
+
+    <script>
+        function highlightItems() {
+            let elements = document.getElementsByClassName('items');
+            for (let i = 0; i < elements.length; i++) {
+                elements[i].style.backgroundColor = 'lightgray';
+            }
+        }
+    </script>
+
+
+</body>
+</html>
+
+
+The getElementsByClassName method is used to select all elements with the class="items". A loop applies the same styling to each element.
+
+
+Multiple Classes in an Element:
+
+You can assign multiple classes to an element, and each class will apply its respective styles.
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Classes Example</title>
+    <style>
+        .bordered {
+            border: 2px solid black;
+        }
+        .padded {
+            padding: 10px;
+        }
+        .red-text {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <p class="bordered padded red-text">This paragraph has multiple classes applied.</p>
+
+</body>
+</html>
+
+
+The <p> element has three classes (bordered, padded, red-text). All the styles from these classes are combined and applied to the element.
+
+
+Targeting a Specific Element with Both id and class in CSS
+
+You can use a combination of id and class selectors to style an element more precisely.
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID and Class in CSS</title>
+    <style>
+        .info {
+            font-size: 18px;
+            color: green;
+        }
+        #important.info {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <p class="info">This is a normal info message.</p>
+    <p id="important" class="info">This is an important info message.</p>
+
+</body>
+</html>
+
+
+
+Example with JavaScript:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function changeText() {
+            document.getElementById("unique").innerHTML = "Text has changed!";
+        }
+    </script>
+</head>
+<body>
+
+<p id="unique">Click the button to change this text.</p>
+<button onclick="changeText()">Change Text</button>
+
+</body>
+</html>
+
+
+Examples of Block and inline elements:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block and Inline Elements</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Website</h1>
+    </header>
+    
+    <section>
+        <h2>About Me</h2>
+        <p>Hello, I am a web developer with experience in <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>.</p>
+        <p>Check out my <a href="#">portfolio</a> for more information.</p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 My Website</p>
+    </footer>
+</body>
+</html>
+
+
+Block Elements:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Elements Example</title>
+    <style>
+        div {
+            background-color: lightblue;  var a = 10
+            padding: 10px;
+            margin: 10px;
+        }
+
+        h1, p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>This is a Heading (Block Element)</h1>
+    <p>This is a paragraph (Block Element). It takes up the full width of its container and starts on a new line.</p>
+
+    <div>This is a div (Block Element), which is also a container. It will take up the full width.</div>
+
+    <blockquote>This is a blockquote (Block Element) used to represent a long quotation.</blockquote>
+</body>
+</html>
+
+
+Inline Elements Example:
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline Elements Example</title>
+    <style>
+        span {
+            color: red;
+        }
+
+        a {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        This is a <span>span (Inline Element)</span> inside a paragraph. It doesn’t start on a new line.
+    </p>
+
+    <p>
+        Here is a <a href="#">link (Inline Element)</a> within text.
+    </p>
+
+    <p>
+        You can also use <strong>strong (Inline Element)</strong> or <em>em (Inline Element)</em> to emphasize text without breaking the flow.
+    </p>
+</body>
+</html>
+
+
+Mixed Block and Inline Elements:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block and Inline Elements Mixed</title>
+    <style>
+        .container {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        span {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>This is a heading (Block)</h1>
+        <p>This is a paragraph (Block). Within this paragraph, there’s a <span>span (Inline)</span> and a <strong>strong (Inline)</strong> tag.</p>
+        <p>Even within a block element like a paragraph, inline elements stay in the flow of the text.</p>
+    </div>
+</body>
+</html>
+
+
+Examples of Ordered List, Ordered List:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unordered List Example</title>
+</head>
+<body>
+    <h2>Shopping List</h2>
+    <ul>
+        <li>Apples</li>
+        <li>Bananas</li>
+        <li>Oranges</li>
+    </ul>
+</body>
+</html>
+
+
+Example:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordered List Example</title>
+</head>
+<body>
+    <h2>Steps to Bake a Cake</h2>
+    <ol>
+        <li>Preheat the oven to 350°F.</li>
+        <li>Mix all ingredients.</li>
+        <li>Bake for 30 minutes.</li>
+    </ol>
+</body>
+</html>
+
+
+

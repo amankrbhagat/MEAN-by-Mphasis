@@ -1,0 +1,1588 @@
+The Role of JavaScript in Web Applications:
+
+JavaScript plays a fundamental role in modern web applications, enabling dynamic, interactive, and responsive user experiences. Below are the key aspects of JavaScript's role in web development:
+
+1. Client-Side Scripting
+JavaScript is primarily used as a client-side scripting language, meaning it runs directly in the browser. This allows developers to build interactive elements on a webpage without needing to reload the page from the server.
+Examples include form validation, animations, dynamic content loading, and interactive maps.
+
+2. DOM Manipulation
+JavaScript can interact with the Document Object Model (DOM) of a web page, enabling real-time updates to the HTML and CSS. This allows developers to modify content, structure, and styling without requiring a page refresh.
+For example, JavaScript can show or hide elements, update text dynamically, or add/remove HTML elements.
+
+3. Event Handling
+JavaScript allows developers to define how a web application responds to user inputs like clicks, keystrokes, or mouse movements through event listeners.
+This capability enables features like dropdown menus, modal windows, drag-and-drop functionality, and more.
+
+4. Asynchronous Operations (AJAX)
+Using technologies like AJAX (Asynchronous JavaScript and XML), JavaScript can send and receive data from a server asynchronously. This allows web pages to update content dynamically without reloading the entire page.
+This is used extensively in modern web apps to load data (e.g., social media feeds, user notifications) and improve performance by reducing server load.
+
+5. Single Page Applications (SPA)
+JavaScript frameworks like Angular, React, and Vue have enabled the creation of Single Page Applications (SPA). In SPAs, JavaScript is used to render content dynamically and handle navigation, ensuring smooth user experiences without full page reloads.
+SPAs are known for their speed, as only the necessary data is loaded, rather than the entire page.
+
+6. Back-End Development with Node.js
+JavaScript has expanded beyond the client-side with the introduction of Node.js, allowing developers to build server-side applications using JavaScript.
+This enables the use of JavaScript throughout the entire web stack (commonly referred to as "JavaScript everywhere"), simplifying development and increasing efficiency.
+
+7. Rich User Interfaces
+JavaScript is essential for creating rich, interactive user interfaces (UI). It powers UI components like carousels, tabs, popups, auto-complete search, and interactive charts or graphs.
+Libraries like jQuery and D3.js simplify these tasks and make UIs more engaging and user-friendly.
+
+8. Web APIs Integration
+JavaScript can interact with various Web APIs, such as the Geolocation API, Web Storage API, and Service Workers. This allows developers to implement features like tracking a user’s location, storing data locally, or enabling offline functionality.
+
+9. Cross-Browser Compatibility
+JavaScript provides a layer of abstraction to handle browser inconsistencies, allowing web applications to function across different browsers and platforms.
+
+10. Progressive Web Apps (PWAs)
+JavaScript plays a critical role in the development of Progressive Web Apps (PWAs). By using service workers (a type of web worker), JavaScript can manage caching, enable offline usage, and deliver a native app-like experience within a browser.
+
+The Document Object Model (DOM):
+
+
+The Document Object Model (DOM) is a programming interface for web documents. It represents the structure of a document (like an HTML or XML document) as a tree of objects that can be manipulated using programming languages like JavaScript. The DOM allows developers to access, modify, and update the content, structure, and style of a document dynamically.
+
+Key Concepts of the DOM:
+
+Nodes and Elements:
+
+The DOM treats every part of an HTML document (such as elements, attributes, text) as objects called nodes.
+
+There are different types of nodes, including:
+Element nodes: Represent HTML elements (<div>, <p>, etc.)
+Attribute nodes: Represent the attributes of an element (class, id, etc.)
+Text nodes: Represent the text content inside elements.
+Tree Structure:
+
+The DOM represents the document as a hierarchical tree structure. The root node is the <html> element, and it branches out into child nodes like <head>, <body>, and their descendants.
+Traversal and Manipulation:
+
+You can traverse the DOM tree to find elements using methods like getElementById, getElementsByClassName, querySelector, etc.
+You can manipulate the DOM by changing element content, adding/removing elements, and modifying attributes/styles through methods like createElement, appendChild, setAttribute, and style.
+Event Handling:
+
+The DOM allows you to handle user interactions by attaching event listeners to elements (e.g., click, mouseover, submit). Event listeners respond to user actions like clicks or form submissions and allow you to trigger JavaScript functions.
+
+Example of DOM Manipulation:
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Example</title>
+  </head>
+  <body>
+    <h1 id="heading">Hello, World!</h1>
+    <button id="changeTextBtn">Change Text</button>
+
+    <script>
+      // Access the button element
+      const button = document.getElementById('changeTextBtn');
+
+      // Add event listener to button
+      button.addEventListener('click', function() {
+        // Change the text of the h1 element
+        const heading = document.getElementById('heading');
+        heading.textContent = 'Text changed!';
+      });
+    </script>
+  </body>
+</html>
+
+
+In this example:
+
+The getElementById method accesses the <h1> and <button> elements.
+The button has an event listener attached, and when clicked, it changes the text inside the <h1> element.
+DOM Methods and Properties:
+
+DOM Traversal:
+parentNode, childNodes, firstChild, lastChild, nextSibling, previousSibling.
+
+Element Selection:
+getElementById(), getElementsByClassName(), getElementsByTagName(), querySelector(), querySelectorAll().
+
+DOM Manipulation:
+createElement(), appendChild(), removeChild(), replaceChild(), innerHTML, textContent, setAttribute(), classList.
+
+Event Handling:
+addEventListener(), removeEventListener().
+
+Importance of the DOM:
+The DOM is crucial for creating dynamic and interactive web pages. It allows web developers to build rich user interfaces by altering the document’s structure, content, and style in response to user actions without requiring a page reload.
+
+
+Fundamentals of JavaScript:
+
+
+JavaScript is a versatile, lightweight, interpreted programming language primarily used for enhancing interactivity on web pages. It is one of the core technologies of the World Wide Web, along with HTML and CSS. Below are the key fundamentals of JavaScript:
+
+1. Basic Syntax
+Case-Sensitive: JavaScript is case-sensitive, meaning myVar and myvar are two different variables.
+Semicolons: JavaScript statements are usually terminated with a semicolon (;), though it is not always mandatory.
+
+2. Variables
+Variables store data values that can be manipulated or used later.
+
+var: Declares a variable globally or function-scoped.
+let: Declares a block-scoped variable, preventing hoisting issues.
+const: Declares a block-scoped constant, which cannot be reassigned.
+
+
+let x = 10;
+const y = 5;
+
+
+3. Data Types
+JavaScript has two types of data: Primitive Types and Objects.
+
+Primitive Types: Numbers, Strings, Booleans, Null, Undefined, and Symbols.
+Objects: More complex data structures, like arrays, functions, and objects themselves.
+
+let number = 42;           // Number
+let name = "JavaScript";   // String
+let isTrue = true;         // Boolean
+let notDefined;            // Undefined
+let empty = null;          // Null
+
+
+4. Operators
+JavaScript supports a variety of operators:
+
+Arithmetic Operators: +, -, *, /, %, ++, --
+Assignment Operators: =, +=, -=, *=, /=
+Comparison Operators: ==, ===, !=, !==, >, <, >=, <=
+Logical Operators: && (AND), || (OR), ! (NOT)
+
+let a = 5 + 3;     // 8
+let b = a > 4;     // true
+let c = (a === 8); // true
+
+
+5. Control Structures
+JavaScript provides various structures to control the flow of execution.
+
+if, else if, else: Conditional statements.
+
+if (a > 5) {
+    console.log("Greater than 5");
+} else if (a === 5) {
+    console.log("Equal to 5");
+} else {
+    console.log("Less than 5");
+}
+
+
+switch: Handles multiple conditions based on a single expression.
+
+switch (day) {
+    case 1: console.log("Monday"); break;
+    case 2: console.log("Tuesday"); break;
+    default: console.log("Invalid day");
+}
+
+
+Loops:
+for: Loops through a block of code a number of times.
+while: Loops through a block of code while a condition is true.
+do...while: Executes the block once before checking the condition.
+
+for (let i = 0; i < 5; i++) {
+    console.log(i); // 0, 1, 2, 3, 4
+}
+
+
+6. Functions
+Functions are reusable blocks of code that perform a specific task.
+
+Function Declaration:
+
+function greet(name) {
+    return "Hello, " + name;
+}
+console.log(greet("John")); // Hello, John
+
+Function Expression:
+
+let square = function(x) {
+    return x * x;
+};
+console.log(square(4)); // 16
+
+Arrow Functions: A concise way to write functions.
+
+let add = (a, b) => a + b;
+console.log(add(5, 3)); // 8
+
+
+7. Objects
+JavaScript uses objects to store collections of data and more complex entities.
+
+Object Literals:
+
+let person = {
+    name: "John",
+    age: 30,
+    greet: function() {
+        return "Hello, " + this.name;
+    }
+};
+console.log(person.greet()); // Hello, John
+
+
+Accessing Properties: object.property or object['property'].
+
+console.log(person.name); // John
+console.log(person['age']); // 30
+
+8. Arrays
+Arrays store ordered collections of data.
+
+let fruits = ["Apple", "Banana", "Cherry"];
+console.log(fruits[1]); // Banana
+
+
+Array Methods:
+
+push(): Adds an element to the end of an array.
+pop(): Removes the last element from an array.
+shift(): Removes the first element.
+unshift(): Adds an element to the beginning.
+forEach(): Iterates over each element.
+
+
+JavaScript Objects:
+
+In JavaScript, objects are one of the most important data types. They allow you to store collections of data and more complex entities. Objects are essentially key-value pairs, where each key (also called a property) is a string and its value can be anything (another object, array, function, or any primitive data type).
+
+Creating an Object
+You can create an object using different approaches:
+
+1. Object Literal Notation:
+This is the simplest way to create a JavaScript object.
+
+const person = {
+  firstName: 'John',
+  lastName: 'Doe',
+  age: 30,
+  greet: function() {
+    console.log('Hello, ' + this.firstName);
+  }
+};
+
+console.log(person.firstName); // John
+person.greet(); // Hello, John
+
+
+2. Using the new Object() Constructor:
+This method creates an object using the Object constructor.
+
+const car = new Object();
+car.make = 'Toyota';
+car.model = 'Corolla';
+car.year = 2020;
+
+console.log(car.model); // Corolla
+
+3. Using a Constructor Function:
+You can create object templates using functions, which are then used to instantiate objects.
+
+function Person(firstName, lastName, age) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.age = age;
+}
+
+const person1 = new Person('Jane', 'Doe', 25);
+console.log(person1.firstName); // Jane
+
+
+Accessing Object Properties
+You can access properties of an object in two ways:
+
+Dot notation:
+
+console.log(person.firstName);
+
+Bracket notation:
+
+console.log(person['firstName']);
+
+
+Nested Objects
+Objects can contain other objects, creating a hierarchy.
+
+const student = {
+  name: 'Alice',
+  address: {
+    street: '123 Main St',
+    city: 'New York',
+  },
+  courses: ['Math', 'Physics'],
+};
+
+console.log(student.address.city); // New York
+console.log(student.courses[0]); // Math
+
+Adding and Deleting Properties
+Adding properties: You can add a new property to an existing object dynamically.
+
+student.grade = 'A';
+console.log(student.grade); // A
+
+
+Deleting properties: You can remove a property using the delete operator.
+
+delete student.grade;
+console.log(student.grade); // undefined
+
+
+Object Methods
+In JavaScript, functions inside objects are called methods. Here's an example of a method inside an object:
+
+const user = {
+  name: 'Bob',
+  greet: function() {
+    return `Hello, ${this.name}!`;
+  }
+};
+
+console.log(user.greet()); // Hello, Bob!
+
+
+Iterating Over Objects
+To iterate over object properties, you can use the for...in loop.
+
+const book = {
+  title: '1984',
+  author: 'George Orwell',
+  year: 1949
+};
+
+for (let key in book) {
+  console.log(key + ': ' + book[key]);
+}
+
+
+Object Methods: Object.keys(), Object.values(), and Object.entries()
+
+Object.keys(): Returns an array of keys (property names) of the object.
+
+console.log(Object.keys(book)); // ['title', 'author', 'year']
+
+Object.values(): Returns an array of values of the object's properties.
+
+console.log(Object.values(book)); // ['1984', 'George Orwell', 1949]
+
+
+Object.entries(): Returns an array of key-value pairs.
+
+console.log(Object.entries(book)); // [['title', '1984'], ['author', 'George Orwell'], ['year', 1949]]
+
+
+Object Destructuring
+
+Object destructuring allows you to extract properties from an object and assign them to variables.
+
+• JavaScript Quirks:
+
+
+JavaScript has several quirks and peculiarities that can surprise developers, especially those new to the language or coming from other programming backgrounds. Some of the most common JavaScript quirks include:
+
+1. Type Coercion
+JavaScript automatically converts values between different types when it deems it necessary, which can lead to unexpected results.
+
+console.log(1 + "2");  // "12" (number and string concatenation)
+console.log("5" - 1);  // 4   (string converted to number)
+console.log(true + false);  // 1 (true becomes 1, false becomes 0)
+console.log(null == 0);  // false
+console.log(null == undefined);  // true
+
+2. == vs === (Equality vs Strict Equality)
+== compares values with type coercion, while === compares both value and type.
+
+console.log(0 == false);  // true (type coercion occurs)
+console.log(0 === false);  // false (different types)
+console.log(null == undefined);  // true
+console.log(null === undefined);  // false
+
+3. Floating-Point Precision Issues
+
+JavaScript uses the IEEE 754 standard for floating-point numbers, which can lead to precision errors in arithmetic operations.
+
+console.log(0.1 + 0.2);  // 0.30000000000000004
+console.log(0.1 + 0.7 === 0.8);  // true
+console.log(0.1 + 0.2 === 0.3);  // false
+
+4. NaN (Not a Number)
+NaN is a special value that represents an invalid number. The quirk is that NaN is not equal to itself.
+
+console.log(NaN === NaN);  // false
+console.log(isNaN(NaN));  // true
+console.log(typeof NaN);  // "number"
+
+5. Global Object and Variable Hoisting
+Variables declared with var are hoisted to the top of their scope and can be accessed before initialization, although their value is undefined. This can lead to bugs.
+
+console.log(x);  // undefined (x is hoisted)
+var x = 5;
+
+// In contrast, let and const are not accessible before initialization
+console.log(y);  // ReferenceError: Cannot access 'y' before initialization
+let y = 10;
+
+6. Function Hoisting
+Function declarations are fully hoisted, meaning you can call a function before declaring it.
+
+foo();  // Works! Outputs: "Hello"
+function foo() {
+    console.log("Hello");
+}
+
+7. this Keyword Behavior
+The value of this depends on how a function is called:
+
+In a method, this refers to the object.
+In a regular function, this refers to the global object (or undefined in strict mode).
+In an arrow function, this retains the value from the enclosing context.
+
+const obj = {
+    name: "Alice",
+    greet: function() {
+        console.log(this.name);  // "Alice"
+    },
+};
+obj.greet();
+
+const greet = obj.greet;
+greet();  // undefined (in strict mode) or global object (in non-strict mode)
+
+8. Adding Properties to undefined or null
+
+Unlike other objects, trying to add properties to null or undefined does not throw an error.
+
+let a = undefined;
+a.name = "John";  // No error, but doesn't work either
+console.log(a.name);  // undefined
+
+9. Array vs Object Length Behavior
+The length property on arrays automatically updates, but adding properties to arrays that aren't indices doesn't affect length.
+
+let arr = [1, 2, 3];
+arr[5] = 99;
+console.log(arr.length);  // 6 (length includes empty slots)
+
+arr.foo = "bar";
+console.log(arr.length);  // still 6 (non-indexed properties don't affect length)
+
+10. Falsy and Truthy Values
+
+JavaScript has a list of values that are considered falsy:
+
+false
+0
+"" (empty string)
+null
+undefined
+NaN
+Everything else is truthy, including:
+
+"0" (non-empty string)
+[] (empty array)
+{} (empty object)
+console.log([] == false);  // true
+console.log({} == false);  // false
+
+11. Object Property Enumeration
+
+JavaScript does not guarantee the order of object properties when iterating using for...in. However, most modern browsers maintain insertion order for string properties.
+
+let obj = { b: 1, a: 2, c: 3 };
+for (let key in obj) {
+    console.log(key);  // order could vary across environments
+}
+
+12. Mutating Objects and Arrays
+
+JavaScript objects and arrays are mutable, even if declared with const. The reference to the object or array cannot change, but the contents can.
+
+const arr = [1, 2, 3];
+arr[0] = 99;
+console.log(arr);  // [99, 2, 3]
+
+const obj = { name: "Alice" };
+obj.age = 25;
+console.log(obj);  // { name: "Alice", age: 25 }
+
+
+JavaScript Closures:
+
+A closure is a combination of a function and the lexical environment within which that function was declared. In simpler terms, a closure gives you access to an outer function's scope from an inner function, even after the outer function has finished executing.
+
+How Closures Work
+In JavaScript, functions can be created within other functions. When a function is created, it has access to:
+
+Its own local variables.
+Variables from the outer function.
+Variables from the global scope.
+A closure is formed when an inner function "remembers" and continues to access the outer function’s variables, even after the outer function has returned.
+
+Example:
+
+function outerFunction(outerVariable) {
+    return function innerFunction(innerVariable) {
+        console.log('Outer Variable: ' + outerVariable);
+        console.log('Inner Variable: ' + innerVariable);
+    };
+}
+
+const closureInstance = outerFunction('Hello');
+closureInstance('World');
+Output:
+
+Outer Variable: Hello
+Inner Variable: World
+
+Here, innerFunction is a closure that captures the outerVariable from outerFunction. Even though outerFunction has finished executing, innerFunction still has access to outerVariable.
+
+Key Characteristics:
+
+Lexical Scoping: Closures are created due to lexical scoping, where inner functions have access to variables defined in their outer function.
+
+Data Privacy: Closures are often used to encapsulate data and keep variables private. This pattern is common in modules and object-oriented programming.
+
+Persistent State: Closures maintain references to their outer scope, allowing functions to keep and manipulate state across multiple invocations.
+
+Practical Use Cases of Closures
+
+Emulating Private Variables: Closures can be used to create private variables in JavaScript, which cannot be accessed directly from outside the function.
+
+function Counter() {
+    let count = 0;
+    return function() {
+        count++;
+        console.log(count);
+    };
+}
+
+const counter = Counter();
+counter();  // Output: 1
+counter();  // Output: 2
+Function Factories: Closures can be used to generate functions with pre-configured behavior.
+
+function createMultiplier(multiplier) {
+    return function(num) {
+        return num * multiplier;
+    };
+}
+
+const double = createMultiplier(2);
+const triple = createMultiplier(3);
+
+console.log(double(5));  // Output: 10
+console.log(triple(5));  // Output: 15
+Callback Functions: Closures are heavily used in asynchronous programming, especially when working with callback functions (e.g., setTimeout).
+
+function greet(name) {
+    setTimeout(function() {
+        console.log('Hello, ' + name);
+    }, 1000);
+}
+
+greet('Alice');
+
+Closure in Loops (Common Pitfall):
+One common mistake when working with closures in loops is not properly capturing the loop index. Consider the following example:
+
+for (var i = 1; i <= 3; i++) {
+    setTimeout(function() {
+        console.log(i);
+    }, 1000);
+}
+
+4
+4
+4
+
+To fix this, you can use let (block-scoped variables) or an IIFE (Immediately Invoked Function Expression):
+
+Using let:
+
+for (let i = 1; i <= 3; i++) {
+    setTimeout(function() {
+        console.log(i);
+    }, 1000);
+}
+
+Using IIFE:
+
+for (var i = 1; i <= 3; i++) {
+    (function(i) {
+        setTimeout(function() {
+            console.log(i);
+        }, 1000);
+    })(i);
+}
+
+
+Prototypes in JavaScript:
+
+
+In JavaScript, prototypes are a fundamental part of its object-oriented capabilities, allowing objects to inherit properties and methods from other objects. JavaScript uses prototype-based inheritance, which is different from classical inheritance in languages like Java or C++.
+
+Key Concepts
+Prototype Property (prototype): Every JavaScript function has a prototype property that is used to build the inheritance structure. This property is automatically created when a function is defined and is used when the function is treated as a constructor.
+
+Prototype Chain: When trying to access a property or method of an object, JavaScript first looks for it on the object itself. If it is not found, it looks at the object's prototype (its parent), and this continues up the prototype chain until the property or method is found or until the end of the chain is reached (null).
+
+__proto__ vs prototype:
+
+__proto__: This is the internal reference to the prototype object from which an object inherits.
+prototype: This is a property of a constructor function that sets up the __proto__ of any object created with that constructor.
+Example: Prototype in Action
+
+// Constructor function
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+// Adding a method to the prototype
+Person.prototype.greet = function() {
+    console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+};
+
+// Creating objects using the constructor
+const john = new Person('John', 30);
+const jane = new Person('Jane', 25);
+
+// Both john and jane can access the greet method from the prototype
+john.greet();  // Output: Hello, my name is John and I am 30 years old.
+jane.greet();  // Output: Hello, my name is Jane and I am 25 years old.
+
+Key Points:
+
+Constructor functions: Person is a constructor function in the above example, which uses the new keyword to create instances.
+
+Shared methods: Methods added to the constructor's prototype (like greet) are shared across all instances of the constructor, avoiding duplication of methods for each object.
+
+Prototype Chain
+If you check the prototype of john or jane:
+
+console.log(john.__proto__ === Person.prototype);  // true
+console.log(john.__proto__.__proto__ === Object.prototype);  // true
+This shows that john's prototype is Person.prototype, and its prototype is Object.prototype, the top of the prototype chain.
+
+Inheritance via Prototype
+You can create inheritance in JavaScript using prototypes:
+
+function Employee(name, age, jobTitle) {
+    Person.call(this, name, age);  // Call Person constructor
+    this.jobTitle = jobTitle;
+}
+
+// Inherit from Person's prototype
+Employee.prototype = Object.create(Person.prototype);
+
+// Add method specific to Employee
+Employee.prototype.describeJob = function() {
+    console.log(`I am a ${this.jobTitle}.`);
+};
+
+// Create an Employee instance
+const alice = new Employee('Alice', 28, 'Software Developer');
+alice.greet();       // Inherited from Person: "Hello, my name is Alice and I am 28 years old."
+alice.describeJob(); // "I am a Software Developer."
+
+Modern Approach: class Syntax
+
+While the prototype-based inheritance model is still fundamental in JavaScript, ES6 introduced the class syntax, which makes working with prototypes and inheritance easier and more familiar to developers from classical OOP backgrounds:
+
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    greet() {
+        console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+    }
+}
+
+class Employee extends Person {
+    constructor(name, age, jobTitle) {
+        super(name, age);  // Call the parent constructor
+        this.jobTitle = jobTitle;
+    }
+
+    describeJob() {
+        console.log(`I am a ${this.jobTitle}.`);
+    }
+}
+
+const bob = new Employee('Bob', 32, 'Project Manager');
+bob.greet();        // "Hello, my name is Bob and I am 32 years old."
+bob.describeJob();  // "I am a Project Manager."
+
+
+A Hello World App in JavaScript:
+
+Steps:
+Set up a basic HTML file.
+Write JavaScript code to display "Hello World".
+
+Step 1: Create an HTML file
+Open your text editor (e.g., Visual Studio Code, Sublime Text, or Notepad++).
+Create a new file and name it index.html.
+
+Write the following code inside the file:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World in JavaScript</title>
+</head>
+<body>
+    <h1 id="greeting"></h1>
+
+    <script src="app.js"></script>
+</body>
+</html>
+In this file:
+
+We have a basic HTML structure.
+We added an <h1> element with an ID greeting where the JavaScript will place the "Hello World" text.
+We also link an external JavaScript file app.js using the <script> tag.
+
+Step 2: Create a JavaScript File
+In the same directory where you created index.html, create a new file called app.js.
+Write the following JavaScript code in it:
+// Select the element with the id "greeting"
+const greetingElement = document.getElementById("greeting");
+
+// Set the text content to "Hello World!"
+greetingElement.textContent = "Hello World!";
+
+Step 3: Run the App
+Open index.html in a browser (you can right-click the file and choose "Open with" and select a browser).
+You should see "Hello World!" displayed on the webpage.
+
+Explanation:
+
+document.getElementById("greeting"): This selects the <h1> element in the HTML by its ID greeting.
+textContent: This property is used to change the content of the selected element to "Hello World!".
+
+
+Communicating with End Users from JavaScript:
+
+
+Communicating with end users from JavaScript involves interacting with the user through various browser interfaces, like dialogs, forms, and dynamically updating the webpage in response to user actions. This is fundamental to creating interactive web applications. Below, we'll cover the basics of communicating with end users from scratch in JavaScript.
+
+1. Basic Dialogs (Alerts, Prompts, and Confirmations)
+JavaScript provides simple ways to display messages and get input from users using built-in dialog boxes.
+
+a. Alert Box
+An alert box is used to display information to the user. It only contains a message and an "OK" button. The user cannot interact with the webpage until they acknowledge the alert.
+
+alert("Welcome to our website!");
+This line of code will display a simple message box.
+
+b. Prompt Box
+A prompt box allows you to collect input from the user. It displays a message and provides a text box for the user to enter a response.
+
+let userName = prompt("Please enter your name:", "Guest");
+alert("Hello, " + userName);
+The user will see a prompt asking for their name, and then an alert will greet them with their input.
+
+c. Confirm Box
+A confirm box is used when you need the user to verify or accept something (yes/no type of input).
+
+let confirmAction = confirm("Do you want to proceed?");
+if (confirmAction) {
+    alert("Action confirmed!");
+} else {
+    alert("Action canceled!");
+}
+In this case, the user chooses to either confirm or cancel, and the application responds accordingly.
+
+2. Manipulating the DOM
+
+Another way to communicate with users is by manipulating the HTML Document Object Model (DOM) to dynamically update parts of the webpage based on user actions.
+
+a. Changing Content
+You can change the content of HTML elements, allowing communication through text, images, and other media.
+
+HTML:
+
+<p id="message">Hello, World!</p>
+<button onclick="changeMessage()">Change Message</button>
+
+JavaScript:
+
+function changeMessage() {
+    document.getElementById("message").innerHTML = "Message has been changed!";
+}
+When the user clicks the button, the message on the webpage will change.
+
+b. Form Interaction
+Handling user input via forms is a common task in web applications. JavaScript can validate user input, send data, or update the UI.
+
+HTML:
+
+<form id="userForm">
+    Name: <input type="text" id="name" />
+    <input type="button" value="Submit" onclick="submitForm()" />
+</form>
+<p id="formResponse"></p>
+JavaScript:
+
+function submitForm() {
+    let userName = document.getElementById("name").value;
+    document.getElementById("formResponse").innerHTML = "Hello, " + userName;
+}
+This form takes user input and displays a message based on what the user entered.
+
+3. Event Listeners
+Events are a way to detect user interactions like clicks, key presses, and form submissions, allowing your app to respond in real-time.
+
+<button id="myButton">Click Me</button>
+<p id="response"></p>
+JavaScript:
+
+document.getElementById("myButton").addEventListener("click", function() {
+    document.getElementById("response").innerHTML = "Button clicked!";
+});
+Here, when the user clicks the button, the event listener detects the action and updates the page.
+
+4. AJAX (Asynchronous JavaScript and XML)
+AJAX allows you to communicate with a server without reloading the page, which is crucial for creating dynamic, user-friendly experiences.
+
+For example, submitting form data or fetching new content:
+
+let xhr = new XMLHttpRequest();
+xhr.open("GET", "https://api.example.com/data", true);
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        document.getElementById("response").innerHTML = xhr.responseText;
+    }
+};
+xhr.send();
+This sends a request to a server and updates the webpage with the response.
+
+5. Modern Techniques: Fetch API and Promises
+Instead of using the old XMLHttpRequest, modern JavaScript uses the Fetch API to interact with servers.
+
+fetch('https://api.example.com/data')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("response").innerHTML = JSON.stringify(data);
+    })
+    .catch(error => {
+        console.log('Error:', error);
+    });
+This is cleaner and more powerful than AJAX, allowing you to make network requests and handle responses more easily.
+
+6. Notifications API
+You can also send notifications directly to the user via the Notifications API (requires user permission).
+
+if (Notification.permission === "granted") {
+    new Notification("Hello, user!");
+} else if (Notification.permission !== "denied") {
+    Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+            new Notification("Thanks for granting permission!");
+        }
+    });
+}
+This can be used to display system-level messages, even when the user is not actively viewing your webpage.
+
+7. Communicating with Forms and Server (Fetch and POST)
+Another important communication is submitting forms to the server asynchronously using fetch() with POST requests.
+
+HTML:
+
+<form id="userForm">
+    Name: <input type="text" id="name" />
+    <input type="button" value="Submit" onclick="submitForm()" />
+</form>
+<p id="response"></p>
+JavaScript:
+
+function submitForm() {
+    let userName = document.getElementById("name").value;
+    
+    fetch('https://api.example.com/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name: userName })
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("response").innerHTML = "Submitted successfully: " + data.message;
+    })
+    .catch(error => {
+        document.getElementById("response").innerHTML = "Error: " + error.message;
+    });
+}
+This example sends the user input to a server using a POST request and updates the page based on the response.
+
+
+Separating HTML and JavaScript Sources:
+
+
+Separating HTML and JavaScript sources refers to the practice of keeping the structure (HTML) and behavior (JavaScript) of a web page in different files. This improves code organization, readability, and maintainability. Here's how to approach it from scratch:
+
+1. What is HTML?
+HTML (HyperText Markup Language) is used to create the structure of a web page. It defines the elements like headings, paragraphs, buttons, forms, and links that make up the page.
+
+Example of a simple HTML document:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example Page</title>
+</head>
+<body>
+    <h1>Welcome to My Page</h1>
+    <button id="myButton">Click Me!</button>
+</body>
+</html>
+In this example, we have:
+
+A title defined in the <title> tag.
+A heading <h1>.
+A button element with an id of myButton.
+
+2. What is JavaScript?
+JavaScript adds interactivity and dynamic behavior to a web page. It allows you to manipulate the HTML structure, respond to user inputs, and update the content dynamically.
+
+3. Inlining JavaScript in HTML
+One approach is to write JavaScript directly inside the HTML using the <script> tag. However, this leads to less maintainable and less organized code, especially as the project grows.
+
+Example of JavaScript inline in the HTML:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline JavaScript</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('myButton');
+            button.addEventListener('click', () => {
+                alert('Button Clicked!');
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Welcome to My Page</h1>
+    <button id="myButton">Click Me!</button>
+</body>
+</html>
+This is fine for small projects, but it's not recommended for larger or more complex applications.
+
+4. Separating HTML and JavaScript
+Step 1: Create a Separate JavaScript File
+Instead of placing the JavaScript directly in the HTML, you can move it into a separate .js file. This helps organize your code and makes it easier to manage.
+
+Create an HTML file:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>External JavaScript</title>
+</head>
+<body>
+    <h1>Welcome to My Page</h1>
+    <button id="myButton">Click Me!</button>
+
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
+Create a JavaScript file (e.g., script.js):
+document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('myButton');
+    button.addEventListener('click', () => {
+        alert('Button Clicked!');
+    });
+});
+In this setup:
+
+The HTML file only defines the structure of the page.
+The behavior (JavaScript) is in a separate file (script.js).
+The script.js file is linked in the HTML using the <script> tag with the src attribute.
+
+Step 2: Understanding Benefits of Separation
+
+Maintainability: It’s easier to manage files independently. You can edit the HTML structure without worrying about breaking the JavaScript logic, and vice versa.
+
+Reusability: You can reuse the same JavaScript file across different HTML pages.
+
+Clean Code: The codebase is cleaner and more organized, making collaboration with other developers simpler.
+
+Caching: Browsers can cache the external JavaScript files, leading to faster load times for repeat visitors.
+
+Debugging: Debugging is simpler since the separation allows tools (like browser developer consoles) to clearly separate HTML and JavaScript errors.
+
+Step 3: Avoiding Inline JavaScript
+By avoiding inline JavaScript (such as using onclick="..." in HTML tags), you maintain a clean separation between content (HTML) and behavior (JavaScript).
+
+Example of inline JavaScript to avoid:
+
+<button id="myButton" onclick="alert('Button Clicked!')">Click Me!</button>
+Instead, the event listener should be added in the separate JavaScript file, as shown earlier.
+
+5. Advanced Considerations
+Minification: In production, you can minify your JavaScript files to reduce the file size and improve load times.
+
+Modular JavaScript: In larger projects, it's common to use multiple JavaScript files, which can be managed using modules (e.g., ES6 modules) to further improve code organization.
+
+Frameworks: In modern web development, frameworks like React, Angular, or Vue enforce separation of concerns by design, using components to manage HTML, CSS, and JavaScript in a structured way.
+
+
+Accessing the DOM from JavaScript:
+
+Accessing the DOM (Document Object Model) from JavaScript is essential for interacting with and manipulating web pages. The DOM represents a structured version of the HTML document, where each element, attribute, and text within the HTML is represented as an object.
+
+Here’s a step-by-step explanation of how to access and interact with the DOM from JavaScript:
+
+1. What is the DOM?
+The DOM is a programming interface for HTML and XML documents. It represents the page so that programs (like JavaScript) can change the document's structure, style, and content. When a web page is loaded, the browser creates a DOM of the page.
+
+2. Basic Structure of the DOM
+In the DOM, HTML elements are organized in a tree structure. Each element is a node in the tree, and nodes can have child nodes (nested elements).
+
+For example, this HTML:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Example</title>
+  </head>
+  <body>
+    <h1>Hello, World!</h1>
+    <p>This is a paragraph.</p>
+  </body>
+</html>
+Would have the following DOM structure:
+
+Document
+  └── html
+      ├── head
+      │   └── title
+      └── body
+          ├── h1
+          └── p
+3. Accessing DOM Elements in JavaScript
+JavaScript can interact with the DOM to manipulate the elements. To access elements from the DOM, you can use various methods provided by JavaScript.
+
+a. document.getElementById()
+This method retrieves an element by its ID. The ID attribute must be unique within the document.
+
+<h1 id="header">Hello, World!</h1>
+JavaScript:
+
+var header = document.getElementById("header");
+console.log(header); // Outputs the <h1> element
+
+b. document.getElementsByClassName()
+This method returns a collection (array-like object) of all elements with a specified class name.
+
+<p class="text">First paragraph</p>
+<p class="text">Second paragraph</p>
+JavaScript:
+
+var paragraphs = document.getElementsByClassName("text");
+console.log(paragraphs[0]); // First paragraph
+console.log(paragraphs[1]); // Second paragraph
+c. document.getElementsByTagName()
+This method retrieves all elements with a specific tag name (like div, p, or h1).
+
+<p>Paragraph 1</p>
+<p>Paragraph 2</p>
+JavaScript:
+
+var paragraphs = document.getElementsByTagName("p");
+console.log(paragraphs[0]); // First <p> element
+
+d. document.querySelector()
+This method returns the first element that matches a CSS selector. It’s useful for more complex selections.
+
+<p class="text">First paragraph</p>
+<p class="text">Second paragraph</p>
+JavaScript:
+
+var firstParagraph = document.querySelector(".text");
+console.log(firstParagraph); // Selects the first <p> element with class "text"
+
+e. document.querySelectorAll()
+This method returns all elements that match a CSS selector. It returns a NodeList, which can be iterated over.
+
+<p class="text">First paragraph</p>
+<p class="text">Second paragraph</p>
+JavaScript:
+
+var allParagraphs = document.querySelectorAll(".text");
+allParagraphs.forEach((p) => console.log(p)); // Logs both paragraphs
+
+4. Modifying DOM Elements
+Once you access a DOM element, you can modify its content, attributes, and style.
+
+a. Changing Text Content
+You can change the text content of an element using the textContent or innerHTML property.
+
+<p id="myParagraph">This is a paragraph.</p>
+
+JavaScript:
+
+var paragraph = document.getElementById("myParagraph");
+paragraph.textContent = "This is new text!"; // Changes the text inside the <p>
+
+b. Changing HTML Content
+You can modify the inner HTML of an element (this includes HTML tags inside the element).
+
+<div id="container"><p>Old paragraph</p></div>
+JavaScript:
+
+var container = document.getElementById("container");
+container.innerHTML = "<p>New paragraph with <strong>bold text</strong></p>";
+c. Changing Attributes
+You can modify attributes (like src, href, class, etc.) of an element.
+
+<img id="myImage" src="image1.jpg" alt="image">
+JavaScript:
+
+var img = document.getElementById("myImage");
+img.setAttribute("src", "image2.jpg"); // Changes the src attribute of the image
+
+d. Changing Styles
+You can modify the style of an element using the style property.
+
+<p id="myText">Some text here</p>
+JavaScript:
+
+var text = document.getElementById("myText");
+text.style.color = "blue"; // Changes the text color to blue
+text.style.fontSize = "20px"; // Changes the font size
+
+5. Adding and Removing DOM Elements
+You can dynamically add or remove elements from the DOM using methods like appendChild(), removeChild(), and createElement().
+
+a. Creating New Elements
+var newElement = document.createElement("div");
+newElement.textContent = "This is a new div element";
+
+b. Appending New Elements
+You can add the newly created element to the DOM by appending it to an existing element.
+
+var body = document.querySelector("body");
+body.appendChild(newElement); // Adds the new div at the end of the body
+c. Removing Elements
+You can remove an existing element using removeChild().
+
+var elementToRemove = document.getElementById("myText");
+elementToRemove.parentNode.removeChild(elementToRemove); // Removes the element
+6. Event Listeners
+You can also access the DOM to attach event listeners, which allow you to execute JavaScript code when a certain event (like a button click) occurs.
+
+a. Adding Event Listeners
+<button id="myButton">Click Me</button>
+JavaScript:
+
+var button = document.getElementById("myButton");
+button.addEventListener("click", function() {
+  alert("Button was clicked!");
+});
+
+7. Best Practices
+Use querySelector() and querySelectorAll() for selecting elements as they support CSS selectors and are more versatile.
+Avoid using innerHTML for security reasons if user input is involved (can lead to XSS attacks). Use textContent instead if you don’t need to insert HTML.
+Always sanitize user input when modifying the DOM to prevent security vulnerabilities.
+
+
+The Use of Strict Mode:
+
+
+Strict Mode in JavaScript
+Strict Mode is a feature in JavaScript that allows you to enforce stricter parsing and error handling in your code. It was introduced in ECMAScript 5 (ES5) to help developers write cleaner and more secure JavaScript code by catching common coding mistakes and preventing certain unsafe actions.
+
+How to Enable Strict Mode
+You can enable strict mode by placing the following string at the beginning of your script or a function:
+
+"use strict";
+There are two ways to apply strict mode in your code:
+
+Global Strict Mode: You can enable strict mode for an entire script by placing "use strict"; at the top of your JavaScript file. This will enforce strict mode for the whole file.
+
+"use strict";
+// All the code below will run in strict mode
+
+x = 3.14; // Error: x is not defined
+
+Function-Level Strict Mode: You can also apply strict mode to a specific function by placing "use strict"; at the start of the function definition. This restricts strict mode only to that particular function's scope.
+
+function myFunction() {
+    "use strict";
+    y = 3.14; // Error: y is not defined
+}
+Benefits and Features of Strict Mode
+Strict mode introduces several changes to how JavaScript behaves, aiming to eliminate silent errors and improve performance and security. Here's a breakdown of some of the key benefits:
+
+Prevents the Use of Undeclared Variables: In normal mode, if you accidentally assign a value to a variable that has not been declared, JavaScript will automatically create it as a global variable. Strict mode throws an error if you attempt to do this.
+
+"use strict";
+x = 10; // Error: x is not defined
+
+Eliminates this Binding for Functions: In normal mode, if a function is called without a specific context (this), the value of this defaults to the global object (e.g., window in browsers). In strict mode, this remains undefined if it's not explicitly set.
+
+function myFunction() {
+    "use strict";
+    console.log(this); // undefined
+}
+myFunction();
+
+Disallows Duplicate Parameter Names: In non-strict mode, you can have multiple parameters with the same name in a function definition, although this is often a source of bugs. Strict mode throws an error in such cases.
+
+"use strict";
+function sum(a, a, c) { // Error: Duplicate parameter name not allowed in this context
+    return a + a + c;
+}
+
+Catches Assignment to Read-Only Properties: In strict mode, attempting to assign values to read-only properties throws an error.
+
+"use strict";
+const obj = {};
+Object.defineProperty(obj, "prop", { value: 42, writable: false });
+obj.prop = 17; // Error: Cannot assign to read-only property 'prop'
+
+Disallows Deleting Variables or Functions: In normal mode, you can try deleting a variable or function, but it silently fails. In strict mode, attempting to delete a variable or function throws an error.
+
+"use strict";
+var x = 10;
+delete x; // Error: Cannot delete variable 'x'
+Prevents the Use of with Statement: The with statement is considered a bad practice because it can introduce ambiguities and make code harder to understand. Strict mode disallows the use of with.
+
+"use strict";
+with (Math) { // Error: Strict mode code may not include a with statement
+    console.log(sin(90));
+}
+
+Throws Error for Octal Syntax: In non-strict mode, numbers with leading zeros are interpreted as octal numbers (base 8). In strict mode, using octal syntax is prohibited.
+
+"use strict";
+var num = 010; // Error: Octal literals are not allowed in strict mode
+When to Use Strict Mode
+
+Detecting errors early: Strict mode helps identify issues like accidental global variables, duplicate parameters, or bad syntax, which may otherwise be silently ignored by JavaScript.
+
+Securing code: It restricts certain actions, preventing potential security vulnerabilities.
+
+Better optimization: Modern JavaScript engines can optimize code better in strict mode because it eliminates problematic and hard-to-predict features like with and sloppy handling of this.
+Example Without Strict Mode vs. With Strict Mode
+Without Strict Mode:
+
+x = 10;  // This is allowed without an error (global variable)
+console.log(x);  // Output: 10
+
+With Strict Mode:
+
+"use strict";
+x = 10;  // Error: x is not defined
+
+• Variable Declarations: var, let and const:
+
+
+In JavaScript, there are three main ways to declare variables: var, let, and const. Each one behaves differently in terms of scope, reassignment, and hoisting. Let's go over them one by one:
+
+1. var Declaration
+var is the traditional way to declare variables in JavaScript before ES6 (ES2015) introduced let and const.
+
+Characteristics of var:
+Function Scope: Variables declared with var are function-scoped. This means if a variable is declared inside a function, it's only accessible within that function.
+
+Example:
+function example() {
+    var x = 10;
+    console.log(x); // 10
+}
+console.log(x); // ReferenceError: x is not defined
+
+However, if declared outside any function, var becomes globally scoped.
+
+Hoisting: Variables declared with var are "hoisted" to the top of their scope. This means you can use the variable before its declaration without causing an error. However, its value will be undefined until the line where it's initialized.
+
+Example:
+console.log(y); // undefined (due to hoisting)
+var y = 5;
+Re-declaration and Re-assignment: You can re-declare and re-assign variables declared with var.
+
+Example:
+var z = 5;
+var z = 10; // Re-declaration is allowed
+z = 20;     // Re-assignment is allowed
+
+Block Scoping: var does not respect block-level scoping (like in if, for, or while blocks).
+
+Example:
+if (true) {
+    var a = 1;
+}
+console.log(a); // 1 (accessible outside the block)
+
+2. let Declaration
+let was introduced in ES6 (ES2015) as an improvement over var.
+
+Characteristics of let:
+
+Block Scope: Variables declared with let are block-scoped, meaning they are only accessible within the block they are declared (e.g., inside an if, for, or while block).
+
+Example:
+if (true) {
+    let b = 2;
+    console.log(b); // 2
+}
+console.log(b); // ReferenceError: b is not defined
+
+No Hoisting (Temporal Dead Zone): While let is hoisted, it’s not initialized until its declaration is encountered. Using the variable before declaration results in a ReferenceError. This is known as the temporal dead zone (TDZ).
+
+Example:
+console.log(c); // ReferenceError: Cannot access 'c' before initialization
+let c = 3;
+
+Re-declaration and Re-assignment:
+
+You cannot re-declare a variable with let in the same scope.
+But, you can re-assign values.
+Example:
+let d = 5;
+d = 10; // Re-assignment is allowed
+let d = 15; // SyntaxError: Identifier 'd' has already been declared
+
+3. const Declaration
+const is also introduced in ES6 and stands for constant. It is used to declare variables whose values should not change (though it’s not quite that simple).
+
+Characteristics of const:
+Block Scope: Like let, const is block-scoped.
+
+Example:
+if (true) {
+    const e = 5;
+    console.log(e); // 5
+}
+console.log(e); // ReferenceError: e is not defined
+No Hoisting (Temporal Dead Zone): Similar to let, variables declared with const are in the temporal dead zone until their declaration is reached.
+
+Example:
+console.log(f); // ReferenceError: Cannot access 'f' before initialization
+const f = 6;
+No Re-declaration and No Re-assignment:
+
+You cannot re-declare or re-assign a const variable.
+Example:
+const g = 10;
+g = 15; // TypeError: Assignment to constant variable
+Immutable Reference, but Not Value: When you declare an object or array with const, the reference to the object is constant, but you can still modify the contents of the object or array.
+
+Example:
+const person = { name: 'John', age: 30 };
+person.age = 31; // This is allowed; the reference to the object is constant, but its properties can change
+console.log(person.age); // 31
+
+// However, if you try to assign a new object to the variable, it will throw an error
+person = { name: 'Jane', age: 25 }; // TypeError: Assignment to constant variable
+Key Differences:
+Feature	var	let	const
+Scope	Function-scoped	Block-scoped	Block-scoped
+Hoisting	Yes, initialized as undefined	Yes, but in TDZ	Yes, but in TDZ
+Re-declaration	Allowed	Not allowed in the same scope	Not allowed in the same scope
+Re-assignment	Allowed	Allowed	Not allowed
+Mutability	Mutable	Mutable	Immutable (in reference)
+When to Use:
+var: Avoid using var in modern JavaScript development. It can lead to confusing bugs due to its function-scoped nature and hoisting behavior.
+
+let: Use let when the variable's value needs to change (i.e., you plan to reassign it later). It's also a safer choice because of block-level scoping.
+
+const: Use const when you want to declare a variable that shouldn't change, or when declaring references to objects or arrays whose content can be modified, but the reference itself shouldn’t change.
+
+Example:
+function example() {
+    if (true) {
+        var x = 10;
+        let y = 20;
+        const z = 30;
+    }
+    console.log(x); // 10 (var is function-scoped)
+    console.log(y); // ReferenceError (let is block-scoped)
+    console.log(z); // ReferenceError (const is block-scoped)
+}
+
+
+Empty Values in JavaScript: undefined and null:
+
+In JavaScript, there are two primary ways to represent "empty" or "no value" – undefined and null. Although they seem similar, they serve different purposes and have distinct meanings. Let's break down each concept from scratch.
+
+1. undefined in JavaScript
+Meaning:
+undefined is a primitive value automatically assigned by JavaScript when a variable is declared but not initialized (i.e., no value is explicitly assigned).
+
+Key Points:
+Default value: When you declare a variable and don't assign a value to it, JavaScript automatically assigns it the value undefined.
+
+let a;
+console.log(a); // Output: undefined
+Function without return: If a function doesn't explicitly return a value, it implicitly returns undefined.
+
+function noReturnValue() {}
+console.log(noReturnValue()); // Output: undefined
+Object property: If you try to access a property of an object that doesn't exist, it will return undefined.
+
+let obj = { name: 'John' };
+console.log(obj.age); // Output: undefined
+Array element: Accessing an element of an array that doesn't exist also gives undefined.
+
+let arr = [1, 2, 3];
+console.log(arr[5]); // Output: undefined
+
+2. null in JavaScript
+Meaning:
+null is an intentional assignment of "no value." It is used when a developer wants to explicitly indicate that a variable or property should have no value.
+
+Key Points:
+Explicit absence of value: You assign null when you want to represent the absence of an object or the intentional "no value" scenario.
+
+let user = null;
+console.log(user); // Output: null
+Object reference: null is typically used when dealing with objects. It indicates that an object reference is empty, meaning there is no object associated with the variable.
+
+let car = null; // Represents no car object currently.
+Differences Between undefined and null
+Property	undefined	null
+Type	undefined (a type in itself)	object (yes, null is of type object due to a JavaScript bug from early versions)
+Assigned by	JavaScript (automatically)	Developer (manually assigned)
+Use Case	Variable or property without a value	Explicitly indicating "no value" or empty object reference
+Example	let x; // x is undefined	let x = null; // x is null
+Example Comparing undefined and null
+let exampleUndefined;
+let exampleNull = null;
+
+console.log(exampleUndefined); // Output: undefined
+console.log(exampleNull); // Output: null
+Comparison between undefined and null
+Loose equality (==): In loose equality, undefined and null are considered equal because both represent an empty or absent value.
+
+console.log(undefined == null); // true
+Strict equality (===): In strict equality, they are not equal because they are of different types (undefined is undefined, and null is an object).
+
+console.log(undefined === null); // false
+
+
+User Interactions Using alert, prompt, and confirm:
+
+In JavaScript, user interactions are commonly handled using built-in dialog boxes such as alert, prompt, and confirm. These functions allow you to interact with users by showing messages or capturing input from the user. Here's an explanation of each one:
+
+1. alert()
+The alert() method displays a pop-up dialog box with a specified message and an "OK" button. It is commonly used to show important messages or notifications.
+
+Syntax:
+alert(message);
+message: This is the text or string that will be displayed in the alert box.
+Example:
+alert("Hello, this is an alert box!");
+This will display a pop-up message saying "Hello, this is an alert box!" with an "OK" button. When the user clicks "OK", the dialog box disappears.
+
+Usage Scenario:
+To inform users about a successful operation or an error.
+
+2. prompt()
+The prompt() method displays a dialog box that asks the user for input. It contains a message, a text input field, and two buttons: "OK" and "Cancel".
+
+Syntax:
+let userInput = prompt(message, defaultValue);
+message: A string to be displayed as the message in the dialog box.
+defaultValue (optional): The initial value in the text input field (optional).
+userInput: The value entered by the user (if "OK" is clicked) or null (if "Cancel" is clicked).
+
+Example:
+let name = prompt("Please enter your name:", "John Doe");
+alert("Hello, " + name + "!");
+This will ask the user for their name. If the user types "Alice" and clicks "OK", the next alert will display "Hello, Alice!".
+
+Usage Scenario:
+When you want to get input from the user, such as their name, age, or other details.
+
+3. confirm()
+The confirm() method displays a dialog box with a message and two buttons: "OK" and "Cancel". It returns true if the user clicks "OK" and false if the user clicks "Cancel".
+
+Syntax:
+let result = confirm(message);
+message: The text that appears in the confirmation box.
+result: A boolean value. It will be true if the user clicked "OK" and false if they clicked "Cancel".
+
+Example:
+let isConfirmed = confirm("Do you really want to delete this file?");
+if (isConfirmed) {
+  alert("File deleted.");
+} else {
+  alert("File not deleted.");
+}
+This will ask the user if they want to delete a file. If the user clicks "OK", it will show "File deleted."; if they click "Cancel", it will show "File not deleted."
+
+Usage Scenario:
+To confirm actions like deletion, logout, or other important decisions.
+Summary of Differences:
+alert(): Displays a simple message and waits for the user to click "OK".
+prompt(): Asks the user for input, with an option to cancel or provide a response.
+confirm(): Asks the user to confirm an action with "OK" or "Cancel" options.
+
+
+Numbers in JavaScript:
+
+
+In JavaScript, numbers are a fundamental data type that represent numerical values. JavaScript uses the Number type for all numeric values, whether they are integers (whole numbers) or floating-point (decimal) numbers. There is no separate data type for integers and decimals, unlike some other programming languages.
+
+Here's an explanation of numbers in JavaScript, starting from scratch:
+
+1. Basic Number Types
+JavaScript numbers can be written with or without decimals:
+
+let integerNumber = 42;     // Integer number
+let floatingPointNumber = 3.14; // Floating-point number
+
+2. Number Type
+JavaScript treats all numbers as Number type, which internally uses double-precision 64-bit floating-point format (IEEE 754 standard).
+
+You can check the type of a number using the typeof operator:
+
+console.log(typeof 42);         // "number"
+console.log(typeof 3.14);       // "number"
+
+3. Arithmetic Operations
+JavaScript supports basic arithmetic operations like addition, subtraction, multiplication, and division.
+
+let x = 10;
+let y = 5;
+
+console.log(x + y); // 15 (Addition)
+console.log(x - y); // 5  (Subtraction)
+console.log(x * y); // 50 (Multiplication)
+console.log(x / y); // 2  (Division)
+
+4. Special Numeric Values
+JavaScript also has some special numeric values:
+
+Infinity and -Infinity represent numbers that are beyond the limit of JavaScript's representable numbers.
+NaN stands for "Not-a-Number," and it is returned when a mathematical operation doesn't make sense, such as dividing a string by a number.
+console.log(1 / 0);         // Infinity
+console.log(-1 / 0);        // -Infinity
+console.log("hello" / 2);   // NaN (Not a Number)

@@ -1,0 +1,1994 @@
+Middleware and Rendering:
+
+In Express JS, middleware and rendering are key concepts used to manage the flow of requests and generate responses in a web application.
+
+Middleware in Express JS :
+
+Middleware functions are a central part of Express applications and are responsible for processing requests and responses. Middleware functions have access to the request object (req), the response object (res), and the next middleware function in the application’s request-response cycle. Middleware can perform various tasks such as:
+
+Execute code :
+
+Modify request and response objects
+End the request-response cycle
+Call the next middleware function in the stack
+
+Types of Middleware:
+
+Application-Level Middleware: Defined at the app level and applies to all routes.
+
+const express = require('express');
+const app = express();
+
+app.use((req, res, next) => {
+    console.log('Time:', Date.now());
+    next(); // Pass control to the next middleware
+});
+
+app.get('/', (req, res) => {
+    res.send('Home Page');
+});
+
+app.listen(3000);
+
+Router-Level Middleware: Similar to application-level middleware, but applied to a specific router.
+
+const router = express.Router();
+
+router.use((req, res, next) => {
+    console.log('Router Middleware');
+    next();
+});
+
+router.get('/', (req, res) => {
+    res.send('Router Home Page');
+});
+
+app.use('/router', router);
+
+Error-Handling Middleware: Used to handle errors in Express. Error-handling middleware takes four arguments: err, req, res, and next.
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong!');
+});
+
+Built-in Middleware: Express comes with built-in middleware like express.static for serving static files.
+
+app.use(express.static('public'));
+
+Third-Party Middleware: External middleware libraries like body-parser (for parsing JSON requests) or morgan (for logging) can be used.
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
+Rendering in Express JS :
+
+Rendering in Express involves generating HTML (or other content) and sending it back to the client as a response. Express uses view engines to dynamically render templates. The most common view engines are Pug (formerly Jade), EJS, and Handlebars.
+
+Steps for Rendering Views:
+
+Set the View Engine: First, you need to set up a view engine in your Express app.
+
+app.set('view engine', 'pug'); // Setting Pug as the view engine
+app.set('views', './views'); // Specify the directory for views
+
+Create a Template: For example, if you are using Pug, create a file named index.pug in the views folder.
+
+// index.pug
+
+html
+  head
+    title= title
+  body
+    h1 Hello #{name}
+Render the View in a Route: Use the res.render() method to render the view and send it as the response.
+
+app.get('/', (req, res) => {
+    res.render('index', { title: 'Home', name: 'Express User' });
+});
+
+Here, res.render('index', { title: 'Home', name: 'Express User' }) renders the index.pug template and injects the title and name variables into the template.
+
+Template Engines:
+
+Pug: Simple, minimal syntax (uses indentation).
+
+html
+  head
+    title= title
+  body
+    h1 Hello #{name}
+
+EJS (Embedded JavaScript): More HTML-like and familiar for those coming from traditional HTML.
+
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1>Hello <%= name %></h1>
+  </body>
+</html>
+
+Handlebars: Known for logic-less templates.
+
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <h1>Hello {{name}}</h1>
+  </body>
+</html>
+
+Summary
+
+Middleware: Functions that process requests in a series of steps, which can include logging, authentication, and error handling. Middleware can modify requests and responses or terminate the request-response cycle.
+
+Rendering: The process of generating dynamic HTML or other content using templates and view engines like Pug, EJS, or Handlebars, and sending it as a response to the client.
+
+
+Putting on your Express helmet, and other awesome:
+
+Express middleware:
+
+
+In Express.js, middleware functions are used to process requests before they reach the route handlers or after the response is sent. Middleware functions can perform tasks such as logging, authentication, error handling, data parsing, and more. The Express framework includes several built-in middlewares, and you can also install third-party middleware or write your own.
+
+Helmet: Securing Express with HTTP Headers
+Helmet is a collection of middleware functions that help secure Express apps by setting HTTP headers to protect against common vulnerabilities like cross-site scripting (XSS) and clickjacking.
+
+Installing Helmet:
+To use Helmet in your Express app, you first need to install it via npm:
+
+npm install helmet
+
+Example: Using Helmet in an Express App
+
+const express = require('express');
+const helmet = require('helmet');
+
+const app = express();
+
+// Use Helmet middleware to secure HTTP headers
+app.use(helmet());
+
+app.get('/', (req, res) => {
+  res.send('Helmet is protecting our app!');
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+In this example, helmet() is applied to the app, which adds several security headers like:
+
+Content-Security-Policy (CSP)
+X-Frame-Options
+Strict-Transport-Security
+
+You can also customize Helmet to include specific protections:
+
+app.use(
+  helmet({
+    contentSecurityPolicy: false, // Disable specific header
+  })
+);
+
+Types of Middleware in Express
+
+Application-Level Middleware
+
+Attached to the entire application using app.use().
+
+Router-Level Middleware
+
+Attached to specific routers using router.use().
+
+Error-Handling Middleware
+
+Specialized middleware for error handling.
+
+Built-in Middleware
+
+Middleware functions included with Express, such as express.json() and express.static().
+
+Third-Party Middleware
+
+Middleware created by others and available on npm, like Helmet, morgan, cors.
+
+Custom Middleware
+
+User-defined middleware that performs specific tasks.
+
+Example of Each Type of Middleware
+
+1. Application-Level Middleware
+
+This type of middleware is executed for every incoming request to the application.
+
+const express = require('express');
+const app = express();
+
+// Application-level middleware that logs request details
+app.use((req, res, next) => {
+  console.log(`${req.method} request to ${req.url}`);
+  next(); // Pass control to the next middleware/route handler
+});
+
+app.get('/', (req, res) => {
+  res.send('Home Page');
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+2. Router-Level Middleware
+
+Router-level middleware is attached to a specific router, allowing you to apply middleware to specific routes or groups of routes.
+
+const express = require('express');
+const router = express.Router();
+
+// Middleware for all routes in this router
+router.use((req, res, next) => {
+  console.log('Router-level middleware');
+  next();
+});
+
+router.get('/about', (req, res) => {
+  res.send('About Page');
+});
+
+const app = express();
+app.use('/api', router); // Attach router to `/api` path
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+3. Error-Handling Middleware
+
+Error-handling middleware handles errors that occur in your application. It must take four arguments (err, req, res, next).
+
+const express = require('express');
+const app = express();
+
+// Error-handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
+});
+
+// Route to trigger error
+app.get('/', (req, res) => {
+  throw new Error('Test Error'); // Will be caught by error handler
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+4. Built-in Middleware
+
+Express comes with built-in middleware like express.json() to handle parsing JSON requests.
+
+const express = require('express');
+const app = express();
+
+// Built-in middleware to parse JSON body
+app.use(express.json());
+
+app.post('/submit', (req, res) => {
+  console.log(req.body);
+  res.send('Data received');
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+5. Third-Party Middleware
+
+Apart from Helmet, other popular third-party middleware includes morgan for logging and cors for handling cross-origin requests.
+
+npm install morgan cors
+
+Morgan Example:
+
+const express = require('express');
+const morgan = require('morgan');
+const app = express();
+
+// Use Morgan for logging HTTP requests
+app.use(morgan('tiny'));
+
+app.get('/', (req, res) => {
+  res.send('Morgan is logging our requests!');
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+CORS Example:
+
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+// Use CORS middleware to allow cross-origin requests
+app.use(cors());
+
+app.get('/data', (req, res) => {
+  res.json({ message: 'CORS-enabled route' });
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+6. Custom Middleware
+
+You can also create your own middleware for tasks specific to your application.
+
+const express = require('express');
+const app = express();
+
+// Custom middleware for adding a timestamp to requests
+const addTimestamp = (req, res, next) => {
+  req.requestTime = new Date();
+  next();
+};
+
+// Use custom middleware in the app
+app.use(addTimestamp);
+
+app.get('/', (req, res) => {
+  res.send(`Request received at ${req.requestTime}`);
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+Chaining Multiple Middleware:
+
+You can chain multiple middleware functions in a route to handle tasks sequentially.
+
+const express = require('express');
+const app = express();
+
+// First middleware
+const firstMiddleware = (req, res, next) => {
+  console.log('First middleware');
+  next(); // Pass to the next middleware
+};
+
+// Second middleware
+const secondMiddleware = (req, res, next) => {
+  console.log('Second middleware');
+  next(); // Pass to the route handler
+};
+
+// Use multiple middleware functions in the same route
+app.get('/', firstMiddleware, secondMiddleware, (req, res) => {
+  res.send('Chaining middleware is fun!');
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+
+Responding with JSON:
+
+
+In Express.js, sending JSON responses is common, especially when developing REST APIs. Express.js provides several ways to send JSON data, and understanding how to do this efficiently is important.
+
+Below are explanations and examples of how to respond with JSON in Express.js, ranging from basic usage to more advanced examples.
+
+1. Basic JSON Response
+You can respond with JSON using the res.json() method, which is designed to automatically set the response headers to indicate that the content type is JSON and send the JavaScript object as a JSON string.
+
+Example:
+
+const express = require('express');
+const app = express();
+
+app.get('/basic-json', (req, res) => {
+  const data = { message: "Hello, this is a basic JSON response" };
+  res.json(data);
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+In this example, when you visit /basic-json, the server responds with:
+
+{
+  "message": "Hello, this is a basic JSON response"
+}
+
+2. Responding with Status Code and JSON
+
+You can specify the HTTP status code along with the JSON response using the res.status() method.
+
+Example:
+
+app.get('/json-with-status', (req, res) => {
+  const data = { message: "Everything is OK" };
+  res.status(200).json(data);  // 200 OK status
+});
+
+Here, a 200 OK status is sent with the JSON response. You can customize the status code as per the scenario, e.g., 404, 500, etc.
+
+Example with an Error Response:
+
+app.get('/json-with-error', (req, res) => {
+  const errorData = { error: "Resource not found" };
+  res.status(404).json(errorData);  // 404 Not Found status
+});
+
+3. Nested JSON Objects and Arrays
+
+You can send complex JSON objects with nested data, such as arrays or objects within objects.
+
+Example:
+
+app.get('/nested-json', (req, res) => {
+  const data = {
+    user: {
+      id: 1,
+      name: "John Doe",
+      email: "john.doe@example.com"
+    },
+    roles: ["admin", "editor"]
+  };
+  res.json(data);
+});
+
+This will return:
+
+{
+  "user": {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john.doe@example.com"
+  },
+  "roles": ["admin", "editor"]
+}
+
+4. Responding with JSON Based on Query Parameters
+
+You can dynamically generate JSON responses based on query parameters passed by the client.
+
+Example:
+app.get('/user', (req, res) => {
+  const userId = req.query.id;
+  const data = {
+    user: {
+      id: userId,
+      name: `User ${userId}`
+    }
+  };
+  res.json(data);
+});
+Here, if you visit /user?id=5, it will respond with:
+
+{
+  "user": {
+    "id": "5",
+    "name": "User 5"
+  }
+}
+
+5. Responding with Conditional JSON Data
+
+You can customize the JSON response based on the logic in your route, such as handling success or error cases.
+
+Example:
+
+app.get('/check-status', (req, res) => {
+  const status = req.query.status;
+  
+  if (status === "success") {
+    res.status(200).json({ message: "Operation successful" });
+  } else {
+    res.status(400).json({ error: "Bad request" });
+  }
+});
+Here, if /check-status?status=success is visited, it will respond with:
+
+{
+  "message": "Operation successful"
+}
+
+If /check-status?status=failure is visited, it will respond with:
+
+{
+  "error": "Bad request"
+}
+
+6. Streaming Large JSON Responses
+
+For large JSON responses that can’t be sent all at once, you can stream the JSON response using the res.write() method.
+
+Example:
+app.get('/large-json', (req, res) => {
+  res.write('{"data":[');
+  
+  for (let i = 1; i <= 1000; i++) {
+    res.write(JSON.stringify({ id: i, name: `Item ${i}` }));
+    if (i < 1000) res.write(',');
+  }
+
+  res.write(']}');
+  res.end();
+});
+
+This will stream a large JSON response with 1000 items.
+
+7. Responding with JSON in Middleware
+
+Middleware functions can also modify or respond with JSON. You can create middleware to log or transform data before sending a response.
+
+Example:
+
+const logMiddleware = (req, res, next) => {
+  console.log(`Request received: ${req.method} ${req.url}`);
+  next();
+};
+
+app.get('/middleware-json', logMiddleware, (req, res) => {
+  res.json({ message: "Logged and responded with JSON" });
+});
+
+In this example, the middleware logs the request details before proceeding to send the JSON response.
+
+8. Sending JSON and Ending the Request
+
+The res.json() method automatically calls res.end(), meaning that it finishes the response once the data is sent. 
+
+However, if you need more control, you can use res.write() and res.end() manually.
+
+Example:
+app.get('/manual-json', (req, res) => {
+  res.write(JSON.stringify({ part1: "This is the first part" }));
+  res.write(JSON.stringify({ part2: "This is the second part" }));
+  res.end();
+});
+
+In this example, multiple write() calls are made before the request is ended with res.end().
+
+
+Wiring up Express with a view engine:
+
+
+In Express.js, a view engine allows you to render dynamic content on your web pages using templates. Express supports various view engines such as Pug (formerly Jade), EJS (Embedded JavaScript), and Handlebars (hbs). Wiring up Express with a view engine involves setting up Express to use one of these template engines, rendering dynamic data in HTML.
+
+Let's walk through the process of setting up Express with different view engines using practical examples.
+
+1. Setting up an Express Project
+
+Before wiring up Express with a view engine, let's first set up an Express project.
+
+Steps:
+
+Initialize an Express app.
+
+Install the required dependencies (Express and the view engine).
+
+Commands:
+
+# Create a new directory for the project
+
+mkdir express-view-engine-example
+
+cd express-view-engine-example
+
+# Initialize a new Node.js project
+npm init -y
+
+# Install Express
+npm install express
+
+2. Wiring Up Express with EJS (Embedded JavaScript)
+
+EJS is a simple templating language that lets you generate HTML markup with JavaScript.
+
+Steps:
+Install EJS:
+
+npm install ejs
+
+Create an Express app and configure it to use EJS:
+
+// app.js
+const express = require('express');
+const app = express();
+
+// Set EJS as the view engine
+app.set('view engine', 'ejs');
+
+// Define a route
+app.get('/', (req, res) => {
+    const data = { title: 'Hello EJS', message: 'Welcome to EJS templating!', p:"This is Paragraph };
+    res.render('index', data);  // Render index.ejs
+});
+
+// Start the server
+app.listen(3000, () => {
+    console.log('Server running on port 3000');
+});
+
+Create the views folder and add an EJS template:
+
+mkdir views
+
+Inside the views folder, create an index.ejs file:
+
+<!-- views/index.ejs -->
+<html>
+<head>
+    <title><%= title %></title>
+</head>
+<body>
+    <h1><%= message %></h1>
+<p><% = p %>
+</body>
+</html>
+Run the app:
+
+node app.js
+
+Open http://localhost:3000 in your browser, and you will see:
+
+Welcome to EJS templating!
+
+3. Wiring Up Express with Pug (formerly Jade)
+
+Pug is a minimalist template engine for Node.js that simplifies writing HTML through indentation and a clean syntax.
+
+Steps:
+
+Install Pug:
+
+npm install pug
+
+Configure Pug in the Express app:
+
+// app.js
+const express = require('express');
+const app = express();
+
+// Set Pug as the view engine
+app.set('view engine', 'pug');
+
+// Define a route
+app.get('/', (req, res) => {
+    res.render('index', { title: 'Hello Pug', message: 'Welcome to Pug templating!' });
+});
+
+// Start the server
+app.listen(3000, () => {
+    console.log('Server running on port 3000');
+});
+Create a Pug template:
+
+mkdir views
+
+Inside the views folder, create an index.pug file:
+
+//- views/index.pug
+doctype html
+html
+  head
+    title= title
+  body
+    h1= message
+
+Run the app:
+
+node app.js
+Open http://localhost:3000 in your browser to see:
+
+Welcome to Pug templating!
+
+4. Wiring Up Express with Handlebars (hbs)
+Handlebars (hbs) is another popular templating engine for Express.
+
+Steps:
+
+Install hbs:
+
+npm install hbs
+
+Configure Express to use Handlebars:
+
+// app.js
+const express = require('express');
+const app = express();
+
+// Set Handlebars (hbs) as the view engine
+app.set('view engine', 'hbs');
+
+// Define a route
+app.get('/', (req, res) => {
+    res.render('index', { title: 'Hello Handlebars', message: 'Welcome to Handlebars templating!' });
+});
+
+// Start the server
+app.listen(3000, () => {
+    console.log('Server running on port 3000');
+});
+
+Create the views folder and an index.hbs file:
+
+<!-- views/index.hbs -->
+<html>
+<head>
+    <title>{{title}}</title>
+</head>
+<body>
+    <h1>{{message}}</h1>
+</body>
+</html>
+Run the app:
+
+node app.js
+
+Open http://localhost:3000 in your browser to see:
+
+Welcome to Handlebars templating!
+
+5. Rendering Static Files and Partials
+
+Most view engines, such as EJS and Handlebars, allow you to include partials (reusable template snippets) and static assets like CSS or images.
+
+Serving Static Files:
+
+In Express, you can serve static files (CSS, JavaScript, images) using the express.static middleware.
+
+app.use(express.static('public'));
+
+Now, if you have a folder public with assets, they will be served automatically.
+
+Including Partials in EJS:
+
+In EJS, partials can be included using <%- include('partial_name') %>.
+
+<!-- views/index.ejs -->
+<html>
+<head>
+    <%- include('partials/header') %>
+    <title><%= title %></title>
+</head>
+<body>
+    <h1><%= message %></h1>
+    <%- include('partials/footer') %>
+</body>
+</html>
+
+
+Rendering in Express:
+
+
+In Express.js, rendering refers to the process of combining data with templates (views) to generate dynamic HTML that can be served to the client. Express uses a view engine to render these templates.
+
+Steps to Enable Rendering in Express
+Install a templating engine like Pug, EJS, or Handlebars.
+Set the view engine in the Express app.
+Use the res.render() method to render views with dynamic data.
+Example 1: Rendering with Pug (formerly known as Jade)
+
+Step 1: Install Pug
+
+npm install pug
+
+Step 2: Set up Pug in Express
+
+const express = require('express');
+const app = express();
+
+// Set Pug as the template engine
+app.set('view engine', 'pug');
+app.set('views', './views'); // Directory for views
+
+app.get('/', (req, res) => {
+    res.render('index', { title: 'Home Page', message: 'Welcome to Express with Pug!' });
+});
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
+
+Step 3: Create a views/index.pug file
+doctype html
+html
+  head
+    title= title
+  body
+    h1= message
+Output:
+
+When accessing localhost:3000, the browser renders the HTML:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home Page</title>
+  </head>
+  <body>
+    <h1>Welcome to Express with Pug!</h1>
+  </body>
+</html>
+
+Example 2: Rendering with EJS (Embedded JavaScript)
+
+Step 1: Install EJS
+
+npm install ejs
+
+Step 2: Set up EJS in Express
+const express = require('express');
+const app = express();
+
+// Set EJS as the template engine
+app.set('view engine', 'ejs');
+app.set('views', './views'); // Directory for views
+
+app.get('/', (req, res) => {
+    res.render('index', { title: 'Home Page', message: 'Welcome to Express with EJS!' });
+});
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
+
+Step 3: Create a views/index.ejs file
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1><%= message %></h1>
+  </body>
+</html>
+Output:
+When accessing localhost:3000, the rendered HTML is:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home Page</title>
+  </head>
+  <body>
+    <h1>Welcome to Express with EJS!</h1>
+  </body>
+</html>
+
+Example 3: Rendering with Handlebars (hbs)
+
+Step 1: Install Handlebars
+npm install hbs
+
+Step 2: Set up Handlebars in Express
+const express = require('express');
+const app = express();
+
+// Set Handlebars as the template engine
+app.set('view engine', 'hbs');
+app.set('views', './views'); // Directory for views
+
+app.get('/', (req, res) => {
+    res.render('index', { title: 'Home Page', message: 'Welcome to Express with Handlebars!' });
+});
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
+
+Step 3: Create a views/index.hbs file
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <h1>{{message}}</h1>
+  </body>
+</html>
+Output:
+When accessing localhost:3000, the rendered HTML is:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home Page</title>
+  </head>
+  <body>
+    <h1>Welcome to Express with Handlebars!</h1>
+  </body>
+</html>
+
+Example 4: Rendering JSON Response
+
+Express can also render JSON responses (common for REST APIs).
+
+const express = require('express');
+const app = express();
+
+app.get('/json', (req, res) => {
+    res.json({ title: 'Home Page', message: 'Welcome to Express with JSON!' });
+});
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
+
+Output:
+
+When accessing localhost:3000/json, the response is:
+
+{
+  "title": "Home Page",
+  "message": "Welcome to Express with JSON!"
+}
+
+Example 5: Rendering Plain HTML (Static HTML)
+
+You can also render plain HTML files without a template engine.
+
+Step 1: Place the HTML file in the public folder
+
+Create an index.html file in the public directory:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home Page</title>
+  </head>
+  <body>
+    <h1>Welcome to Express with Static HTML!</h1>
+  </body>
+</html>
+
+Step 2: Serve Static HTML in Express
+const express = require('express');
+const app = express();
+
+// Serve static files in the 'public' folder
+app.use(express.static('public'));
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
+Output:
+
+When accessing localhost:3000, the HTML file in public/index.html is served as-is.
+
+Example 6: Rendering Partial Views
+
+Many template engines (like Handlebars and EJS) support partials—reusable components like headers or footers.
+
+Using Handlebars (Partials)
+
+Create a views/partials/header.hbs:
+
+<header>
+  <h1>Welcome to My Website</h1>
+</header>
+
+Then, modify your main view to include the partial:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    {{> header }}
+    <h1>{{message}}</h1>
+  </body>
+</html>
+
+Configure Handlebars to use partials:
+
+const express = require('express');
+const hbs = require('hbs');
+const app = express();
+
+app.set('view engine', 'hbs');
+app.set('views', './views');
+
+// Register partials
+hbs.registerPartials(__dirname + '/views/partials');
+
+app.get('/', (req, res) => {
+    res.render('index', { title: 'Home Page', message: 'Welcome to Express with Handlebars and Partials!' });
+});
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
+Output:
+
+When accessing localhost:3000, the rendered HTML includes the partial:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home Page</title>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to My Website</h1>
+    </header>
+    <h1>Welcome to Express with Handlebars and Partials!</h1>
+  </body>
+</html>
+
+
+Handlebars:
+
+Handlebars with Express.js: A Comprehensive Guide with Examples
+Handlebars is a popular templating engine that allows you to build dynamic HTML templates by embedding JavaScript expressions into your markup. It integrates well with Express.js and is often used to render server-side views.
+
+Setting up Handlebars in Express
+
+Before diving into examples, let's set up a basic Express.js project with Handlebars.
+
+Step 1: Create a New Project
+
+Initialize a new Node.js project:
+
+mkdir express-handlebars-example
+
+cd express-handlebars-example
+
+npm init -y
+
+Install the required dependencies:
+
+npm install express express-handlebars
+
+Step 2: Basic Express Server with Handlebars
+
+Create an app.js file for your server:
+
+const express = require('express');
+const exphbs = require('express-handlebars');
+
+const app = express();
+
+// Set Handlebars as the template engine
+app.engine('hbs', exphbs({ extname: '.hbs' }));
+app.set('view engine', 'hbs');
+
+// Define a route
+app.get('/', (req, res) => {
+  res.render('home', { title: 'Welcome', message: 'Hello, Handlebars!' });
+});
+
+// Start the server
+app.listen(3000, () => {
+  console.log('Server is running on http://localhost:3000');
+});
+Here, we:
+
+Use express-handlebars as the view engine.
+
+Set .hbs as the extension for Handlebars templates.
+
+Step 3: Creating Handlebars Views
+
+Inside your project directory, create a folder called views, then create a home.hbs file inside it:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+</head>
+<body>
+  <h1>{{message}}</h1>
+</body>
+</html>
+
+In this template, we use {{title}} and {{message}} to dynamically display values passed from the Express route.
+
+Step 4: Running the Application
+Start your server:
+
+node app.js
+Visit http://localhost:3000 in your browser, and you should see the rendered message "Hello, Handlebars!".
+
+Examples of Handlebars Usage in Express
+
+1. Using Variables
+
+You can pass variables from your Express route to the template.
+
+Route (app.js):
+
+app.get('/about', (req, res) => {
+  res.render('about', { title: 'About Us', description: 'We are a tech company.' });
+});
+
+Template (views/about.hbs):
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+</head>
+<body>
+  <h1>{{title}}</h1>
+  <p>{{description}}</p>
+</body>
+</html>
+
+2. Iterating Over Arrays with {{#each}}
+
+You can pass an array to Handlebars and iterate over it using {{#each}}.
+
+Route (app.js):
+
+app.get('/users', (req, res) => {
+  const users = [
+    { name: 'Alice', age: 25 },
+    { name: 'Bob', age: 30 },
+    { name: 'Charlie', age: 22 }
+  ];
+  res.render('users', { users });
+});
+
+Template (views/users.hbs):
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users</title>
+</head>
+<body>
+  <h1>User List</h1>
+  <ul>
+    {{#each users}}
+      <li>{{name}} - {{age}} years old</li>
+    {{/each}}
+  </ul>
+</body>
+</html>
+
+3. Conditional Rendering with {{#if}}
+Handlebars allows you to conditionally render content using the {{#if}} block.
+
+Route (app.js):
+
+app.get('/login', (req, res) => {
+  const isLoggedIn = false;
+  res.render('login', { isLoggedIn });
+});
+Template (views/login.hbs):
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+</head>
+<body>
+  {{#if isLoggedIn}}
+    <p>Welcome back! You are logged in.</p>
+  {{else}}
+    <p>Please log in to continue.</p>
+  {{/if}}
+</body>
+</html>
+
+
+Routing:
+
+Getting data from the request object - forms and cookies:
+
+In Express.js, the request object (req) is a crucial part of handling HTTP requests. It contains properties like form data, query parameters, headers, cookies, etc. Below, we'll explain how to handle data from forms and cookies with examples.
+
+1. Handling Form Data :
+
+In Express, form data can be submitted using the POST method. Express does not natively handle form data, so middleware like body-parser or the built-in express.urlencoded() is required to parse the form data.
+
+Example: Handling URL-encoded Form Data
+
+Here is how to retrieve form data sent using the application/x-www-form-urlencoded encoding:
+
+Step 1: Set up the project
+
+Install Express and any required middleware:
+
+npm init -y
+npm install express
+
+Step 2: Basic Server Setup
+
+const express = require('express');
+const app = express();
+
+// Middleware to parse URL-encoded form data
+app.use(express.urlencoded({ extended: true }));
+
+app.get('/', (req, res) => {
+  res.send(`
+    <form action="/submit-form" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name">
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email">
+      <button type="submit">Submit</button>
+    </form>
+  `);
+});
+
+app.post('/submit-form', (req, res) => {
+  // Accessing form data from req.body
+  const { name, email } = req.body;
+  res.send(`Received form data: Name - ${name}, Email - ${email}`);
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+In this example, we use express.urlencoded() to parse the form data into req.body. The form action /submit-form triggers the POST request, and you can access form fields like name and email from req.body.
+
+Example: Handling JSON Form Data
+
+For handling JSON data, we use express.json() middleware. This is typically used in APIs where the request body is sent as JSON.
+
+const express = require('express');
+const app = express();
+
+// Middleware to parse JSON data
+app.use(express.json());
+
+app.post('/submit-json', (req, res) => {
+  const { name, email } = req.body; // Assuming JSON data is sent
+  res.send(`Received JSON data: Name - ${name}, Email - ${email}`);
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+Here, the client would send a POST request with a JSON body like:
+
+{
+  "name": "John Doe",
+  "email": "john@example.com"
+}
+
+The server accesses it through req.body.
+
+2. Handling Cookies
+
+Cookies can be sent from the client, and Express provides the cookie-parser middleware to easily manage cookies. Cookies are often used to store user sessions or small pieces of data for tracking purposes.
+
+Example: Using cookie-parser to Manage Cookies
+
+Step 1: Install cookie-parser
+
+npm install cookie-parser
+
+Step 2: Server Setup
+
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const app = express();
+
+// Use cookie-parser middleware
+app.use(cookieParser());
+
+// Setting a cookie
+app.get('/set-cookie', (req, res) => {
+  res.cookie('username', 'JohnDoe'); // Setting a simple cookie
+  res.send('Cookie has been set');
+});
+
+// Accessing cookies from the request
+app.get('/get-cookie', (req, res) => {
+  const username = req.cookies.username; // Accessing the cookie
+  if (username) {
+    res.send(`Welcome back, ${username}`);
+  } else {
+    res.send('No username cookie found');
+  }
+});
+
+// Clearing a cookie
+app.get('/clear-cookie', (req, res) => {
+  res.clearCookie('username'); // Clearing the cookie
+  res.send('Cookie has been cleared');
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+res.cookie(): This method sets a cookie in the client's browser. You can set options like maxAge, httpOnly, secure, etc.
+req.cookies: After parsing cookies with cookie-parser, they are available as an object in req.cookies.
+res.clearCookie(): This method clears the specified cookie from the client.
+
+3. Example: Using Forms with Cookies
+
+You can also combine form data and cookies, like storing form submission data in cookies.
+
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const app = express();
+
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+app.get('/', (req, res) => {
+  res.send(`
+    <form action="/submit-form" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name">
+      <button type="submit">Submit</button>
+    </form>
+  `);
+});
+
+app.post('/submit-form', (req, res) => {
+  const { name } = req.body;
+  res.cookie('name', name); // Store form data in a cookie
+  res.send(`Hello, ${name}. Your name is stored in a cookie.`);
+});
+
+app.get('/greet', (req, res) => {
+  const name = req.cookies.name;
+  if (name) {
+    res.send(`Hello again, ${name}. Welcome back!`);
+  } else {
+    res.send('Hello, guest!');
+  }
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+In this example:
+
+A user submits their name via a form, and it's stored in a cookie.
+When the user accesses the /greet route, their name is retrieved from the cookie and displayed.
+
+
+Getting data from the query string:
+
+In Express.js, the query string is the part of a URL that comes after the ? symbol and contains key-value pairs. This is commonly used to pass data via a URL. Express allows you to access query string parameters easily using req.query.
+
+Here’s a step-by-step explanation with different types of examples from scratch:
+
+Setting Up an Express App
+First, create an Express application.
+
+Install Express:
+
+npm init -y
+npm install express
+Basic Setup:
+
+// server.js
+const express = require('express');
+const app = express();
+
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
+Now, we can build examples on how to extract query string data.
+
+Example 1: Basic Query String
+In this example, the query string contains simple key-value pairs like /greet?name=John&age=30.
+
+Code:
+app.get('/greet', (req, res) => {
+    // Accessing query parameters
+    const name = req.query.name;
+    const age = req.query.age;
+
+    // Sending response with the query data
+    res.send(`Hello ${name}, you are ${age} years old.`);
+});
+Request:
+GET http://localhost:3000/greet?name=John&age=30
+Response:
+Hello John, you are 30 years old.
+
+Example 2: Multiple Query Parameters
+
+You can pass multiple query parameters in the URL. They are automatically parsed into an object by Express.
+
+Code:
+app.get('/product', (req, res) => {
+    const { id, category } = req.query;
+
+    res.send(`Product ID: ${id}, Category: ${category}`);
+});
+Request:
+GET http://localhost:3000/product?id=123&category=books
+
+Response:
+
+Product ID: 123, Category: books
+
+Example 3: Optional Query Parameters
+If some query parameters are optional, Express won’t raise an error if they’re missing; they will just be undefined.
+
+Code:
+app.get('/search', (req, res) => {
+    const term = req.query.term || 'No search term provided';
+    const sort = req.query.sort || 'relevance';
+
+    res.send(`Searching for: ${term}, Sorted by: ${sort}`);
+});
+Request without a sort parameter:
+GET http://localhost:3000/search?term=books
+Response:
+Searching for: books, Sorted by: relevance
+
+Request without a term parameter:
+GET http://localhost:3000/search
+
+Response:
+Searching for: No search term provided, Sorted by: relevance
+
+Example 4: Query Parameters as Arrays
+
+Query strings can also handle arrays if the same key is repeated in the query.
+
+Code:
+app.get('/filter', (req, res) => {
+    const categories = req.query.category;
+
+    res.send(`Selected categories: ${categories.join(', ')}`);
+});
+Request:
+GET http://localhost:3000/filter?category=books&category=electronics&category=clothing
+Response:
+Selected categories: books, electronics, clothing
+
+Example 5: Query Parameters with Nested Objects (Complex Data)
+
+Sometimes, query parameters might represent nested objects. Express doesn’t automatically parse nested structures, but libraries like qs can help.
+
+Install qs Library:
+
+npm install qs
+
+Use qs to Parse Nested Query Strings:
+
+const qs = require('qs');
+
+app.get('/nested', (req, res) => {
+    const query = qs.parse(req.query);
+    const { user } = query;
+    res.send(`User: ${user.name}, Age: ${user.age}`);
+});
+
+Request:
+
+GET http://localhost:3000/nested?user[name]=Alice&user[age]=25
+Response:
+
+User: Alice, Age: 25
+
+Example 6: Handling Query Strings with Special Characters
+
+Special characters (like &, =, +, etc.) in query strings need to be URL encoded. Express automatically handles decoding these characters for you.
+
+Code:
+app.get('/message', (req, res) => {
+    const message = req.query.msg;
+    res.send(`Message: ${message}`);
+});
+Request (with special characters):
+GET http://localhost:3000/message?msg=Hello%20World%21%20How%20are%20you%3F
+
+Response:
+
+Message: Hello World! How are you?
+
+Example 7: Error Handling for Missing Query Parameters
+
+You can add simple error handling to ensure that required query parameters are present.
+
+Code:
+app.get('/profile', (req, res) => {
+    const { user } = req.query;
+
+    if (!user) {
+        return res.status(400).send('Error: Missing "user" query parameter');
+    }
+
+    res.send(`Welcome ${user}`);
+});
+Request without the required user parameter:
+
+GET http://localhost:3000/profile
+
+Response:
+
+Error: Missing "user" query parameter
+
+Request with the required user parameter:
+
+GET http://localhost:3000/profile?user=Alice
+Response:
+
+Welcome Alice
+
+
+Getting data from params (URL wildcards) - reqparams and
+reqparam():
+
+
+In Express.js, retrieving data from URL parameters (wildcards) is a common practice, especially when you need to extract dynamic values from the URL to process requests. Express provides two main ways to handle URL parameters: req.params and req.param(). Here's a detailed explanation with examples.
+
+1. req.params in Express
+req.params is an object containing properties mapped to the named route parameters. It’s used to capture values from the dynamic segments of a URL (wildcards).
+
+Example 1: Basic Route with req.params
+Consider the following route where :id is a dynamic parameter:
+
+const express = require('express');
+const app = express();
+
+// Route with dynamic parameter
+app.get('/user/:id', (req, res) => {
+    const userId = req.params.id;
+    res.send(`User ID is: ${userId}`);
+});
+
+app.listen(3000, () => {
+    console.log('Server running on port 3000');
+});
+Here:
+
+The :id in /user/:id is a wildcard.
+req.params.id captures the value of id in the URL.
+Usage
+GET /user/123
+Response: User ID is: 123
+
+Example 2: Multiple Wildcards
+
+You can also have multiple wildcards:
+
+app.get('/post/:postId/comment/:commentId', (req, res) => {
+    const { postId, commentId } = req.params;
+    res.send(`Post ID: ${postId}, Comment ID: ${commentId}`);
+});
+Usage
+
+GET /post/456/comment/789
+
+Response: Post ID: 456, Comment ID: 789
+
+2. Using req.param() (Deprecated)
+
+The req.param() method was used to retrieve parameters from different parts of the request, including the route parameters, query string, and request body. However, this method has been deprecated in Express and should not be used in new applications.
+
+Example:
+
+app.get('/item/:itemId', (req, res) => {
+    const itemId = req.param('itemId'); // Deprecated
+    res.send(`Item ID is: ${itemId}`);
+});
+
+While this works, you should avoid using req.param() in favor of req.params, req.query, or req.body, depending on the source of the data.
+
+3. Advanced Examples of req.params
+
+Example 3: Regular Expressions in Route
+You can also define more complex routes using regular expressions. For instance:
+
+app.get('/user/:id(\\d+)', (req, res) => {
+    const userId = req.params.id;
+    res.send(`User ID is a number: ${userId}`);
+});
+
+This route will only match if the id is a number.
+
+Usage
+
+GET /user/123
+
+Response: User ID is a number: 123
+
+GET /user/abc
+
+Response: 404 (No matching route)
+
+Example 4: Optional Parameters
+
+You can define optional parameters in a route using the ? symbol:
+
+app.get('/product/:productId/:reviewId?', (req, res) => {
+    const { productId, reviewId } = req.params;
+    if (reviewId) {
+        res.send(`Product ID: ${productId}, Review ID: ${reviewId}`);
+    } else {
+        res.send(`Product ID: ${productId}, No Review ID provided`);
+    }
+});
+Usage
+GET /product/100
+Response: Product ID: 100, No Review ID provided
+
+GET /product/100/50
+Response: Product ID: 100, Review ID: 50
+
+Example 5: Combining req.params with Query Strings
+
+Sometimes you may want to use both URL parameters and query strings in your route:
+
+app.get('/search/:category', (req, res) => {
+    const { category } = req.params;
+    const { sort, page } = req.query; // Query parameters
+    res.send(`Category: ${category}, Sort: ${sort}, Page: ${page}`);
+});
+Usage
+
+GET /search/books?sort=asc&page=2
+Response: Category: books, Sort: asc, Page: 2
+
+Summary
+
+req.params: Captures values from dynamic segments of the URL (wildcards). It’s the most common and recommended way to handle URL parameters in Express.
+req.param(): A deprecated method that should not be used anymore. Instead, use req.params, req.query, or req.body based on the data source.
+Best Practices:
+Always use req.params to handle route parameters.
+Ensure parameter validation to avoid security risks (e.g., SQL Injection).
+Use query strings for optional or filtering parameters (req.query).
+
+
+Sending files, and headers already sent!:
+
+
+In Express, two common issues related to sending files and headers are:
+
+Sending Files: This involves sending files like images, PDFs, or other static resources to the client. Express provides built-in methods for file handling.
+
+"Headers Already Sent" Error: This occurs when you try to modify or send a response (headers) after the HTTP headers have already been sent to the client.
+
+Let’s dive into these two topics with examples.
+
+1. Sending Files in Express
+Express has two key methods for sending files:
+
+res.sendFile(): This method is used to send a file as an HTTP response. You need to specify the absolute path to the file.
+res.download(): This method sends a file to be downloaded by the client, providing a prompt to save the file.
+
+Example 1: Using res.sendFile()
+
+To send an HTML file to the client:
+
+const express = require('express');
+const path = require('path');
+const app = express();
+
+app.get('/file', (req, res) => {
+  const filePath = path.join(__dirname, 'public', 'index.html');
+  res.sendFile(filePath);
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+Here, res.sendFile() sends the index.html file located in the public directory.
+
+Example 2: Using res.download()
+To send a file for download:
+
+const express = require('express');
+const path = require('path');
+const app = express();
+
+app.get('/download', (req, res) => {
+  const filePath = path.join(__dirname, 'files', 'report.pdf');
+  res.download(filePath, 'report.pdf', (err) => {
+    if (err) {
+      console.log('Error in sending file:', err);
+    } else {
+      console.log('File download successful');
+    }
+  });
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+Here, res.download() sends report.pdf to the client, prompting them to download it.
+
+2. "Headers Already Sent" Error
+
+The "Headers Already Sent" error happens when you try to modify or send headers (including a response) after they’ve already been sent. HTTP headers are sent with the first part of the response (e.g., status codes), and you can’t modify them afterward.
+
+Common Scenario:
+
+If you try to call res.send() or res.json() after another response has already been sent, you’ll encounter this error.
+
+Example 3: "Headers Already Sent" Error
+const express = require('express');
+const app = express();
+
+app.get('/error', (req, res) => {
+  res.send('First Response');  // This sends the response and headers
+  res.send('Second Response'); // This will cause "Headers already sent" error
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+In this example, the second res.send() call will fail because the headers were already sent by the first res.send().
+
+How to Avoid "Headers Already Sent" Error
+Ensure Only One Response Is Sent:
+const express = require('express');
+const app = express();
+
+app.get('/success', (req, res) => {
+  if (true) {
+    res.send('Only one response sent');
+  }
+  // Avoid sending any additional responses here
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+Return After Sending a Response:
+To ensure the code execution stops after sending the response:
+
+const express = require('express');
+const app = express();
+
+app.get('/safe', (req, res) => {
+  if (true) {
+    res.send('First Response');
+    return;  // Ensures no further response attempts
+  }
+  res.send('This won\'t run');
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+3. Handling Asynchronous Code and "Headers Already Sent"
+
+If you're dealing with asynchronous code (like database calls or API requests), be careful to avoid sending multiple responses due to an async function call.
+
+Example 4: Asynchronous "Headers Already Sent" Issue
+
+const express = require('express');
+const app = express();
+
+app.get('/async-error', (req, res) => {
+  setTimeout(() => {
+    res.send('Response from async code');
+  }, 1000);
+
+  // This causes the headers to be sent twice, which is an error
+  res.send('Immediate Response');
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+In this case, both res.send() statements will try to send a response. To fix this, you should only send a response after the asynchronous code finishes.
+
+Example 5: Fixing Asynchronous "Headers Already Sent" Error
+
+const express = require('express');
+const app = express();
+
+app.get('/async-safe', (req, res) => {
+  setTimeout(() => {
+    res.send('Response from async code');
+  }, 1000);
+
+  // No other response is sent here, ensuring headers are only sent once
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+Summary:
+Sending files in Express can be done using res.sendFile() for serving files or res.download() for prompting downloads.
+The "Headers Already Sent" error occurs when you attempt to send multiple responses or modify headers after they’ve been sent.
+To avoid this error, ensure only one response is sent, and return immediately after sending it, especially in asynchronous code.
+
+The Router:
+
+In Express.js, the Router is a key component that allows you to manage routes in your application. It helps to define multiple routes for handling HTTP requests like GET, POST, PUT, DELETE, etc. Routers in Express can be modular, meaning you can separate different parts of your app (such as users, posts, comments) into different routers for better structure and scalability.
+
+Basic Concepts of Express Router
+Router: Used to define routes.
+Route Handlers: Functions that handle the HTTP requests.
+Middleware: Functions that execute before the request is processed.
+Creating an Express Router
+
+Example 1: Basic Router
+const express = require('express');
+const app = express();
+const router = express.Router();
+
+// Define a simple route
+router.get('/', (req, res) => {
+  res.send('Hello, from the Home Page!');
+});
+
+// Use the router
+app.use('/', router);
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+In this example:
+
+We created a Router object using express.Router().
+Defined a GET route for the home path /.
+Then, attached this router to the Express app using app.use().
+Example 2: Parameterized Routes
+Express Router supports parameters in routes. This allows for flexible URL structures, like user profiles or articles.
+
+const express = require('express');
+const app = express();
+const router = express.Router();
+
+// Define a route with parameters
+router.get('/user/:id', (req, res) => {
+  const userId = req.params.id;
+  res.send(`User ID is: ${userId}`);
+});
+
+app.use('/', router);
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+Here, the :id is a route parameter, which can be accessed via req.params.id. If you access /user/123, the output will be User ID is: 123.
+
+Example 3: Router-Level Middleware
+
+Middleware in routers can be used to perform tasks like logging, validation, or authentication before processing a request.
+
+const express = require('express');
+const app = express();
+const router = express.Router();
+
+// Middleware function
+router.use((req, res, next) => {
+  console.log('Time:', Date.now());
+  next();  // Pass control to the next handler
+});
+
+// Route handler
+router.get('/about', (req, res) => {
+  res.send('About Page');
+});
+
+app.use('/', router);
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+In this example:
+
+The middleware router.use() logs the current time for every request made to the router.
+
+Example 4: Modular Routing
+
+You can organize your application by creating separate router files for different parts of the app, like users or products.
+
+users.js (Router for Users)
+
+const express = require('express');
+const router = express.Router();
+
+// List all users
+router.get('/', (req, res) => {
+  res.send('List of users');
+});
+
+// Get a single user by ID
+router.get('/:id', (req, res) => {
+  const userId = req.params.id;
+  res.send(`User ID is: ${userId}`);
+});
+
+module.exports = router;
+
+app.js (Main Application)
+
+const express = require('express');
+const app = express();
+const userRouter = require('./users');
+
+// Use the user router for all '/users' routes
+app.use('/users', userRouter);
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+Now, the /users routes are handled separately, and requests like /users and /users/1 will be managed by the users.js router.
+
+Example 5: Chaining Route Handlers
+
+Express Router allows chaining route handlers for the same path. This is useful for performing multiple actions or middleware on a single route.
+
+const express = require('express');
+const app = express();
+const router = express.Router();
+
+// Route with multiple handlers
+router.get('/books', (req, res, next) => {
+  console.log('Handler 1: First step');
+  next();  // Pass control to the next handler
+}, (req, res) => {
+  console.log('Handler 2: Second step');
+  res.send('Books List');
+});
+
+app.use('/', router);
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+Here, the route /books uses two functions, one after the other, for processing the request.
+
+Example 6: Handling Multiple HTTP Methods
+
+You can define different handlers for various HTTP methods (GET, POST, PUT, DELETE, etc.) on the same route.
+
+const express = require('express');
+const app = express();
+const router = express.Router();
+
+// Handling GET request
+router.get('/items', (req, res) => {
+  res.send('GET request to /items');
+});
+
+// Handling POST request
+router.post('/items', (req, res) => {
+  res.send('POST request to /items');
+});
+
+app.use('/', router);
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+Summary
+The Express Router is a powerful tool for organizing routes in an Express application. It supports:
+
+Basic routing for handling requests.
+Parameterized routes for dynamic URLs.
+Middleware for processing requests before route handling.
+Modular routing for organizing routes in separate files.
+Chaining handlers for applying multiple actions on the same route.
+Multiple HTTP methods on the same route.

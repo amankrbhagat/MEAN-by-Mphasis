@@ -1,0 +1,1726 @@
+NoSQL Databases Introduction:
+
+NoSQL databases vs RDBMS:
+
+NoSQL and RDBMS (Relational Database Management System) are two popular types of database management systems used to store and manage data, but they are designed with different purposes and have distinct characteristics. Here's a comparison to explain them from scratch:
+
+1. Structure and Data Model:
+
+RDBMS:
+
+Uses a structured, tabular format with rows and columns (tables).
+Data is stored in relations (tables), and these tables have predefined schemas (rules about what data can be stored).
+Each table has a fixed number of columns with specific data types, and relationships between tables are maintained using foreign keys.
+
+Common query language: SQL (Structured Query Language).
+
+Example: MySQL, PostgreSQL, Oracle.
+Example:
+
+ID	Name	Age
+1	Alice	25
+2	Bob	30
+
+NoSQL:
+
+Uses a more flexible data model. Data can be stored in various formats such as key-value pairs, documents, graphs, or wide-column stores.
+No fixed schema; data can vary in structure.
+It is schema-less, which means fields can be added dynamically as needed.
+Designed to handle large volumes of unstructured or semi-structured data.
+Example: MongoDB (document-based), Cassandra (wide-column), Redis (key-value store).
+Example (Document in MongoDB):
+
+json
+Copy code
+{
+  "_id": "123",
+  "name": "Alice",
+  "age": 25,
+  "address": {
+    "street": "123 Main St",
+    "city": "Wonderland"
+  }
+}
+
+2. Scalability:
+
+RDBMS:
+Typically scales vertically (increasing hardware capacity like CPU, RAM, etc.).
+Scaling beyond certain limits can become expensive and complex.
+NoSQL:
+Designed to scale horizontally, meaning you can add more servers to handle increased load.
+This makes NoSQL ideal for applications that require rapid growth, such as social networks, e-commerce websites, or IoT applications.
+
+3. Data Integrity and Consistency:
+
+RDBMS:
+
+Emphasizes ACID (Atomicity, Consistency, Isolation, Durability) properties to ensure data integrity.
+Transactions are handled carefully to ensure that all operations in a transaction are completed successfully, otherwise the transaction is rolled back.
+This is critical for applications where accuracy is paramount, like banking or financial systems.
+
+NoSQL:
+
+NoSQL databases often follow the BASE model (Basically Available, Soft-state, Eventual consistency).
+Sacrifices strict consistency for higher availability and partition tolerance in distributed systems.
+It allows some level of inconsistency for a short period of time but ensures eventual consistency.
+
+4. Use Cases:
+RDBMS:
+
+Best suited for structured data and applications where the relationships between data entities are important (e.g., financial systems, ERP software).
+Used when data integrity and complex querying are essential.
+NoSQL:
+
+Ideal for applications with large amounts of unstructured or semi-structured data, or where data is expected to grow rapidly.
+Used for big data applications, real-time web apps, social media, content management, etc.
+Examples of use cases: Facebook (Graph databases), Netflix (Cassandra), and online catalogs (MongoDB).
+
+5. Schema Flexibility:
+RDBMS:
+Requires a well-defined schema before data can be entered.
+Schema changes are expensive and time-consuming as they can require data migration.
+NoSQL:
+No predefined schema; allows dynamic addition or modification of fields as the application evolves.
+Makes NoSQL more flexible for rapidly changing requirements.
+
+6. Performance:
+RDBMS:
+
+Great for complex queries and joins, as SQL is optimized for these operations.
+Performance might degrade with massive amounts of data or complex joins across multiple tables.
+NoSQL:
+
+Optimized for large-scale reads and writes.
+Since there are no complex joins (or limited joins), NoSQL can perform faster in scenarios requiring large-scale, simple data retrieval.
+
+7. Examples:
+RDBMS:
+MySQL, PostgreSQL, Oracle, SQL Server.
+NoSQL:
+MongoDB (document-based), Cassandra (wide-column), Redis (key-value store), Neo4j (graph-based).
+
+8. Query Language:
+RDBMS: Uses SQL for querying, which is a standardized language and widely adopted.
+NoSQL: Does not have a standard query language. Each NoSQL database has its own query mechanism, like MongoDB’s query language, Cassandra Query Language (CQL), etc.
+
+9. Advantages and Disadvantages:
+RDBMS:
+Advantages: ACID compliance, mature technology, great for complex queries.
+Disadvantages: Hard to scale, schema rigidity, not suited for unstructured data.
+NoSQL:
+Advantages: High scalability, flexible schemas, handles unstructured data well.
+Disadvantages: Lack of ACID guarantees (for some NoSQL databases), weaker consistency models, non-standardized query languages.
+Conclusion:
+RDBMS: Best suited for applications requiring structured data, strong consistency, and complex queries, such as financial systems.
+NoSQL: Ideal for handling large amounts of unstructured data, requiring flexibility, and horizontal scalability, such as social media platforms, IoT applications, and big data solutions.
+
+
+Types of NoSQL:
+
+NoSQL (Not Only SQL) databases are designed to store and manage large volumes of unstructured, semi-structured, or structured data. Unlike traditional relational databases, NoSQL databases use different data models to handle various types of data and offer high scalability, flexibility, and performance. NoSQL databases are particularly suited for big data applications, real-time web applications, and cloud computing.
+
+Key Types of NoSQL Databases:
+Document Stores
+Key-Value Stores
+Column-Family Stores
+Graph Databases
+Let’s explore each of these types in detail.
+
+1. Document Stores (Document-Oriented Databases)
+Overview:
+Document databases store data in the form of documents. Each document is a collection of fields and values, similar to a JSON object or XML.
+Documents are self-contained, meaning they can contain complex nested data structures, such as arrays or other documents.
+
+Key Characteristics:
+Schema-less, meaning documents do not need to follow a fixed structure.
+Ideal for handling semi-structured data.
+Each document is identified by a unique key or ID.
+Data is usually stored in JSON, BSON (Binary JSON), or XML formats.
+
+Example Use Cases:
+Content management systems (CMS)
+E-commerce websites (for product catalogs)
+Blogging platforms
+
+Popular Databases:
+MongoDB: Most popular document store with wide support for JSON/BSON documents.
+CouchDB: Another document store that uses JSON for documents and HTTP as its API.
+
+2. Key-Value Stores
+Overview:
+Key-Value databases store data as key-value pairs where each key is unique, and the corresponding value can be any kind of data (string, JSON, binary, etc.).
+This model is very simple and efficient for quick data retrieval.
+Key Characteristics:
+Schema-less, which means keys and values can be stored without a predefined structure.
+Great for applications where fast lookups are important.
+Values can be anything from a simple string to complex data like objects or binary data.
+
+Example Use Cases:
+Session management
+Caching
+User preference data
+
+Popular Databases:
+Redis: An in-memory data store known for high performance, often used as a cache or message broker.
+DynamoDB (by AWS): A fully managed NoSQL database service with a key-value model.
+
+3. Column-Family Stores
+Overview:
+Column-Family databases organize data into rows and columns, but unlike relational databases, the columns in each row can vary (i.e., schema flexibility).
+Each row is stored with a unique key, and the columns related to that key are grouped into families (hence the name "column family").
+Key Characteristics:
+Highly scalable and optimized for large-scale read/write operations.
+Data is stored in a tabular format, but each row can have a different number of columns.
+It is particularly suitable for analytical workloads.
+
+Example Use Cases:
+
+Large-scale real-time data analytics
+Data warehousing
+Distributed systems for handling massive amounts of data
+Popular Databases:
+Apache Cassandra: Designed for scalability and fault tolerance across multiple data centers.
+HBase: A distributed, column-oriented database built on top of Hadoop’s HDFS.
+
+4. Graph Databases
+Overview:
+Graph databases store data in the form of nodes, edges, and properties, making them ideal for data with complex relationships.
+Nodes represent entities (like users or products), edges represent relationships between entities, and properties represent information about the entities or relationships.
+Key Characteristics:
+Perfect for handling highly connected data and querying complex relationships.
+Graph traversal is extremely efficient for relationship-based queries, such as finding the shortest path, identifying clusters, etc.
+Focuses on the connections and relationships between data rather than just the data itself.
+
+Example Use Cases:
+Social networks (user connections)
+Fraud detection (analyzing connections between transactions)
+Recommendation engines
+
+Popular Databases:
+
+Neo4j: One of the most widely used graph databases, ideal for analyzing connected data.
+Amazon Neptune: A managed graph database service that supports both RDF and Property Graph models.
+Conclusion
+Each type of NoSQL database has its own strengths and weaknesses, and the choice of which to use depends on the specific requirements of your application:
+
+Document stores are best for semi-structured data like JSON.
+Key-value stores excel at fast lookups of simple data.
+Column-family stores handle large volumes of distributed data and are ideal for analytics.
+Graph databases are perfect for data with complex relationships.
+
+
+Features of NoSQL:
+
+NoSQL (Not Only SQL) databases are designed to handle large amounts of data with flexibility, scalability, and performance. They differ from traditional relational databases (RDBMS) in various aspects, including data models, scalability, and schema design.
+
+Here are the main features of NoSQL databases:
+
+1. Flexible Data Models
+
+No Fixed Schema: NoSQL databases are schema-less, meaning they do not require a predefined schema. This allows you to store different types of data without modifying the schema.
+
+Varied Data Models: They support a variety of data models, including key-value pairs, documents, wide-column stores, and graph structures. This flexibility makes NoSQL suitable for handling unstructured, semi-structured, or structured data.
+Document-based: MongoDB, Couchbase
+Key-value stores: Redis, DynamoDB
+Column-family stores: Cassandra, HBase
+Graph-based: Neo4j, ArangoDB
+
+2. Horizontal Scalability
+NoSQL databases are designed to scale horizontally, meaning you can add more servers or nodes to distribute the load, rather than scaling vertically (adding more CPU or RAM to a single machine).
+This makes NoSQL databases well-suited for handling large amounts of data across distributed systems, which is crucial for applications like social networks, online retail, or big data analytics.
+
+3. High Availability and Fault Tolerance
+NoSQL databases are built to ensure that data is replicated across multiple nodes or clusters, ensuring that the system remains available even if a node or server fails. This makes them highly resilient and fault-tolerant.
+
+Replication: Data is copied to multiple nodes to ensure that it remains available even during failures.
+Automatic Failover: If a node fails, another node can take over automatically to ensure minimal downtime.
+
+4. Distributed and Partitioned Architecture
+NoSQL databases are inherently distributed, meaning data is stored across multiple servers or data centers. This allows for:
+Partitioning (Sharding): Data is divided into smaller chunks (shards) that are stored across multiple servers. Each server (or shard) holds only part of the data.
+Geographical Distribution: Data can be distributed globally, ensuring faster data access for users in different regions.
+
+5. Optimized for Big Data and High Performance
+
+NoSQL databases are designed to handle massive amounts of data (terabytes to petabytes) and large-scale applications with high read and write throughput.
+They are used in real-time web applications, such as social media, recommendation systems, and IoT applications, where quick data retrieval and updates are critical.
+Low Latency: With in-memory caching and distributed data storage, NoSQL databases ensure low-latency access to data.
+
+6. Flexible Consistency Models
+
+While traditional RDBMS follows ACID (Atomicity, Consistency, Isolation, Durability) principles strictly, NoSQL databases offer more flexible consistency models:
+Eventual Consistency: The system guarantees that all replicas will eventually become consistent over time, but immediate consistency is not required. This is useful for applications where availability and partition tolerance are more critical than immediate consistency.
+Strong Consistency: Some NoSQL databases offer strong consistency at the expense of availability, but this depends on the specific use case and requirements.
+
+7. Schema-less Nature
+
+Unlike RDBMS, which requires you to define the structure of the data (schema) before storing it, NoSQL databases allow for dynamic and flexible data storage.
+You can store different types of data (like JSON, XML, etc.) in the same database without needing to modify the schema.
+This makes it easier to handle rapidly changing data requirements.
+
+8. Support for Polyglot Persistence
+In modern applications, it's common to use multiple types of databases (SQL and NoSQL) to handle different types of data efficiently. This approach is called polyglot persistence.
+NoSQL databases often integrate well with other types of databases, allowing for optimized data storage and retrieval depending on the use case.
+
+9. Open-Source and Cloud-Friendly
+
+Many NoSQL databases are open-source (like MongoDB, Cassandra, Couchbase), making them cost-effective and highly customizable.
+Additionally, NoSQL databases are cloud-friendly, supporting distributed architectures in cloud environments like AWS, Azure, or Google Cloud. Managed services like Amazon DynamoDB, Azure Cosmos DB, and Google Firestore offer scalable NoSQL solutions without the need to manage infrastructure.
+
+10. Handling Diverse Workloads
+NoSQL databases are particularly well-suited for handling various types of workloads, including:
+Real-time analytics
+High-speed transactions
+Recommendation systems
+Social media platforms
+IoT (Internet of Things) data management
+The ability to store and retrieve different types of data efficiently makes NoSQL ideal for modern web applications and microservices.
+
+11. Event-Driven and Stream Processing Support
+Many NoSQL databases support real-time data ingestion and event-driven architectures.
+For instance, NoSQL databases like Cassandra or DynamoDB work well with streaming platforms like Apache Kafka or Amazon Kinesis for real-time analytics and event-based applications.
+
+12. No Joins and Complex Transactions
+
+NoSQL databases typically avoid complex operations like joins between tables, which can slow down performance. Instead, data is often denormalized, meaning related data is stored together to reduce the need for joins.
+Transactions in NoSQL databases are typically simpler than in RDBMS. Some NoSQL databases provide support for multi-document ACID transactions (e.g., MongoDB), but these are less common and used only when necessary.
+Use Cases for NoSQL
+Social Media Applications: Handling unstructured, large-scale data with high read/write traffic.
+E-commerce: Catalog management, recommendations, and shopping cart data.
+Big Data Analytics: Storing and processing massive amounts of data from multiple sources.
+IoT (Internet of Things): Handling streams of real-time sensor data.
+Gaming: Real-time player data storage and leaderboard management.
+
+
+Describe the basic principles of the document-based data model:
+
+The document-based data model is a key principle of NoSQL databases, particularly document stores like MongoDB, Couchbase, and others. This model organizes, stores, and manages data in the form of documents, typically using formats such as JSON, BSON (binary JSON), or XML. Here are the basic principles of the document-based data model:
+
+1. Schema-less Design (Flexible Schema)
+Principle: Unlike relational databases, which require a predefined schema, document-based databases allow for schema-less data storage.
+Explanation: Each document can have a unique structure, which provides flexibility in handling dynamic and unstructured data. This allows fields to vary from document to document within the same collection, making it easy to evolve data models over time.
+
+2. Self-contained Documents
+Principle: Each document contains all of the data required for a specific entity.
+Explanation: A document encapsulates related information, often in key-value pairs, arrays, or nested documents. This reduces the need for complex joins between tables, making data access faster and more efficient. For example, a single document in an "orders" collection might include customer details, order items, and delivery information.
+
+3. Hierarchical Data Representation
+
+Principle: Documents can represent complex, hierarchical relationships.
+Explanation: Since documents can embed other documents or arrays of data, they are naturally suited to hierarchical or nested data structures. This is useful when you need to represent data like a product with multiple attributes, categories, or comments.
+
+4. Document Collections
+Principle: Documents are grouped into collections, which serve a similar role to tables in relational databases.
+Explanation: Collections are a set of documents that share some logical relationship, but they do not enforce a rigid schema. For instance, in an e-commerce application, you might have separate collections for customers, orders, and products.
+
+5. Key-Value Access
+Principle: Each document is uniquely identified by a key (or ID), enabling efficient retrieval.
+Explanation: The primary access pattern in document stores is through this key-value approach, where documents are fetched using their unique identifier. This makes reading and writing individual documents very efficient.
+
+6. Horizontal Scalability
+
+Principle: Document stores support horizontal scaling by distributing data across multiple nodes.
+Explanation: This is achieved through techniques like sharding, where documents are partitioned across different servers based on a shard key. This allows databases to handle large volumes of data and requests by adding more servers to the system.
+
+7. No Joins (Denormalization)
+Principle: Document-based databases avoid complex joins typically seen in relational databases.
+Explanation: Instead of using foreign keys and performing expensive joins, the model encourages storing related information within the same document (denormalization). This makes read operations faster because data can be fetched in a single query.
+
+8. Rich Query Capabilities
+Principle: Although document stores don’t support SQL, they offer rich querying features.
+Explanation: Document stores provide APIs and query languages to perform filtering, sorting, aggregation, and indexing on document fields. For example, MongoDB’s query language allows users to filter by document fields, ranges, or perform complex aggregation.
+
+9. Indexing and Optimized Read Performance
+Principle: Document stores use indexing to optimize read operations.
+Explanation: Indexes can be created on document fields to speed up query execution, allowing for quick lookups of documents based on specific fields, similar to how relational databases use indexes.
+Example:
+In MongoDB, a document in a collection named "users" might look like this:
+
+{
+   "_id": "123",
+   "name": "John Doe",
+   "email": "john@example.com",
+   "address": {
+       "street": "123 Main St",
+       "city": "New York",
+       "zip": "10001"
+   },
+   "orders": [
+       {
+           "order_id": "A001",
+           "total": 250,
+           "items": ["laptop", "mouse"]
+       }
+   ]
+}
+In this document:
+
+It represents a single entity (user) with associated details.
+The address field is nested, allowing hierarchical data storage.
+The orders field is an array of nested documents representing order details.
+
+
+Identify key features of the MongoDB NoSQL:
+
+MongoDB, a widely used NoSQL database, is known for its flexibility, scalability, and ease of use, especially for handling large amounts of unstructured or semi-structured data. Here are some key features of MongoDB:
+
+1. Document-Oriented Storage
+MongoDB stores data in BSON (Binary JSON) format, where documents resemble JSON-like structures with key-value pairs.
+Each document can have a different structure, which allows for flexibility in data representation.
+
+2. Schema Flexibility
+MongoDB offers dynamic schemas, meaning you don’t need to define a schema before adding data. Documents in the same collection can have different fields, and data types can evolve over time.
+
+3. Scalability
+Horizontal scaling is supported via sharding. MongoDB allows large data sets to be distributed across multiple servers, making it highly scalable for big data applications.
+Auto-sharding ensures data is automatically partitioned across a cluster without requiring manual intervention.
+
+4. High Availability
+MongoDB provides replica sets, which consist of a primary node and multiple secondary nodes. If the primary fails, one of the secondaries is promoted to primary, ensuring fault tolerance and high availability.
+
+5. Indexing
+Supports rich indexing on fields within documents, including primary and secondary indexes.
+Text search indexes, geospatial indexes, and compound indexes offer flexibility for optimized query performance.
+
+6. Aggregation Framework
+MongoDB includes a powerful aggregation pipeline that allows for complex data analysis, transformations, and filtering operations, enabling tasks like data summarization and reporting.
+
+7. GridFS for Large Files
+MongoDB's GridFS is designed for storing and retrieving large files such as videos, images, and other binary data by splitting them into smaller chunks.
+
+8. ACID Transactions (Multi-Document)
+Since version 4.0, MongoDB supports multi-document ACID transactions, ensuring consistency even when working across multiple documents and collections.
+
+9. Full-Text Search
+MongoDB offers a built-in full-text search engine to support efficient text search queries, with features like text indexing and scoring.
+
+10. Geospatial Queries
+It supports geospatial data and allows you to perform queries based on geographical data, such as finding points within a radius or identifying nearest neighbors.
+
+11. Integration with Big Data Tools
+MongoDB integrates well with tools in the big data ecosystem, such as Hadoop, Spark, and BI tools, allowing for seamless data processing and analytics workflows.
+
+12. Security Features
+Includes features like role-based access control (RBAC), TLS/SSL encryption for secure data transmission, and authentication mechanisms such as LDAP and Kerberos.
+
+13. MongoDB Atlas (Cloud Hosting)
+MongoDB offers a cloud service called MongoDB Atlas, which provides automated backups, monitoring, and scaling features for hosted MongoDB clusters.
+
+
+Working with MongoDB:
+
+
+Using MongoDB Atlas:
+
+
+MongoDB Atlas is a cloud-based database service provided by MongoDB, designed to automate database operations such as deployment, scaling, backups, and monitoring. This tutorial will walk you through how to work with MongoDB using MongoDB Atlas.
+
+Steps:
+Create a MongoDB Atlas Account
+
+Go to MongoDB Atlas and sign up for a free account.
+Once you sign up, you will land on the MongoDB Atlas dashboard.
+Create a Cluster
+
+After signing up, click on Create a Cluster.
+Select a cloud provider (AWS, GCP, or Azure) and region close to you for reduced latency.
+For the free tier, choose M0 Sandbox.
+Click Create Cluster.
+This process takes a few minutes.
+Create a Database User
+
+After your cluster is ready, click Database Access under the Security section.
+Click Add New Database User.
+Create a username and password. These credentials will be used to connect to the database from your application.
+Set the user's privileges to Atlas Admin or readWriteAnyDatabase, depending on your needs.
+Allow Access from IP Addresses
+
+Click Network Access under the Security section.
+Click Add IP Address and allow access from your IP address (you can use 0.0.0.0/0 to allow access from any IP address, but this is not secure in production).
+Save the settings.
+
+Connect to the Cluster
+
+Go to the Clusters section, and click Connect for your cluster.
+Choose Connect Your Application.
+Copy the connection string provided, e.g.,
+mongodb+srv://<username>:<password>@cluster0.mongodb.net/test?retryWrites=true&w=majority
+Replace <username> and <password> with the credentials you created earlier.
+
+Install MongoDB Drivers
+
+To interact with MongoDB from your code, you need to install a MongoDB driver. Let's assume you're using Node.js for this example.
+
+npm install mongodb
+
+Example: Connecting and Performing CRUD Operations Using Node.js
+Below is an example demonstrating how to connect to MongoDB Atlas and perform CRUD operations using Node.js.
+
+1. Connect to MongoDB
+const { MongoClient } = require('mongodb');
+
+// Connection URI (replace <password> with your password)
+const uri = "mongodb+srv://<username>:<password>@cluster0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+// Create a new MongoClient
+const client = new MongoClient(uri);
+
+async function run() {
+  try {
+    // Connect to the MongoDB cluster
+    await client.connect();
+
+    console.log("Connected to MongoDB Atlas!");
+
+    // Select a database
+    const database = client.db("sample_db");
+    // Select a collection
+    const collection = database.collection("sample_collection");
+    
+    // Perform operations (e.g., insert)
+  } finally {
+    // Close the connection
+    await client.close();
+  }
+}
+
+run().catch(console.error);
+
+2. Insert Documents
+
+async function insertDocument(collection) {
+  const doc = {
+    name: "John Doe",
+    age: 29,
+    address: "123 Main St"
+  };
+  
+  const result = await collection.insertOne(doc);
+  console.log(`Document inserted with _id: ${result.insertedId}`);
+}
+
+async function run() {
+  try {
+    await client.connect();
+    const database = client.db("sample_db");
+    const collection = database.collection("sample_collection");
+
+    // Insert a document
+    await insertDocument(collection);
+  } finally {
+    await client.close();
+  }
+}
+
+run().catch(console.error);
+
+3. Find Documents
+
+async function findDocuments(collection) {
+  const cursor = collection.find({ name: "John Doe" });
+  const results = await cursor.toArray();
+
+  if (results.length > 0) {
+    console.log("Found documents:");
+    results.forEach((doc, idx) => console.log(`${idx + 1}. ${doc.name}, Age: ${doc.age}`));
+  } else {
+    console.log("No documents found.");
+  }
+}
+
+async function run() {
+  try {
+    await client.connect();
+    const database = client.db("sample_db");
+    const collection = database.collection("sample_collection");
+
+    // Find documents
+    await findDocuments(collection);
+  } finally {
+    await client.close();
+  }
+}
+
+run().catch(console.error);
+
+4. Update Documents
+async function updateDocument(collection) {
+  const filter = { name: "John Doe" };
+  const updateDoc = {
+    $set: {
+      age: 30
+    }
+  };
+
+  const result = await collection.updateOne(filter, updateDoc);
+  console.log(`Matched ${result.matchedCount} document(s), Updated ${result.modifiedCount} document(s).`);
+}
+
+async function run() {
+  try {
+    await client.connect();
+    const database = client.db("sample_db");
+    const collection = database.collection("sample_collection");
+
+    // Update a document
+    await updateDocument(collection);
+  } finally {
+    await client.close();
+  }
+}
+
+run().catch(console.error);
+
+5. Delete Documents
+async function deleteDocument(collection) {
+  const filter = { name: "John Doe" };
+
+  const result = await collection.deleteOne(filter);
+  console.log(`Deleted ${result.deletedCount} document(s).`);
+}
+
+async function run() {
+  try {
+    await client.connect();
+    const database = client.db("sample_db");
+    const collection = database.collection("sample_collection");
+
+    // Delete a document
+    await deleteDocument(collection);
+  } finally {
+    await client.close();
+  }
+}
+
+run().catch(console.error);
+
+
+Using MongoDB Compass:
+
+MongoDB Compass is a powerful graphical interface that simplifies the process of interacting with MongoDB databases. It allows users to explore, visualize, and manipulate data without writing complex shell commands. This guide will walk you through the steps of working with MongoDB using MongoDB Compass, from installation to performing basic database operations, with examples.
+
+Step 1: Install MongoDB Compass
+
+Download MongoDB Compass:
+Go to the official MongoDB Compass download page.
+Select your operating system and download the appropriate version.
+Install it by following the installation steps for your OS.
+
+Step 2: Connect to MongoDB Server
+
+Start MongoDB Service (if not running):
+
+If you have MongoDB installed locally, ensure that the MongoDB service is running. You can start the service using the terminal or command prompt:
+sudo service mongod start  # For Linux
+brew services start mongodb/brew/mongodb-community  # For macOS with Homebrew
+
+Open MongoDB Compass:
+
+Launch the MongoDB Compass application.
+
+Connect to MongoDB:
+
+By default, the MongoDB connection string for local databases is mongodb://localhost:27017.
+Enter this in the connection field and click Connect.
+
+Step 3: Explore the MongoDB Database
+After connecting to MongoDB Compass, you will see the databases available on your MongoDB server.
+
+Viewing Databases:
+
+Once connected, Compass will display a list of existing databases on the server. Common databases include admin, config, and local.
+Create a New Database:
+
+Click the + Create Database button in the top right corner.
+Enter the database name (e.g., schoolDB) and a collection name (e.g., students).
+Click Create Database.
+
+Step 4: Working with Collections
+A collection in MongoDB is a group of documents. It's similar to a table in relational databases, but without a fixed schema.
+
+Example: Creating a Collection and Adding Documents
+Create a Collection:
+
+Inside the newly created schoolDB database, click + Create Collection.
+Name the collection (e.g., courses).
+Click Create Collection.
+Insert a Document:
+
+Click on the Insert Document button to add new documents to the collection.
+
+Add a sample document in JSON format, for example:
+
+{
+  "name": "John Doe",
+  "age": 22,
+  "major": "Computer Science",
+  "grades": {
+    "Math": "A",
+    "Physics": "B"
+  }
+}
+
+Click Insert.
+
+Step 5: Querying the Database
+
+MongoDB Compass allows you to query your data using filters. You can use MongoDB's powerful query language to find specific data.
+
+Example: Querying Documents in a Collection
+View the students Collection:
+
+Select the students collection under the schoolDB database.
+Run a Query:
+
+Click on the Filter section to query specific documents. For example, to find students majoring in "Computer Science", use the following filter:
+
+{ "major": "Computer Science" }
+
+Click Apply. This will show all documents where the "major" field equals "Computer Science".
+
+Step 6: Updating Documents
+You can easily update documents using MongoDB Compass.
+
+Example: Updating a Student's Age
+Find the Document:
+
+Use the filter to find the document you want to update. For example:
+
+{ "name": "John Doe" }
+Update the Document:
+
+Click on the pencil icon next to the document to edit it.
+Change the age field from 22 to 23 and click Update.
+
+Step 7: Deleting Documents
+Deleting documents is straightforward in MongoDB Compass.
+
+Example: Deleting a Document
+Select the Document:
+Find the document you want to delete using a filter or by browsing the collection.
+Delete the Document:
+Click on the trash icon next to the document and confirm deletion.
+
+Step 8: Indexes and Aggregations
+MongoDB Compass also supports creating indexes and performing aggregation queries.
+
+Example: Creating an Index
+Go to Indexes Tab:
+
+Inside the students collection, click the Indexes tab.
+Create Index:
+
+Click Create Index, then choose the fields to index (e.g., name) and specify the index type (e.g., Ascending or Descending).
+Click Create Index.
+Example: Aggregation Pipeline
+MongoDB's aggregation framework is used to process data and return computed results.
+
+Go to Aggregations Tab:
+
+Click the Aggregations tab in your collection.
+Build a Pipeline:
+
+Add stages to the pipeline. For example, to find the average age of students, use:
+
+[
+  { "$group": { "_id": null, "averageAge": { "$avg": "$age" } } }
+]
+Run Aggregation:
+
+Click Run to execute the aggregation query.
+
+Step 9: Exporting and Importing Data
+
+MongoDB Compass allows you to export and import data easily.
+
+Exporting Data
+Select Documents to Export:
+
+Use filters to select the documents you want to export.
+Export Documents:
+
+Click on Export Collection or Export Documents, choose a format (e.g., JSON or CSV), and download the file.
+Importing Data
+Go to Collection:
+
+Open the collection where you want to import data.
+Import File:
+
+Click Import Data, choose the file format (e.g., JSON or CSV), and upload the file.
+
+
+Store Data with Mongoose & MongoDB:
+
+To store data with Mongoose and MongoDB, you need to follow these steps:
+
+1. Install MongoDB and Mongoose
+Make sure you have MongoDB installed locally or have a cloud-based MongoDB instance like MongoDB Atlas. Also, install Mongoose using npm in your Node.js project:
+
+npm install mongoose
+
+2. Connect to MongoDB
+Set up a connection to your MongoDB instance in your Node.js application using Mongoose.
+
+const mongoose = require('mongoose');
+
+// Replace the below URL with your MongoDB connection string
+mongoose.connect('mongodb://localhost:27017/mydatabase', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('MongoDB connected...'))
+.catch(err => console.log('Failed to connect to MongoDB', err));
+
+3. Define a Mongoose Schema
+
+A schema defines the structure of documents in MongoDB. For example, if you are storing user data:
+
+const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  age: Number,
+  created_at: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+4. Create a Model
+A model in Mongoose wraps around a MongoDB collection and allows you to perform CRUD operations.
+
+const User = mongoose.model('User', userSchema);
+
+5. Store Data
+To store data in MongoDB, create a new instance of the model and save it.
+
+const newUser = new User({
+  name: 'John Doe',
+  email: 'john@example.com',
+  age: 30
+});
+
+newUser.save()
+  .then(() => console.log('User saved!'))
+  .catch(err => console.log('Error saving user', err));
+
+6. Fetch Data
+To retrieve stored data, you can use Mongoose queries like find, findById, findOne, etc.
+
+User.find()
+  .then(users => console.log(users))
+  .catch(err => console.log('Error fetching users', err));
+
+7. Update Data
+
+To update a document in MongoDB:
+
+User.findOneAndUpdate({ email: 'john@example.com' }, { age: 31 }, { new: true })
+  .then(user => console.log('Updated user:', user))
+  .catch(err => console.log('Error updating user', err));
+
+8. Delete Data
+
+To delete a document from MongoDB:
+
+User.findOneAndDelete({ email: 'john@example.com' })
+  .then(user => console.log('Deleted user:', user))
+  .catch(err => console.log('Error deleting user', err));
+
+Full Example
+const mongoose = require('mongoose');
+
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/mydatabase', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('MongoDB connected...'))
+.catch(err => console.log('Failed to connect to MongoDB', err));
+
+// Define a schema
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  age: Number,
+  created_at: { type: Date, default: Date.now }
+});
+
+// Create a model
+const User = mongoose.model('User', userSchema);
+
+// Store a new user
+const newUser = new User({
+  name: 'Jane Doe',
+  email: 'jane@example.com',
+  age: 25
+});
+
+newUser.save()
+  .then(() => console.log('User saved!'))
+  .catch(err => console.log('Error saving user', err));
+
+// Fetch users
+User.find()
+  .then(users => console.log(users))
+  .catch(err => console.log('Error fetching users', err));
+
+// Update a user
+User.findOneAndUpdate({ email: 'jane@example.com' }, { age: 26 }, { new: true })
+  .then(user => console.log('Updated user:', user))
+  .catch(err => console.log('Error updating user', err));
+
+// Delete a user
+User.findOneAndDelete({ email: 'jane@example.com' })
+  .then(user => console.log('Deleted user:', user))
+  .catch(err => console.log('Error deleting user', err));
+
+
+Understanding Databases, Collections & Documents:
+
+
+In the context of databases, particularly NoSQL databases like MongoDB, the terms Databases, Collections, and Documents are used to describe the structure in which data is organized and stored. Here's an overview of each:
+
+1. Databases:
+
+A database is a collection of related data stored together. It’s the top-level container for data.
+In relational databases (like MySQL, PostgreSQL), a database contains tables, views, indexes, etc.
+In NoSQL databases (like MongoDB), a database contains collections of documents.
+Each database is independent of others and can be created, accessed, and deleted as needed.
+
+Example: A company might have databases for different purposes like:
+
+CustomerDB – storing customer data.
+InventoryDB – storing product data.
+SalesDB – storing sales and transaction data.
+
+2. Collections
+
+A collection is analogous to a table in a relational database.
+It is a group of related documents in a database. Collections do not enforce a strict schema (NoSQL databases like MongoDB are schema-less).
+Collections are flexible, meaning documents within a collection can have varying structures (different fields or data types).
+
+In relational terms, a collection is like a "table," but without the rigid structure of rows and columns.
+
+Example: In a CustomerDB database, you could have collections like:
+
+customers – storing customer information.
+orders – storing customer orders.
+invoices – storing billing information.
+
+3. Documents
+
+A document is the fundamental unit of data in a NoSQL database like MongoDB.
+Documents are stored in collections and represented in a JSON-like format (called BSON in MongoDB for binary storage).
+Each document is a set of key-value pairs, where keys are strings and values can be various types, such as strings, numbers, arrays, or even other documents (nested).
+Documents within the same collection can have different fields, meaning each document can have a flexible structure.
+Example: In a customers collection, a document might look like this:
+
+{
+  "customerId": 101,
+  "name": "Alice Smith",
+  "email": "alice@example.com",
+  "address": {
+    "street": "123 Main St",
+    "city": "New York",
+    "state": "NY",
+    "zip": "10001"
+  },
+  "orders": [
+    { "orderId": 5001, "amount": 250 },
+    { "orderId": 5002, "amount": 175 }
+  ]
+}
+As seen above, the document can contain nested fields (like the address), and it can store arrays (like the orders).
+
+
+
+The Shell & MongoDB Drivers for Different Languages:
+
+MongoDB provides drivers for various programming languages to help developers interact with the database. These drivers allow applications written in different languages to connect to a MongoDB instance, perform CRUD operations, and manage database schema. Below is an overview of the MongoDB shell and drivers for different languages:
+
+1. MongoDB Shell (mongosh)
+
+MongoDB Shell (mongosh) is an interactive command-line interface used to interact with MongoDB. It provides a JavaScript-based interface to perform database operations and is commonly used by developers and database administrators.
+
+Common Uses:
+
+Querying data
+Managing collections and databases
+Managing user roles and permissions
+Scripting and automation for database management
+
+2. MongoDB Drivers by Language
+
+MongoDB has official drivers for most popular programming languages. These drivers provide abstractions for interacting with MongoDB databases in a native way for each language.
+
+JavaScript (Node.js)
+
+Driver: mongodb
+Usage: MongoDB driver for Node.js applications.
+Installation: npm install mongodb
+Features:
+
+Supports asynchronous operations (via callbacks, promises, and async/await).
+Compatible with both the core Node.js and the Express.js framework.
+Full support for MongoDB CRUD operations, indexes, and aggregation framework.
+
+Python
+
+Driver: pymongo
+Usage: MongoDB driver for Python applications.
+Installation: pip install pymongo
+
+Features:
+Supports both synchronous and asynchronous operations (via motor).
+Compatible with web frameworks like Flask and Django.
+Supports MongoDB’s advanced query and aggregation features.
+
+Java
+
+Driver: mongodb-driver-sync, mongodb-driver-async
+Usage: MongoDB driver for Java applications.
+Installation: Include the MongoDB driver in the Maven or Gradle dependencies.
+Features:
+Both synchronous and asynchronous versions are available.
+Fully compatible with Java's enterprise frameworks like Spring.
+Offers support for connection pooling, cursors, and MongoDB transactions.
+
+C# (.NET)
+
+Driver: MongoDB.Driver
+Usage: MongoDB driver for .NET applications.
+Installation: Use NuGet: Install-Package MongoDB.Driver
+Features:
+Supports both synchronous and asynchronous operations.
+Integrated with ASP.NET and Entity Framework.
+Offers LINQ integration, making queries more intuitive for .NET developers.
+
+PHP
+
+Driver: mongodb/mongodb
+Usage: MongoDB driver for PHP applications.
+Installation: Composer: composer require mongodb/mongodb
+Features:
+Provides a high-level abstraction for MongoDB.
+Full integration with the PHP ecosystem, compatible with Laravel and Symfony.
+
+Ruby
+
+Driver: mongo
+Usage: MongoDB driver for Ruby applications.
+Installation: gem install mongo
+Features:
+Fully integrated with the Ruby on Rails framework.
+Supports asynchronous operations using EventMachine.
+
+Go
+
+Driver: mongo-go-driver
+Usage: MongoDB driver for Go applications.
+Installation: go get go.mongodb.org/mongo-driver
+Features:
+Provides idiomatic Go interaction with MongoDB.
+Supports context-based operations and BSON encoding/decoding.
+
+C and C++
+
+Driver: mongoc, mongocxx
+Usage: MongoDB driver for C and C++ applications.
+Installation: Use the MongoDB C Driver and C++ Driver (install via package manager).
+
+Features:
+Low-level access to MongoDB operations.
+Used in systems programming and performance-critical applications.
+
+Perl
+
+Driver: MongoDB::MongoClient
+Usage: MongoDB driver for Perl applications.
+
+Installation: cpan MongoDB
+
+Features:
+Simple and clean interface for interacting with MongoDB.
+
+Swift Xcode
+
+Driver: MongoSwift
+Usage: MongoDB driver for Swift applications (mainly used in iOS/macOS apps).
+Installation: Use Swift Package Manager.
+Features:
+Provides Swift idiomatic API for interacting with MongoDB.
+Supports asynchronous and synchronous execution.
+
+3. Common Features Across Drivers
+
+Connection Pooling: Most MongoDB drivers provide connection pooling for efficient resource use.
+Asynchronous Programming: Many drivers support async operations (callbacks, promises, or async/await).
+CRUD Operations: All drivers support basic create, read, update, and delete (CRUD) operations.
+Aggregation Framework: Drivers fully support MongoDB's powerful aggregation framework for data analysis and transformation.
+
+Transactions: With the advent of multi-document transactions in MongoDB 4.0, most drivers support ACID-compliant transactions.
+Indexes: All drivers allow developers to create and manage indexes to optimize query performance.
+
+
+Understanding "insertMany()":
+
+The insertMany() method in MongoDB is used to insert multiple documents into a collection in a single operation. This is more efficient than inserting documents one by one, especially when dealing with large datasets.
+
+Basic Syntax
+
+db.collection.insertMany(documents, options)
+documents: An array of documents to insert.
+options: Optional settings (like ordered and writeConcern).
+
+Example: Using insertMany()
+
+Let’s walk through an example of how to use insertMany() in a Node.js application with MongoDB.
+
+Step 1: Setup MongoDB and Node.js
+Install MongoDB and start your MongoDB server.
+Create a new Node.js project and install the mongodb package.
+mkdir mongo-example
+cd mongo-example
+npm init -y
+npm install mongodb
+
+Step 2: Create a Script to Use insertMany()
+Create a file named insertManyExample.js and add the following code:
+
+const { MongoClient } = require('mongodb');
+
+// Connection URL
+const url = 'mongodb://localhost:27017';
+const dbName = 'mydatabase';
+
+async function run() {
+    const client = new MongoClient(url);
+
+    try {
+        // Connect to the MongoDB server
+        await client.connect();
+        console.log('Connected to the database');
+
+        // Access the database and collection
+        const db = client.db(dbName);
+        const collection = db.collection('users');
+
+        // Create an array of documents to insert
+        const users = [
+            { name: 'Alice', age: 25, city: 'New York' },
+            { name: 'Bob', age: 30, city: 'Los Angeles' },
+            { name: 'Charlie', age: 35, city: 'Chicago' },
+        ];
+
+        // Insert multiple documents
+        const result = await collection.insertMany(users);
+        console.log(`${result.insertedCount} documents were inserted`);
+
+        // Output the inserted documents
+        console.log('Inserted documents:', result.ops);
+    } catch (err) {
+        console.error('Error inserting documents:', err);
+    } finally {
+        // Close the connection
+        await client.close();
+    }
+}
+
+run().catch(console.error);
+
+Step 3: Run the Script
+Execute the script using Node.js:
+
+node insertManyExample.js
+
+Explanation of the Code
+
+Connection Setup: The script connects to the MongoDB server running on localhost:27017.
+Database and Collection: It accesses the mydatabase database and the users collection.
+Documents Array: An array of user objects is created to be inserted.
+Insert Operation: The insertMany() method is called with the array of documents.
+Result Handling: It logs the number of documents inserted and the inserted documents.
+Error Handling: Catches and logs any errors that occur during the insertion process.
+Closing the Connection: Finally, it ensures that the database connection is closed.
+
+Options for insertMany()
+ordered: If set to true (the default), MongoDB will stop inserting documents after encountering the first error. If false, it will attempt to insert all documents, ignoring errors.
+
+const result = await collection.insertMany(users, { ordered: false });
+
+writeConcern: Specifies the level of acknowledgment requested from MongoDB for write operations. You can specify options like w, j, and wtimeout.
+
+const result = await collection.insertMany(users, { writeConcern: { w: 1 } });
+
+
+update vs updateMany():
+
+
+In MongoDB, update and updateMany() are methods used to modify existing documents in a collection. Understanding the differences between them is crucial for effectively managing your data. Let’s break down each method with examples.
+
+1. update()
+The update() method modifies a single document that matches the specified query criteria. If multiple documents match the query, only the first matching document will be updated.
+
+Syntax
+db.collection.update(
+   <query>,
+   <update>,
+   { upsert: <boolean>, multi: <boolean> }
+)
+<query>: The selection criteria for the documents to update.
+<update>: The modifications to apply.
+upsert: Optional. If true, creates a new document if no documents match the query.
+multi: Optional. If true, updates multiple documents (but generally update() is used for a single document).
+Example
+Let’s say we have a collection named users:
+
+db.users.insertMany([
+   { name: "Alice", age: 30 },
+   { name: "Bob", age: 25 },
+   { name: "Charlie", age: 35 }
+]);
+Now, if we want to update Alice's age:
+
+db.users.update(
+   { name: "Alice" },         // Query to match Alice
+   { $set: { age: 31 } }      // Update to apply
+);
+Result: Only Alice’s age will be updated to 31.
+
+2. updateMany()
+
+The updateMany() method updates all documents that match the specified query criteria. This is useful when you want to apply the same update to multiple documents.
+
+Syntax
+db.collection.updateMany(
+   <query>,
+   <update>,
+   { upsert: <boolean> }
+)
+<query>: The selection criteria for the documents to update.
+<update>: The modifications to apply.
+
+upsert: Optional. If true, creates a new document if no documents match the query.
+Example
+Continuing with our users collection, suppose we want to update the age of all users to 40 who are currently under 30:
+
+db.users.updateMany(
+   { age: { $lt: 30 } },      // Query to match users under 30
+   { $set: { age: 40 } }      // Update to apply
+);
+Result: Bob’s age will be updated to 40, and since Alice's age is already 31, she will remain unchanged. Charlie will also remain unchanged.
+
+Summary of Differences
+Target:
+update(): Modifies the first document that matches the criteria.
+updateMany(): Modifies all documents that match the criteria.
+Use Cases:
+Use update() when you only need to change one specific document.
+Use updateMany() when you want to apply changes to multiple documents.
+
+
+Embedded Documents & Arrays:
+
+
+Embedded documents and arrays are essential concepts in document-oriented databases like MongoDB. They allow for flexible data modeling and can represent complex relationships between data entities. Here’s a breakdown of each concept:
+
+Embedded Documents
+Definition:
+An embedded document is a nested document within a parent document. This structure allows you to group related data together, making it easier to manage and retrieve.
+
+Use Cases:
+
+One-to-Many Relationships: When one document contains multiple related documents. For example, a blog post might have multiple comments embedded within it.
+Related Data: To keep related data together, which can enhance read performance and simplify queries.
+Example:
+
+{
+    "title": "Introduction to MongoDB",
+    "author": {
+        "name": "John Doe",
+        "email": "john.doe@example.com"
+    },
+    "comments": [
+        {
+            "user": "Alice",
+            "comment": "Great article!",
+            "date": "2024-09-25"
+        },
+        {
+            "user": "Bob",
+            "comment": "Very informative!",
+            "date": "2024-09-26"
+        }
+    ]
+}
+
+Arrays
+
+Definition:
+
+An array is a data structure that can hold multiple values of the same type. In document databases, arrays are often used to store lists of items.
+
+Use Cases:
+
+Multiple Values for a Single Field: When a field needs to contain multiple values, such as tags or categories.
+Flexible Schemas: Arrays allow for dynamic and flexible data structures without needing to define a strict schema.
+Example:
+
+{
+    "name": "John Doe",
+    "tags": ["MongoDB", "NoSQL", "Database"],
+    "hobbies": ["Reading", "Traveling", "Coding"]
+}
+Key Considerations
+Performance: Embedded documents can improve performance by reducing the number of database operations required to retrieve related data.
+Document Size: MongoDB has a document size limit (currently 16 MB), so consider this when embedding large arrays or documents.
+Normalization vs. Denormalization: While embedding reduces the need for joins, it may lead to data duplication. Assess your use case to determine the best approach.
+
+
+Connecting to MongoDB in Express.js:
+
+npm install mongoose
+
+const express = require('express');
+const mongoose = require('mongoose');
+
+const app = express();
+const PORT = 3000;
+
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost/your_database_name', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+// Check connection
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+});
+
+// Define routes and start the server
+app.get('/', (req, res) => {
+  res.send('Hello, MongoDB!');
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+
+
+Performing CRUD operations:
+
+index.js :
+
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// MongoDB connection
+mongoose.connect('mongodb://127.0.0.1/task', { useNewUrlParser: true, useUnifiedTopology: true });
+const db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+});
+
+// Middleware
+app.use(bodyParser.json());
+
+
+
+// Routes
+app.use('/api', require('./routes/task'));
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+
+create models folder and inside models folder create the task.js file:
+
+task.js :
+
+const mongoose = require('mongoose');
+
+const taskSchema = new mongoose.Schema({
+  description: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  completed: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const Task = mongoose.model('Task', taskSchema);
+
+module.exports = Task;
+
+
+create routes folder and inside routes folder create task.js file
+
+task.js:
+
+const express = require('express');
+const router = express.Router();
+const Task = require('../models/task');
+
+// Create a task
+router.post('/tasks', async (req, res) => {
+  try {
+    const task = new Task(req.body);
+    await task.save();
+    res.status(201).send(task);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+  console.log("Data Inserted Successfully")
+});
+
+// Read all tasks
+router.get('/tasks', async (req, res) => {
+  try {
+    const tasks = await Task.find();
+    res.send(tasks);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+  console.log("Fetched Data Successfully")
+});
+
+// Update a task by ID
+router.patch('/tasks/:id', async (req, res) => {
+  try {
+    const task = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    if (!task) {
+      return res.status(404).send();
+    }
+    res.send(task);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+  console.log("Data Updated!")
+});
+
+// Delete a task by ID
+router.delete('/tasks/:id', async (req, res) => {
+  try {
+    const task = await Task.findByIdAndDelete(req.params.id);
+    if (!task) {
+      return res.status(404).send();
+    }
+    res.send(task);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+  console.log("Data Deleted!")
+});
+
+module.exports = router;
+
+
+
+
+
+Creating an authentication and authorization system using JSON Web Token (JWT) with Express, MongoDB, and Node.js involves several steps. I'll guide you through the process from scratch, including how to set up protected routes.
+
+Prerequisites
+Node.js and npm installed
+MongoDB installed locally or using a service like MongoDB Atlas
+Steps
+1. Initialize the Project
+bash
+Copy code
+mkdir jwt-auth-example
+cd jwt-auth-example
+npm init -y
+2. Install Dependencies
+bash
+Copy code
+npm install express mongoose bcryptjs jsonwebtoken dotenv
+express: Web framework for Node.js
+mongoose: MongoDB ODM (Object Data Modeling)
+bcryptjs: For hashing passwords
+jsonwebtoken: For generating and verifying JWT tokens
+dotenv: For managing environment variables
+3. Project Structure
+bash
+Copy code
+jwt-auth-example/
+│
+├── config/
+│   └── db.js             # Database connection
+├── controllers/
+│   └── authController.js  # Authentication logic
+├── middlewares/
+│   └── authMiddleware.js  # JWT verification middleware
+├── models/
+│   └── user.js            # User schema
+├── routes/
+│   └── auth.js            # Routes for login and signup
+├── .env                   # Environment variables
+└── server.js              # Main entry file
+4. Configure MongoDB Connection (config/db.js)
+
+const mongoose = require('mongoose');
+require('dotenv').config();
+
+const connectDB = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log('MongoDB Connected...');
+    } catch (err) {
+        console.error(err.message);
+        process.exit(1);
+    }
+};
+
+module.exports = connectDB;
+
+5. Create the User Model (models/user.js)
+
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+
+const UserSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+});
+
+// Hash the password before saving
+UserSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) {
+        return next();
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+});
+
+// Check if the provided password matches the hashed password
+UserSchema.methods.matchPassword = async function (enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.password);
+};
+
+module.exports = mongoose.model('User', UserSchema);
+6. Create Authentication Routes (routes/auth.js)
+javascript
+Copy code
+const express = require('express');
+const router = express.Router();
+const { registerUser, loginUser } = require('../controllers/authController');
+
+router.post('/register', registerUser);
+router.post('/login', loginUser);
+
+module.exports = router;
+7. Authentication Controller (controllers/authController.js)
+javascript
+Copy code
+const User = require('../models/user');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+require('dotenv').config();
+
+// Generate JWT
+const generateToken = (id) => {
+    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+};
+
+// Register new user
+const registerUser = async (req, res) => {
+    const { username, email, password } = req.body;
+
+    try {
+        // Check if user exists
+        let user = await User.findOne({ email });
+        if (user) {
+            return res.status(400).json({ message: 'User already exists' });
+        }
+
+        // Create new user
+        user = new User({
+            username,
+            email,
+            password,
+        });
+
+        await user.save();
+
+        // Generate token
+        const token = generateToken(user._id);
+
+        res.status(201).json({
+            token,
+            user: { id: user._id, username: user.username, email: user.email },
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error');
+    }
+};
+
+// Login user
+const loginUser = async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({ message: 'Invalid credentials' });
+        }
+
+        const isMatch = await user.matchPassword(password);
+        if (!isMatch) {
+            return res.status(400).json({ message: 'Invalid credentials' });
+        }
+
+        const token = generateToken(user._id);
+
+        res.json({
+            token,
+            user: { id: user._id, username: user.username, email: user.email },
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error');
+    }
+};
+
+module.exports = { registerUser, loginUser };
+
+8. Create JWT Middleware for Protected Routes (middlewares/authMiddleware.js)
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
+const authMiddleware = (req, res, next) => {
+    const token = req.header('Authorization').split(' ')[1]; // Bearer <token>
+
+    if (!token) {
+        return res.status(401).json({ message: 'No token, authorization denied' });
+    }
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = decoded.id;
+        next();
+    } catch (err) {
+        res.status(401).json({ message: 'Invalid token' });
+    }
+};
+
+module.exports = authMiddleware;
+9. Protect Routes (routes/protected.js)
+Create a simple protected route that only authenticated users can access.
+
+javascript
+Copy code
+const express = require('express');
+const router = express.Router();
+const authMiddleware = require('../middlewares/authMiddleware');
+
+router.get('/dashboard', authMiddleware, (req, res) => {
+    res.json({ message: 'Welcome to the dashboard!' });
+});
+
+module.exports = router;
+
+10. Set Up Express Server (server.js)
+const express = require('express');
+const connectDB = require('./config/db');
+const authRoutes = require('./routes/auth');
+const protectedRoutes = require('./routes/protected');
+require('dotenv').config();
+
+const app = express();
+
+// Connect to MongoDB
+connectDB();
+
+// Middleware for JSON parsing
+app.use(express.json());
+
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api', protectedRoutes);
+
+// Start the server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+11. Add Environment Variables (.env)
+bash
+Copy code
+MONGO_URI=mongodb://localhost:27017/jwt-auth
+JWT_SECRET=your_jwt_secret
+PORT=5000
+12. Testing the Application
+Register a new user:
+bash
+Copy code
+POST /api/auth/register
+{
+    "username": "testuser",
+    "email": "test@example.com",
+    "password": "password123"
+}
+Login user:
+bash
+Copy code
+POST /api/auth/login
+{
+    "email": "test@example.com",
+    "password": "password123"
+}
+Access a protected route (after logging in):
+Use the token from the login response and include it in the Authorization header as Bearer <token>:
+
+bash
+Copy code
+GET /api/dashboard
+Authorization: Bearer <token>
+If the token is valid, you’ll see:
+
+json
+Copy code
+{
+    "message": "Welcome to the dashboard!"
+}
+
+
