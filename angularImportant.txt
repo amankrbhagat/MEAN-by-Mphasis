@@ -34,3 +34,33 @@ package.json: This file lists the dependencies and scripts for your project. It 
 tsconfig.json: This file configures the TypeScript compiler options.
 
 tslint.json: This file configures TSLint rules for your project.
+
+
+
+Angular binds the Model and View together using powerful features like:
+
+✅ String Interpolation ({{ value }}) – displays data in the HTML
+
+✅ Property Binding ([value]="something")
+
+✅ Two-Way Binding ([(ngModel)]="something") – syncs Model ↔ View
+
+✅ Event Binding ((click)="doSomething()") – listens to user actions and updates the model
+
+This means:
+
+If the Model changes → the View updates automatically
+
+If the user interacts with the View (e.g., types in an input) → the Model updates too (with two-way binding)
+
+
+
+package.json: Defines what your project wants.
+
+package-lock.json: Records what your project got.
+
+
+
+
+
+
