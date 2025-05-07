@@ -1,0 +1,36 @@
+Directory Structure
+e2e/: Contains end-to-end tests for the application.
+
+node_modules/: Contains all the npm packages installed for the project.
+
+src/: The main source folder for your application.
+
+app/: Contains the main application code, including components, services, and modules.
+
+assets/: Contains static assets like images and stylesheets.
+
+environments/: Contains environment-specific configuration files.
+
+.editorconfig: Configuration file for code editors to maintain consistent coding styles.
+
+.gitignore: Specifies which files and directories to ignore in version control.
+
+angular.json: Configuration file for Angular CLI, specifying project settings and build options.
+
+package.json: Lists the project's dependencies and scripts.
+
+README.md: A markdown file with basic information about the project.
+
+tsconfig.json: TypeScript configuration file.
+
+tslint.json: Configuration file for TSLint, a linting tool for TypeScript.
+
+Configuration Files
+
+angular.json: This file contains configuration options for Angular CLI, including build and serve options, file paths, and more.
+
+package.json: This file lists the dependencies and scripts for your project. It is used by npm to manage the project's packages.
+
+tsconfig.json: This file configures the TypeScript compiler options.
+
+tslint.json: This file configures TSLint rules for your project.
